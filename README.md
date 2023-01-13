@@ -23,4 +23,4 @@
 | 팀장 / 백엔드 | 백엔드 | 프론트엔드 | 
 | --- | --- | --- |
 | 조예지 | 서혜원 | 이은비 |
-|  <img src="https://avatars.githubusercontent.com/u/81136546?v=4" width="100px" height="100px"><br> | <a href="https://github.com/CYJhub">CYJhub</a><img src="https://avatars.githubusercontent.com/u/81088222?v=4" width="100px" height="100px"><br/><a href="https://github.com/JSHWJ">JSHWJ</a> | <img src="https://avatars.githubusercontent.com/u/108103346?v=4" width="100px" height="100px"><br><a href="https://github.com/silberain02">silberain02</a> |
+|  <img src="https://avatars.githubusercontent.com/u/81136546?v=4" width="100px" height="100px"><br> <a href="https://github.com/CYJhub">CYJhub</a> | <img src="https://avatars.githubusercontent.com/u/81088222?v=4" width="100px" height="100px"><br/><a href="https://github.com/JSHWJ">JSHWJ</a> | <img src="https://avatars.githubusercontent.com/u/108103346?v=4" width="100px" height="100px"><br><a href="https://github.com/silberain02">silberain02</a> |
