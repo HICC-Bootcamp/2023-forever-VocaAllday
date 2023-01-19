@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>VocaAllday::main</title>
+    <link href="./styles/index.css" rel="stylesheet">
+    <script src="./index.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper_header">
+            <img class="logo" src="./img/logo1.png">
+            <div class="navigation">
+                <div class="navigation_item" id="menuMaketest" onclick="menuMaketest()">Make Test</div>
+                <div class="dividedDot">.</div>
+                <div class="navigation_item" id="menuTotalreport" onclick="menuTotalreport()">Total Report</div>
+                <div class="dividedDot">.</div>
+                <div class="navigation_item" id="menuMyreport" onclick="menuMyreport()">My Report</div>
+            </div>
+            <button class="login">login</button>
+        </div>
+        <div class="dividedLine"></div>
+
+        <div class="wrapper_body" id="wrapper_body">
+            <iframe id="contentFrame" src="./01-MakeTest.html"></iframe>
+        </div>
+        <div class="wrapper_footer"></div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <link href="./styles/01-MakeTest.css" rel="stylesheet">
+    <script src="./01-MakeTest.js"></script>
+    <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
+    <html xmlns:th="http://www.thymleaf.org"></html>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 단어 입력 창 -->
+        <div class="wrapper_left">
+            <div class="left_header">
+                <div class="input_title">단어</div>
+                <div class="input_title">의미</div>
+            </div>
+            <div class="left_body" id="left_body">
+                <div class="input_word" id="input_word_1">
+                    <input class="text_box" id="input_word_en" placeholder="01">
+                    <input class="text_box" id="input_word_ko" placeholder="01">
+                </div>
+                <div class="input_word" id="input_word_2">
+                    <input class="text_box" id="input_word_en" placeholder="02">
+                    <input class="text_box" id="input_word_ko" placeholder="02">
+                </div>
+                <div class="input_word" id="input_word_3">
+                    <input class="text_box" id="input_word_en" placeholder="03">
+                    <input class="text_box" id="input_word_ko" placeholder="03">
+                </div>
+                <div class="input_word" id="input_word_4">
+                    <input class="text_box" id="input_word_en" placeholder="04">
+                    <input class="text_box" id="input_word_ko" placeholder="04">
+                </div>
+                <div class="input_word" id="input_word_5">
+                    <input class="text_box" id="input_word_en" placeholder="05">
+                    <input class="text_box" id="input_word_ko" placeholder="05">
+                </div>
+                <div class="input_word" id="input_word_6">
+                    <input class="text_box" id="input_word_en" placeholder="06">
+                    <input class="text_box" id="input_word_ko" placeholder="06">
+                </div>
+                <div class="input_word" id="input_word_7">
+                    <input class="text_box" id="input_word_en" placeholder="07">
+                    <input class="text_box" id="input_word_ko" placeholder="07">
+                </div>
+                <div class="input_word" id="input_word_8">
+                    <input class="text_box" id="input_word_en" placeholder="08">
+                    <input class="text_box" id="input_word_ko" placeholder="08">
+                </div>
+            </div>
+            <div class="left_footer">
+                <button class="button" id="add_but" onclick="add_input_word()">
+                    <i class="fa-sharp fa-solid fa-plus"></i>
+                    <span class="add_but_text">Add</span>
+                </button>
+                <button class="button" id="next_but" onclick="submit_word()">
+                    <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                    <span class="next_but_text">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- 시험지 유형 선택 창 -->
+        <div class="wrapper_right">
+            <div class="right_header">
+                <div class="header_logo">
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                </div>
+                <div class="header_text">
+                    <div class="title">시험지 만들기</div>
+                    <div class="subtitle">나만의 시험지를 만들어 보세요!</div>
+                </div>
+            </div>
+            <div class="dividedLine"></div>
+            <div class="right_body">
+                <div class="test_num">
+                    <span class="select_title">단어 당 문제 개수</span>
+                    <select class="select_box">
+                        <option>1개</option>
+                        <option>2개</option>
+                        <option>3개</option>
+                    </select>
+                </div>
+                <div class="test_type">
+                        <span class="select_title">문제지 유형</span>
+                    <select class="select_box">
+                        <option>의미</option>
+                        <option>영어</option>
+                        <option>문장</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="right_footer">
+                <button class="button" id="submit_but">
+                    <i class="fa-sharp fa-solid fa-check"></i>
+                    <span class="submit_but_text">Submit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
