@@ -10,24 +10,32 @@
 </head>
 <body>
     <div class="wrapper">
+    <form id="form" method="post" action="">
+
         <div class="login_box">
             <div class="profile_logo">
                 <i class="fa-solid fa-user fa-2x"></i>
             </div>
             <div class="login_title">Login</div>
-            <input class="input_box" id="id" type="text" placeholder="아이디(이메일)" onkeyup="changeFocus()">
+
+            <label for="email"></label>
+            <input class="input_box" id="email" name="email" type="text" th:value="${email}" placeholder="이메일" onkeyup="changeFocus()"/>
             <i class="fa-solid fa-user basicStyle" id="icon_id"></i>
             <div class="error" id="error_id"></div>
-            <input class="input_box" id="pw" type="password" placeholder="비밀번호" onkeyup="enterLogin()">
+
+            <label for="password"></label>
+            <input class="input_box" id="password" name="password" type="password" th:value="${password}" placeholder="비밀번호" onkeyup="enterLogin()"/>
             <i class="fa-solid fa-eye-slash basicStyle" id="icon_pw" onclick="viewPw()"></i>
             <div class="error" id="error_pw"></div>
+            
             <div class="signin_box">
                 <span class="signin_text">아직 계정이 없나요?</span>
                 <a href="./signin.html" class="signin_link">회원가입</a>
             </div>
-            <button class="login_but" onclick="login()">로그인</button>
+            <button class="login_but" id="login_but" onclick="login()">로그인</button>
         </div>
-            
+    
+    </form>
     </div>
 </body>
 </html>
