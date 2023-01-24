@@ -2,15 +2,15 @@
 <html lang="ko" xmlns:th="http://www.thymleaf.org">
 <head>
     <title>Document</title>
-    <link href="../../static/css/signin.css" rel="stylesheet">
+    <link href="/css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet">
     <script src="signin.js"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    
+
 </head>
 <body>
     <div class="wrapper">
-        <form id="form" method="post" action="/members/new" onsubmit="return false" th:object="${memberFormDto}" >
+        <form id="form" method="post" action="/auth/new" onsubmit="return false" th:object="${memberFormDto}" >
 
             <div class="signin_box">
                 <div class="profile_logo">

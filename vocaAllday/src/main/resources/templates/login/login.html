@@ -2,14 +2,14 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Document</title>
-    <link href="../../static/css/login.css" rel="stylesheet">
+    <link href="/css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
     <script src="login.js"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
     <div class="wrapper">
-    <form id="form" method="post" onsubmit="return false" action="/members/login">
+    <form id="form" method="post" onsubmit="return false" action="/auth/login">
 
         <div class="login_box">
             <div class="profile_logo">
@@ -27,7 +27,7 @@
             
             <div class="signin_box">
                 <span class="signin_text">아직 계정이 없나요?</span>
-                <a href="../signin/signin.html" class="signin_link">회원가입</a>
+                <a href="/signin.html" class="signin_link">회원가입</a>
             </div>
             <button class="login_but" id="login_but" onclick="login()">로그인</button>
         </div>
