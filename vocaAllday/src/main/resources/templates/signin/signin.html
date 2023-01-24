@@ -17,27 +17,21 @@
                 </div>
                 <div class="login_title">Welcome!</div>
 
-                <label th:for="name">이름</label>
-                <input class="input_box" id="name" type="text"  th:field="*{name}" placeholder="이름" onkeyup="changeFocus1()">
+                <input class="input_box" id="name" type="text"  th:field="*{name}" placeholder="이름" onkeypress="changeFocus1()">
                 <i class="fa-solid fa-user basicStyle" id="icon_name"></i>
-                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
+                <div class="error" id="error_name"></div>
 
-                <label th:for="email">이메일</label>
-                <input class="input_box" id="email" type="email" th:field="*{email}"  placeholder="아이디(이메일)" onkeyup="changeFocus2()">
+                <input class="input_box" id="email" type="email" th:field="*{email}"  placeholder="이메일" onkeypress="changeFocus2()">
                 <button class="overlap_but" id="overlap_but" onclick="ck_overlap()">중복 확인</button>
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect
-                    data</p>
+                <div class="error" id="error_email"></div>
 
-                <label th:for="password">비밀번호</label>
-                <input class="input_box" id="password" type="password" th:field="*{password}" placeholder="비밀번호" onkeyup="changeFocus3()">
+                <input class="input_box" id="password" type="password" th:field="*{password}" placeholder="비밀번호" onkeypress="changeFocus3()">
                 <i class="fa-solid fa-eye-slash basicStyle" id="icon_pw1" onclick="viewPw1()"></i>
-                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect
-                    data</p>
+                <div class="error" id="error_pw1"></div>
 
-                <label th:for="password_check">비밀번호 확인</label>
-                <input class="input_box" id="password_check" type="password" placeholder="비밀번호 확인" onkeyup="changeFocus4()">
+                <input class="input_box" id="password_check" type="password" placeholder="비밀번호 확인">
                 <i class="fa-solid fa-eye-slash basicStyle" id="icon_pw2" onclick="viewPw2()"></i>
-                <div class="invalid-feedback" id="error_pw2">비밀번호를 확인해주세요</div>
+                <div class="error" id="error_pw2"></div>
 
                 <button class="signin_but" id="signin_but" disabled="true" onclick="signin()">가입하기</button>
             </div>
