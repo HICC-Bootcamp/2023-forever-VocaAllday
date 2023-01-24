@@ -2,13 +2,13 @@ let pw_view = false; //비밀번호 열람 상태
 
 //아이디에서 엔터치면 비밀번호로 커서 이동
 const changeFocus = () => {
-    if(window.event.keyCode===13){
+    if(event.keyCode===13){
         document.getElementById("password").focus();
     }
 }
 //비밀번호에서 엔터치면 로그인
 const enterLogin = () => {
-    if(window.event.keyCode===13){
+    if(event.keyCode===13){
         login();
     }
 }
@@ -33,7 +33,7 @@ const login = () => {
     //입력값 받아오기
     let id = document.getElementById('email').value;
     let pw = document.getElementById('password').value;
-    var form = document.getElementById("form");
+    let form = document.getElementById("form");
 
     //아이디,비밀번호 입력여부 확인
     if(id===""){
@@ -60,6 +60,7 @@ const login = () => {
         //로그인 가능
         form.submit();
         Swal.fire('로그인 성공',id+"님 반가워요!",'success')
+        
     }else{
         //로그인 실패 시
         Swal.fire('로그인 실패',"로그인 정보를 확인해주세요!",'error')
