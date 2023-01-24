@@ -85,6 +85,7 @@ const signin = () => {
     let email = document.getElementById('email').value;
     let pw1 = document.getElementById('password').value;
     let pw2 = document.getElementById('password_check').value;
+    let form = document.getElementById("form");
 
     //입력값 유효성 검사
 
@@ -118,12 +119,12 @@ const signin = () => {
         document.getElementById("error_pw2").innerText=""
     }
 
-    /*
-        api연동 : 회원가입 정보전달
-    */
-
     if(validation){
         //회원가입 성공 -> 로그인 페이지로 이동
+        form.submit();
+        /*
+            api연동 : 회원가입 정보전달
+        */
         Swal.fire('회원가입 성공',name+"님 환영해요!",'success')
     }else{
         Swal.fire('회원가입 실패',"회원가입 정보를 확인해주세요!",'error')

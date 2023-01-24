@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <form id="form" method="post" action="/members/new" th:object="${memberFormDto}" >
+        <form id="form" method="post" action="/members/new" onsubmit="return false" th:object="${memberFormDto}" >
 
             <div class="signin_box">
                 <div class="profile_logo">
