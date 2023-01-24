@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.validation.BindingResult;
 import javax.validation.Valid;
 
-@RequestMapping(value = "/members")
+@RequestMapping(value = "/auth")
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
