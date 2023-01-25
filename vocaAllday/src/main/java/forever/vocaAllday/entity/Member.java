@@ -1,5 +1,6 @@
 package forever.vocaAllday.entity;
 
+import forever.vocaAllday.Role;
 import forever.vocaAllday.dto.MemberFormDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,9 @@ public class Member {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     public static Member createMember(MemberFormDto memberFormDto,
                                       PasswordEncoder passwordEncoder){
         Member member= new Member();
@@ -34,6 +38,7 @@ public class Member {
         member.setEmail(memberFormDto.getEmail());
         String password=passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
+        member.setRole(Role.USER);
         return member;
 
 

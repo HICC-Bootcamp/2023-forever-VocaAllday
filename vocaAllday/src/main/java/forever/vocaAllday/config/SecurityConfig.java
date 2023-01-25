@@ -34,7 +34,7 @@ public class SecurityConfig {
 
         http.authorizeRequests()
                 .mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                .mvcMatchers("/", "/auth/**", "/item/**", "/images/**").permitAll()
+                .mvcMatchers( "/auth/**").permitAll()
                 .anyRequest().authenticated()
         ;
 
@@ -44,6 +44,8 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -42,7 +42,7 @@ public class MemberController {
             return "signin/signin";
         }
 
-        return "redirect:/login";
+        return "redirect:/auth/login";
     }
 
     @GetMapping(value = "/login")
