@@ -89,6 +89,8 @@ html, body{
 .signin_link{
     color: #0078F0;
     text-decoration: none;
+
+    cursor: pointer;
 }
 .login_but{
     width: 288.09px;
@@ -107,13 +109,12 @@ html, body{
 
     cursor: pointer;
 }
-/*fontawesome 아이콘 스타일*/
+/*fontawesome style*/
 .basicStyle{
     color: rgba(0, 120, 240, 0.44);
     width: 24px;
     height: 24px;
-}
-/*에러메시지*/
+/*error style*/
 .error{
     font-size: 13px;
     color: red;
