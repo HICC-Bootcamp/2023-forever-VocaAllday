@@ -36,11 +36,13 @@
             <i class="fa-solid fa-eye-slash basicStyle" id="icon_pw" onclick="viewPw()"></i>
             <div class="error" id="error_pw"></div>
 
+            <p th:if="${loginErrorMsg}" id="error" class="error" th:text="${loginErrorMsg}"></p>
+
             <div class="signin_box">
                 <span class="signin_text">아직 계정이 없나요?</span>
                 <a th:onClick="|location.href='@{/auth/new}'|" class="signin_link">회원가입</a>
             </div>
-            <p th:if="${loginErrorMsg}" id="error" th:text="${loginErrorMsg}"></p>
+
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <button class="login_but" id="login_but" onclick="login()">로그인</button>
 
