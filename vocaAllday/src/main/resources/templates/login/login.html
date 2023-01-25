@@ -8,8 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
-    <div class="wrapper">
-    <form id="form" method="post" onsubmit="return false" action="/auth/login">
+<div class="wrapper">
+    <form id="form" method="post" action="/auth/login">
 
         <div class="login_box">
             <div class="profile_logo">
@@ -21,18 +21,21 @@
             <i class="fa-solid fa-user basicStyle" id="icon_id"></i>
             <div class="error" id="error_id"></div>
 
-            <input class="input_box" id="password" name="password" type="password" placeholder="비밀번호" onkeypress="enterLogin()">
+            <input class="input_box" id="password" name="password" type="password" placeholder="비밀번호"
+                   onkeypress="enterLogin()">
             <i class="fa-solid fa-eye-slash basicStyle" id="icon_pw" onclick="viewPw()"></i>
             <div class="error" id="error_pw"></div>
-            
+
             <div class="signin_box">
                 <span class="signin_text">아직 계정이 없나요?</span>
-                <a   th:onClick="|location.href='@{/auth/new}'|" class="signin_link">회원가입</a>
+                <a th:onClick="|location.href='@{/auth/new}'|" class="signin_link">회원가입</a>
             </div>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <button class="login_but" id="login_but" onclick="login()">로그인</button>
+
         </div>
-    
+
     </form>
-    </div>
+</div>
 </body>
 </html>

@@ -42,18 +42,21 @@ public class MemberController {
             return "signin/signin";
         }
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping(value = "/login")
     public String loginMember(){
-        return "/login/login";
+        return "login/login";
     }
+
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "/login/login";
+        return "login/login";
     }
+
+
 
 }
