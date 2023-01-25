@@ -59,11 +59,11 @@ const login = () => {
     if(validation){
         //로그인 가능
         form.submit();
-        Swal.fire('로그인 성공',id+"님 반가워요!",'success')
+        Swal.fire('로그인 성공',id+"님 반가워요!",'success').then(function(){})
         
     }else{
         //로그인 실패 시
-        Swal.fire('로그인 실패',"로그인 정보를 확인해주세요!",'error')
+        Swal.fire('로그인 실패',"로그인 정보를 확인해주세요!",'error').then(function(){})
     }
     
 }

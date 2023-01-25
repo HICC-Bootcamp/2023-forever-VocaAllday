@@ -56,26 +56,6 @@ const viewPw2 = () => {
     }
 }
 
-//중복확인 클릭 시
-const ck_overlap = () => {
-    let validation = true //중복조건 통과 여부
-    /*
-        api연동 : 중복 id 확인-> 성공 시 validation=true
-    */
-
-    //버튼 색변환
-    document.getElementById("overlap_but").style="background: rgba(0, 120, 240, 0.3);"
-    if(validation){
-        //중복확인 통과
-        document.getElementById("signin_but").disabled=false;
-        document.getElementById("overlap_but").style="background: rgba(0, 120, 240, 0.2);"
-    }else{
-        //중복확인 실패
-        Swal.fire('아이디 중복',"아이디 정보를 확인해주세요!",'warning')
-        document.getElementById("overlap_but").style="background: red"
-    }
-}
-
 //가입하기 기능
 const signin = () => {
     let validation = true //가입 조건 통과 여부
@@ -120,7 +100,7 @@ const signin = () => {
     }
 
     if(validation){
-        //회원가입 성공 -> 로그인 페이지로 이동
+        //회원가입 성공
         form.submit();
         /*
             api연동 : 회원가입 정보전달

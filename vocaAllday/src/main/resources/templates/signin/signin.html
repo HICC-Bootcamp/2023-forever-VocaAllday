@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <form action="/auth/new" id="form" method="post" th:object="${memberFormDto}">
+    <form action="/auth/new" id="form" method="post" th:object="${memberFormDto}" onsubmit="return false">
 
         <div class="signin_box">
             <div class="profile_logo">
@@ -37,7 +37,7 @@
             <i class="fa-solid fa-eye-slash basicStyle" id="icon_pw2" onclick="viewPw2()"></i>
             <div class="error" id="error_pw2"></div>
 
-            <button type="submit" class="signin_but" id="signin_but">가입하기</button>
+            <button class="signin_but" id="signin_but" onclick="signin()">가입하기</button>
             <input type="hidden" th:name="${_csrf.parameterName}"
                    th:value="${_csrf.token}">
         </div>
