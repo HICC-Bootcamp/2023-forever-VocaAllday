@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymleaf.org">
 <head>
-    <title>Document</title>
-    <link href="../../static/css/makeTest.css" rel="stylesheet">
-    <script src="makeTest.js"></script>
+    <title>makeTest</title>
+    <link href="/css/makeTest.css" th:href="@{/css/makeTest.css}" rel="stylesheet">
+    <script src="/js/makeTest.js" th:src="@{/js/makeTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <html xmlns:th="http://www.thymleaf.org"></html>
 </head>
 <body>
     <div class="wrapper">
