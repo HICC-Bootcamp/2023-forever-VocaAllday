@@ -1,5 +1,6 @@
 package forever.vocaAllday.config;
 
+import forever.vocaAllday.service.MemberDetailServiceImpl;
 import forever.vocaAllday.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +18,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
 
-    private final MemberService memberService;
+    private final MemberDetailServiceImpl memberDetailService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

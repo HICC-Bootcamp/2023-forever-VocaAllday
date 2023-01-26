@@ -22,23 +22,14 @@ import java.util.Collections;
 @RequiredArgsConstructor
 
 
-public class MemberService {
-
+public class MemberDetailServiceImpl implements UserDetailsService {
     private final MemberRepository memberRepository;
 
-    private final PasswordEncoder passwordEncoder;
-
-    public Member saveMember(Member member){
+    public Member saveMember(Member member) {
         validateDuplicateMember(member);
         return memberRepository.save(member);
 
     }
-
-    public Member create(MemberFormDto memberFormDto){
-        Member member = Member.createMember(memberFormDto, passwordEncoder);
-        return member;
-    }
-
 
     private void validateDuplicateMember(Member member){
         Member findMember = memberRepository.findByEmail(member.getEmail());
@@ -46,5 +37,22 @@ public class MemberService {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        Member member = memberRepository.findByEmail(email);
+
+        if(member == null){
+            throw new UsernameNotFoundException(email);
+        }
+
+        return User.builder()
+                .username(member.getEmail())
+                .password(member.getPassword())
+                .roles(member.getRole().toString())
+                .build();
+    }
+
 
 }

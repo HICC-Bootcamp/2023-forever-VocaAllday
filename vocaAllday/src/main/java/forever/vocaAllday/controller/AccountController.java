@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "/auth")
 @Controller
 @RequiredArgsConstructor
-public class MemberController {
+public class AccountController {
 
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
@@ -35,12 +35,13 @@ public class MemberController {
         }
 
         try {
-            Member member = Member.createMember(memberFormDto, passwordEncoder);
+            Member member = memberService.create(memberFormDto);
             memberService.saveMember(member);
         } catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
             return "signin/signin";
         }
+
 
         return "redirect:/auth/login";
     }
