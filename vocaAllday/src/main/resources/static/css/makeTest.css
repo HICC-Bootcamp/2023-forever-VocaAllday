@@ -1,0 +1,260 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 50px 50px 20px 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 단어 입력 창 */
+.wrapper_left{
+    width: 65%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.left_header{
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+}
+.input_title{
+    width: 336px;
+    height: 24px;
+    background: #E8ECEB;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.left_body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+}
+.input_word{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 20px ;
+}
+.text_box{
+    width: 336px;
+    height: 56px;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+}
+.left_footer{
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+
+
+/* 시험지 유형 선택 창 */
+.wrapper_right{
+    width: 400px;
+    height:400px;
+    background-color: #EBECEB;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: sticky;
+    top: 50px;
+
+    border-radius: 10px;
+}
+.right_header{
+    width: 80%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header_logo{
+    width: 40px;
+    height: 40px;
+    background: rgba(197, 220, 250, 0.5);
+    border-radius: 999px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0F56B3;
+}
+.header_text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1px 0px;
+    gap: 2px;
+
+    width: 182px;
+    height: 48px;
+    padding-left: 10px;
+}
+.title{
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #414141;
+    
+}
+.subtitle{
+    width: 150%;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #818181;
+}
+.dividedLine{
+    width: 100%;
+    border: 1px solid #8CBDB9;
+}
+.right_body{
+    width: 100%;
+    height: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    padding-left: 40px;
+    padding-top: 20px;
+}
+.test_num{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.test_type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.select_title{
+    width: 145px;
+    height: 48px;
+
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+
+    display: flex;
+    align-items: center;
+
+    color: #414141;
+}
+.select_box{
+    width: 60px;
+    height: 45px;
+
+    border: 2px solid #8CBDB9;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.right_footer{
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+
+/*버튼*/
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 129px;   
+    height: 48px;
+    border-radius: 8px;
+
+    background-color: #FFFFFF;
+    border: 2px solid #C0C0C0;
+    border-radius: 8px;
+
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+
+    cursor: pointer;
+}
+#add_but{
+    color:  #1672EC;
+}
+#add_but_text{
+    color: #0F56B3;
+}
+#submit_but{
+    color: #2AB930;
+}
+.submit_but_text{
+    color: #1F8B24;
+}
+#next_but{
+    color: #1672EC;
+}
+#next_but_text{
+    color: #0F56B3;
+}

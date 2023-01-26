@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>login</title>
+    <link href="/css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
+    <script src="/js/login.js" th:src="@{/js/login.js}"></script>
+    <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+
+<style>
+    #error {
+        font-size: 13px;
+        color: red;
+    }
+
+</style>
+
+<body>
+<div class="wrapper" >
+
+    <form id="form" method="post" action="/auth/login" onsubmit="false">
+
+        <div class="login_box">
+            <div class="profile_logo">
+                <i class="fa-solid fa-user fa-2x"></i>
+            </div>
+            <div class="login_title">Login</div>
+            <p th:if="${loginErrorMsg}" id="error" class="error" th:text="${loginErrorMsg}"></p>
+
+            <input class="input_box" id="email" name="email" type="email" placeholder="이메일" onkeypress="changeFocus()">
+            <i class="fa-solid fa-user basicStyle" id="icon_id"></i>
+
+            <input class="input_box" id="password" name="password" type="password" placeholder="비밀번호"
+                   onkeypress="enterLogin()">
+            <i class="fa-solid fa-eye-slash basicStyle" id="icon_pw" onclick="viewPw()"></i>
+
+            <div class="signin_box">
+                <span class="signin_text">아직 계정이 없나요?</span>
+                <a th:onClick="|location.href='@{/auth/new}'|" class="signin_link">회원가입</a>
+            </div>
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <button class="login_but" id="login_but" onclick="login()">로그인</button>
+
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

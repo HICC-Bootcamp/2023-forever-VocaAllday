@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>VocaAllday</title>
+    <link href="/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+    <script src="/js/index.js" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper_header">
+            <img class="logo" src="/img/logo1.png" th:src="@{/img/logo1.png}">
+            <div class="navigation">
+                <div class="navigation_item" id="menuMaketest" onclick="menuMaketest()">Make Test</div>
+                <div class="dividedDot">.</div>
+                <div class="navigation_item" id="menuMyScore" onclick="menuMyScore()">My Score</div>
+                <div class="dividedDot">.</div>
+                <div class="navigation_item" id="menuMyTest" onclick="menuMyTest()">My Test</div>
+            </div>
+            <button class="login" id="menuLogin" onclick="menuLogin()">login</button>
+            <div class="dividedLine"></div>
+        </div>
+
+        <div class="wrapper_body" id="wrapper_body">
+            <iframe id="contentFrame" src="/makeTest/makeTest.html"></iframe>
+        </div>
+    </div>
+    
+</body>
+</html>
