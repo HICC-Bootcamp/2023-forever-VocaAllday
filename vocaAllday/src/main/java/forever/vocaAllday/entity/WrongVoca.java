@@ -1,7 +1,6 @@
 package forever.vocaAllday.entity;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -9,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "wrong_voca")
 @Getter
-@Setter
 @ToString
 public class WrongVoca {
 
@@ -25,5 +23,6 @@ public class WrongVoca {
     @Lob
     @Column(nullable = false)
     private String meaning; // 틀린 영어 단어 뜻
+
 
 }

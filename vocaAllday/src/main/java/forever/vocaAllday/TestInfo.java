@@ -1,12 +1,15 @@
 package forever.vocaAllday;
 
+import forever.vocaAllday.enums.TestType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@AllArgsConstructor
 public class TestInfo {
-
-    private String testType; // 시험 유형
+    private TestType testType; // 시험 유형
     private String numOfQuestions;// 단어 당 문제개수
+    private String vocaTitle; // 시험지를 만들 단어장 이름
+
+
 }

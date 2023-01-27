@@ -1,7 +1,6 @@
 package forever.vocaAllday.entity;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -9,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "input_voca")
 @Getter
-@Setter
 @ToString
 public class InputVoca {
 
@@ -25,7 +23,5 @@ public class InputVoca {
     @Lob
     @Column(nullable = false)
     private String meaning; // 입력한 한글 뜻
-
-
 
 }

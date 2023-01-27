@@ -1,8 +1,7 @@
 package forever.vocaAllday.entity;
 
-import forever.vocaAllday.dto.InputVocaDto;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -10,8 +9,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "report")
 @Getter
-@Setter
 @ToString
+@NoArgsConstructor
 public class Report {
 
     @Id
@@ -34,12 +33,12 @@ public class Report {
     @JoinColumn(name = "wrong_id")
     private WrongVoca wrongVoca;
 
-    public static Report createReport(Member member, String vocaTitle, InputVocaDto inputVocaDto){
-        Report report = new Report();
-        report.setMember(member);
-        report.setVocaTitle(vocaTitle);
-        report.setInputVoca(inputVocaDto.createInputVoca());
-        return report;
+    public Report(Member member, String vocaTitle, InputVoca inputVoca){
+        this.member=member;
+        this.vocaTitle=vocaTitle;
+        this.inputVoca=inputVoca;
+        this.wrongVoca=null;
+
     }
 
 }
