@@ -24,4 +24,9 @@ public class InputVoca {
     @Column(nullable = false)
     private String meaning; // 입력한 한글 뜻
 
+    public InputVoca(String word,String meaning){
+        this.word=word;
+        this.meaning=meaning;
+    }
+
 }
