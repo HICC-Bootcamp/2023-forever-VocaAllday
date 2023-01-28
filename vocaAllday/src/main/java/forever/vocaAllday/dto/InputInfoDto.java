@@ -2,9 +2,11 @@ package forever.vocaAllday.dto;
 
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.enums.TestType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class InputInfoDto {
     private String[] word;
     private String[] meaning;
@@ -16,5 +18,6 @@ public class InputInfoDto {
         InputVoca inputVoca = new InputVoca(word, meaning);
         return inputVoca;
     }
+
 
 }
