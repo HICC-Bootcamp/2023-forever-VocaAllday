@@ -17,7 +17,7 @@ html, body{
     align-items: flex-start;
 }
 
-/* ´Ü¾î ÀÔ·Â Ã¢ */
+/* ë‹¨ì–´ ì…ë ¥ ì°½ */
 .wrapper_left{
     width: 65%;
     height: 100%;
@@ -89,7 +89,7 @@ html, body{
 }
 
 
-/* ½ÃÇèÁö À¯Çü ¼±ÅÃ Ã¢ */
+/* ì‹œí—˜ì§€ ìœ í˜• ì„ íƒ ì°½ */
 .wrapper_right{
     width: 400px;
     height:400px;
@@ -100,8 +100,9 @@ html, body{
     justify-content: flex-start;
     align-items: center;
 
-    position: sticky;
+    position: fixed;
     top: 50px;
+    right: 50px;
 
     border-radius: 10px;
 }
@@ -143,7 +144,7 @@ html, body{
     line-height: 150%;
 
     color: #414141;
-    
+
 }
 .subtitle{
     width: 150%;
@@ -169,6 +170,11 @@ html, body{
 
     padding-left: 40px;
     padding-top: 20px;
+}
+.test_name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .test_num{
     display: flex;
@@ -196,12 +202,19 @@ html, body{
     color: #414141;
 }
 .select_box{
-    width: 60px;
+    width: 120px;
     height: 45px;
 
     border: 2px solid #8CBDB9;
     border-radius: 12px;
     cursor: pointer;
+}
+.vocaTitle{
+    width: 120px;
+    height: 45px;
+
+    border: 2px solid #8CBDB9;
+    border-radius: 12px;
 }
 
 .right_footer{
@@ -215,14 +228,14 @@ html, body{
 }
 
 
-/*¹öÆ°*/
+/*ë²„íŠ¼*/
 .button{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
-    width: 129px;   
+    width: 129px;
     height: 48px;
     border-radius: 8px;
 
