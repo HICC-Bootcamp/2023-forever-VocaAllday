@@ -1,6 +1,6 @@
 package forever.vocaAllday.service;
 
-import forever.vocaAllday.dto.InputVocaDto;
+import forever.vocaAllday.dto.InputInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -20,16 +20,24 @@ public class ReportService {
     private final ReportRepository reportRepository;
     private final InputVocaRepository inputVocaRepository;
 
-    public Long saveReport(InputVocaDto inputVocaDto,String vocaTitle, String email) {
+    public Long saveReport(InputInfoDto inputInfoDto, String email) {
 
         Member member = memberRepository.findByEmail(email);
-        Report report = new Report(member,vocaTitle, inputVocaDto.createInputVoca());
-        reportRepository.save(report);
-        InputVoca inputVoca = report.getInputVoca();
+
+        String word = String.join(",", inputInfoDto.getWord());
+        String meaning = String.join(",", inputInfoDto.getMeaning());
+
+        String vocaTitle = inputInfoDto.getVocaTitle();
+
+        InputVoca inputVoca = inputInfoDto.createInputVoca(word, meaning);
+        Report report = new Report(member, vocaTitle, inputVoca);
+
         inputVocaRepository.save(inputVoca);
+        reportRepository.save(report);
 
         return report.getReportId();
 
     }
 }
+
 

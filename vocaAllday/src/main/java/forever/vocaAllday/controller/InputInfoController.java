@@ -1,7 +1,6 @@
 package forever.vocaAllday.controller;
 
-import forever.vocaAllday.TestInfo;
-import forever.vocaAllday.dto.InputVocaDto;
+import forever.vocaAllday.dto.InputInfoDto;
 import forever.vocaAllday.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,14 +22,12 @@ public class InputInfoController {
     }
 
     @PostMapping(value = "/")
-    public String createReport(@ModelAttribute InputVocaDto inputVocaDto,
-                               @ModelAttribute TestInfo testInfo, Principal principal) {
+    public String createReport(@ModelAttribute InputInfoDto inputInfoDto, Principal principal) {
         String email = principal.getName();
-        String vocaTitle = testInfo.getVocaTitle();
-        String testType = testInfo.getTestType().toString();
+        String testType = inputInfoDto.getTestType().toString();
 
         try {
-            reportService.saveReport(inputVocaDto, vocaTitle, email);
+            reportService.saveReport(inputInfoDto, email);
         } catch (Exception e) {
             e.getMessage();
         }
