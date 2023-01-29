@@ -1,6 +1,7 @@
 package forever.vocaAllday.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "input_voca")
 @Getter
 @ToString
+@NoArgsConstructor
 public class InputVoca {
 
     @Id
