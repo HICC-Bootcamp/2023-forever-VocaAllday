@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -24,10 +25,11 @@ public class ReportService {
 
         Member member = memberRepository.findByEmail(email);
 
+        String vocaTitle = inputInfoDto.getVocaTitle();
+        validateDuplicateTitle(member.getId(), vocaTitle);
+
         String word = String.join(",", inputInfoDto.getWord());
         String meaning = String.join(",", inputInfoDto.getMeaning());
-
-        String vocaTitle = inputInfoDto.getVocaTitle();
 
         InputVoca inputVoca = inputInfoDto.createInputVoca(word, meaning);
         Report report = new Report(member, vocaTitle, inputVoca);
@@ -38,6 +40,15 @@ public class ReportService {
         return report.getReportId();
 
     }
+
+    private void validateDuplicateTitle(Long id, String title){
+        Report report = reportRepository.findByReport(id,title);
+        if(report != null){
+            throw new IllegalStateException("단어장 이름이 중복되었습니다.");
+        }
+    }
+
 }
+
 
 
