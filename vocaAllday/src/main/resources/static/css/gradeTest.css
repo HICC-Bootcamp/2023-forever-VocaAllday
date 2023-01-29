@@ -1,0 +1,200 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 50px 50px 20px 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 문제지 */
+.wrapper_left{
+    width: 65%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.left_header{
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+}
+.input_title{
+    width: 336px;
+    height: 24px;
+    background: #E8ECEB;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.left_body{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    gap: 20px;
+}
+.sentence_text_box{
+    width: 100%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+}
+.word_text_box{
+    width: 40%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+}
+.input_answer{
+    width: 120px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom:1px solid rgba(0, 0, 0, 0.44);
+}
+
+
+/* 채점결과 */
+.wrapper_right{
+    width: 400px;
+    height:400px;
+    background-color: #EBECEB;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: sticky;
+    top: 50px;
+
+    border-radius: 10px;
+}
+.right_header{
+    width: 80%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header_logo{
+    width: 40px;
+    height: 40px;
+    background: #C5F2C7;
+    border-radius: 999px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#2AB930;
+}
+.header_text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1px 0px;
+    gap: 2px;
+
+    width: 182px;
+    height: 48px;
+    padding-left: 10px;
+}
+.title{
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #414141;
+
+}
+.subtitle{
+    width: 150%;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #818181;
+}
+.dividedLine{
+    width: 100%;
+    border: 1px solid #8CBDB9;
+}
+.right_body{
+    width: 100%;
+    height: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+.info_title{
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+
+    display: flex;
+    align-items: center;
+
+    color: #414141;
+}
+
+#correct_num{
+    color: #2AB930;
+}
+#wrong_word{
+    color: #DA100B;
+}

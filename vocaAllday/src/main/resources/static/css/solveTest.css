@@ -1,0 +1,241 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 50px 50px 20px 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 문제지 */
+.wrapper_left{
+    width: 65%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.left_header{
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+}
+.input_title{
+    width: 336px;
+    height: 24px;
+    background: #E8ECEB;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.left_body{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    gap: 20px;
+}
+.sentence_text_box{
+    width: 100%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+}
+.word_text_box{
+    width: 40%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+}
+.input_answer{
+    width: 120px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom:1px solid rgba(0, 0, 0, 0.44);
+}
+
+
+/* 보기 */
+.wrapper_right{
+    width: 400px;
+    height:400px;
+    background-color: #EBECEB;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: sticky;
+    top: 50px;
+
+    border-radius: 10px;
+}
+.right_header{
+    width: 80%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header_logo{
+    width: 40px;
+    height: 40px;
+    background: rgba(197, 220, 250, 0.5);
+    border-radius: 999px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0F56B3;
+}
+.header_text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1px 0px;
+    gap: 2px;
+
+    width: 182px;
+    height: 48px;
+    padding-left: 10px;
+}
+.title{
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #414141;
+
+}
+.subtitle{
+    width: 150%;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #818181;
+}
+.dividedLine{
+    width: 100%;
+    border: 1px solid #8CBDB9;
+}
+.right_body{
+    width: 100%;
+    height: 60%;
+
+    display: inline-block;
+
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-right: 40px;
+}
+.hint{
+    padding-right: 30px;
+}
+.checked{
+    color: grey;
+    text-decoration-line: line-through;
+    padding-right: 30px;
+}
+.right_footer{
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+
+/*버튼*/
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 129px;
+    height: 48px;
+    border-radius: 8px;
+
+    background-color: #FFFFFF;
+    border: 2px solid #C0C0C0;
+    border-radius: 8px;
+
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+
+    cursor: pointer;
+}
+#add_but{
+    color:  #1672EC;
+}
+#add_but_text{
+    color: #0F56B3;
+}
+#submit_but{
+    color: #2AB930;
+}
+.submit_but_text{
+    color: #1F8B24;
+}
+#next_but{
+    color: #1672EC;
+}
+#next_but_text{
+    color: #0F56B3;
+}

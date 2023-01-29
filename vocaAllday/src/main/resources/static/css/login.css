@@ -114,6 +114,7 @@ html, body{
     color: rgba(0, 120, 240, 0.44);
     width: 24px;
     height: 24px;
+}
 /*error style*/
 .error{
     font-size: 13px;
