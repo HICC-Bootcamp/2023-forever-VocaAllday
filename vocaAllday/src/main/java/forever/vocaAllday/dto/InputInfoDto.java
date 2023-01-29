@@ -12,7 +12,7 @@ public class InputInfoDto {
     private String[] meaning;
     private String vocaTitle;
     private TestType testType; // 시험 유형
-    private String numOfQuestions;// 단어 당 문제개수
+    private int numOfQuestions;// 단어 당 문제개수
 
     public InputVoca createInputVoca(String word, String meaning) {
         InputVoca inputVoca = new InputVoca(word, meaning);
