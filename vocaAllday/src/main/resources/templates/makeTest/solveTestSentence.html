@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko"xmlns:th="http://www.thymleaf.org">
+<head>
+    <title>solveTestSentence</title>
+    <link href="/css/solveTest.css" th:href="@{/css/solveTest.css}" rel="stylesheet">
+    <script src="/js/solveTest.js" th:src="@{/js/solveTest.js}"></script>
+    <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+
+<body>
+<form action="/test/example-sentence" id="" method="post" onsubmit="return false">
+    <div class="wrapper">
+
+        <!-- 문제지 -->
+        <div class="wrapper_left">
+
+            <div class="left_header">
+                <div class="input_title" th:text=""> vocaTitle 문제지</div>
+            </div>
+
+            <div class="left_body" id="left_body">
+                <div class="sentence_text_box">
+                    <span>______ word is not good&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                    <input class="input_answer" placeholder="1번 답">
+                </div>
+            </div>
+        </div>
+        <!-- 보기 -->
+        <div class="wrapper_right" id="wrapper_right" >
+            <div class="right_header">
+                <div class="header_logo">
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                </div>
+                <div class="header_text">
+                    <div class="title">문제지 풀기</div>
+                    <div class="subtitle">보기를 참고해 답을 입력하세요!</div>
+                </div>
+            </div>
+            <div class="dividedLine"></div>
+
+            <div class="right_body">
+                <span class=hint id="hint1">
+                    <input type="checkbox" id="hint_ck1" onclick="delete_hint(1)">보기1
+                </span>
+                <span class=hint id="hint2">
+                <input type="checkbox" id="hint_ck2" onclick="delete_hint(2)">보기2
+                </span>
+            </div>
+
+            <div class="right_footer">
+                <button class="button" id="submit_but" type="submit" >
+                    <i class="fa-sharp fa-solid fa-check"></i>
+                    <span class="submit_but_text">Submit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
