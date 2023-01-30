@@ -29,7 +29,6 @@ public class InputInfoController {
         String email = principal.getName();
         String testType = inputInfoDto.getTestType().toString();
         String title = inputInfoDto.getVocaTitle();
-        int n = inputInfoDto.getNumOfQuestions();
 
         try {
             reportService.saveReport(inputInfoDto, email);

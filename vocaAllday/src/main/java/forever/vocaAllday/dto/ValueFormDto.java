@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class ValueFormDto {
     private String[] userValues;
+    private String[] wordList;
+    private String[] meaningList;
+    private String testType;
 }
