@@ -1,7 +1,7 @@
 package forever.vocaAllday.service;
 
 
-import forever.vocaAllday.dto.TestInfoDto;
+import forever.vocaAllday.dto.ExamInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -16,7 +16,7 @@ import java.util.*;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class TestService {
+public class ExamService {
 
     private final ReportRepository reportRepository;
     private final MemberRepository memberRepository;
@@ -29,11 +29,11 @@ public class TestService {
         return inputVoca;
     }
 
-    public TestInfoDto makeTest(String email, String vocaTitle, String type) {
+    public ExamInfoDto makeExam(String email, String vocaTitle, String type) {
 
-        InputVoca i = getInputVoca(email, vocaTitle);
-        List<String> tempWord = Arrays.asList(i.getWord().split(","));
-        List<String> tempMeaning = Arrays.asList(i.getMeaning().split(","));
+        InputVoca inputVoca = getInputVoca(email, vocaTitle);
+        List<String> tempWord = Arrays.asList(inputVoca.getWord().split(","));
+        List<String> tempMeaning = Arrays.asList(inputVoca.getMeaning().split(","));
 
         HashMap<String, String> map = new HashMap<String, String>();
 
@@ -52,10 +52,7 @@ public class TestService {
             meaning.add(map.get(s));
         }
 
-        String[] m = meaning.stream().toArray(String[]::new);
-        String[] w= word.toArray(new String[0]);
-
-        TestInfoDto t = new TestInfoDto(m,w,type);
+        ExamInfoDto t = new ExamInfoDto(word,meaning,type);
 
         return t;
 

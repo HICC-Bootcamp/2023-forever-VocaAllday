@@ -1,8 +1,8 @@
 package forever.vocaAllday.controller;
 
-import forever.vocaAllday.dto.TestInfoDto;
+import forever.vocaAllday.dto.ExamInfoDto;
 import forever.vocaAllday.dto.ValueFormDto;
-import forever.vocaAllday.service.TestService;
+import forever.vocaAllday.service.ExamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
-@RequestMapping(value = "/test")
+@RequestMapping(value = "/exam")
 @Controller
 @RequiredArgsConstructor
-public class TestController {
+public class ExamController {
 
-    private final TestService testService;
+    private final ExamService examService;
 
     @GetMapping(value = "/word")
-    public String showWordTest(Principal principal, @RequestParam("title") String title,
+    public String showWordExam(Principal principal, @RequestParam("title") String title,
                                @RequestParam("type") String type, Model model) {
 
         String email = principal.getName();
-        TestInfoDto t = testService.makeTest(email, title, type);
+        ExamInfoDto exam = examService.makeExam(email, title, type);
 
-        model.addAttribute("testInfo",t);
+        model.addAttribute("examInfoDto",exam);
         model.addAttribute("valueFormDto",new ValueFormDto());
 
         return "makeTest/makeTest";

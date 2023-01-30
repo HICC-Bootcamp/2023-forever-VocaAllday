@@ -1,6 +1,7 @@
 package forever.vocaAllday.controller;
 
 import forever.vocaAllday.dto.InputInfoDto;
+import forever.vocaAllday.enums.ExamType;
 import forever.vocaAllday.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,8 @@ public class InputInfoController {
     public String createReport(@ModelAttribute InputInfoDto inputInfoDto, Principal principal,
                                RedirectAttributes redirectAttr, Model model) {
         String email = principal.getName();
-        String testType = inputInfoDto.getTestType().toString();
+        ExamType examType = inputInfoDto.getExamType();
+
         String title = inputInfoDto.getVocaTitle();
 
         try {
@@ -37,16 +39,16 @@ public class InputInfoController {
             return "makeTest/makeTest";
         }
 
-        if (testType == "EXAMPLE_SENTENCE") {
+        if(ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             return "redirect:/test/example-sentence";
-        } else if (testType == "MEANING") {
+        } else if(ExamType.MEANING.equals(examType)) {
             redirectAttr.addAttribute("title", title);
-            redirectAttr.addAttribute("type", testType);
+            redirectAttr.addAttribute("type", examType);
             return "redirect:/test/word";
-        } else if (testType == "WORD") {
+        } else if(ExamType.WORD.equals(examType)) {
             redirectAttr.addAttribute("title", title);
-            redirectAttr.addAttribute("type", testType);
+            redirectAttr.addAttribute("type", examType);
             return "redirect:/test/word";
         }
 
