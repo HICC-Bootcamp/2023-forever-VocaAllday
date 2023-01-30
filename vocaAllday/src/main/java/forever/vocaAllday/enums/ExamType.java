@@ -1,6 +1,6 @@
 package forever.vocaAllday.enums;
 
 
-public enum TestType{
+public enum ExamType{
     MEANING,WORD,EXAMPLE_SENTENCE;
 }
