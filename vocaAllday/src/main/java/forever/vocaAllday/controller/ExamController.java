@@ -52,8 +52,9 @@ public class ExamController {
         SentenceInfoDto S = crawlingService.makeTest(email,title);
 
         model.addAttribute("sentenceInfo",S);
+        model.addAttribute("valueFormDto",new ValueFormDto());
 
-        return "solveTest/solveTest";
+        return "makeTest/makeTest";
     }
 
     @PostMapping(value = "/sentence")
