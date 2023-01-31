@@ -7,6 +7,7 @@ import forever.vocaAllday.service.CrawlingService;
 import forever.vocaAllday.service.ExamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,6 @@ import java.security.Principal;
 public class ExamController {
 
     private final ExamService examService;
-
     private final CrawlingService crawlingService;
 
 
@@ -33,7 +33,7 @@ public class ExamController {
         model.addAttribute("examInfoDto",exam);
         model.addAttribute("valueFormDto",new ValueFormDto());
 
-        return "makeTest/makeTest";
+        return "makeTest/solveTestWord";
     }
 
     @PostMapping(value = "/word")
@@ -44,7 +44,7 @@ public class ExamController {
 
     }
 
-    @GetMapping(value = "/sentence")
+    @GetMapping(value = "/example-sentence")
     public String showEXSentence(Principal principal, @RequestParam("title") String title,
                                  @RequestParam("type") String type, Model model) throws IOException {
 
@@ -54,10 +54,10 @@ public class ExamController {
         model.addAttribute("sentenceInfo",examInfo);
         model.addAttribute("valueFormDto",new ValueFormDto());
 
-        return "makeTest/makeTest";
+        return "makeTest/solveTestSentence";
     }
 
-    @PostMapping(value = "/sentence")
+    @PostMapping(value = "/example-sentence")
     public String GetUservalue(@ModelAttribute("userValue") ValueFormDto valueFormDto,
                                Principal principal) {
 

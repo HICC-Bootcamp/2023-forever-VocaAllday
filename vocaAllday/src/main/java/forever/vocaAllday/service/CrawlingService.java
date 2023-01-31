@@ -12,7 +12,9 @@ import forever.vocaAllday.entity.InputVoca;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CrawlingService {
     private final ReportRepository reportRepository;
 

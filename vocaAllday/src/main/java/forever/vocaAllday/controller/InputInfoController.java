@@ -41,6 +41,7 @@ public class InputInfoController {
 
         if(ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);
+            redirectAttr.addAttribute("type", examType);
             return "redirect:/exam/example-sentence";
         } else if(ExamType.MEANING.equals(examType)) {
             redirectAttr.addAttribute("title", title);
