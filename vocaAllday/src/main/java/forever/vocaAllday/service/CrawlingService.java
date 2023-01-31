@@ -25,10 +25,6 @@ public class CrawlingService {
         this.memberRepository = memberRepository;
     }
 
-
-    //매개변수: 문자열(사용자가 입력한 영단어)
-    //반환값: <빈칸뚫린문장, 답>
-    //기능: 영단어로 크롤링해서 <빈칸뚫린문장, 답>을 전달
     public Map<String, String> crawling (String ARR ) throws IOException{
 
         String KEY_WORD = ARR;
@@ -61,27 +57,27 @@ public class CrawlingService {
     }
 
 
-    public static String makeBlank(String sentence, String word){//예문에 빈칸을 뚫어 반환
+    public static String makeBlank(String sentence, String word){
         String sent = sentence.replace(word, "_______");
         return sent;
     }
 
     public SentenceInfoDto makeTest (String email, String vocaTitle) throws IOException {
-        InputVoca i = getInputVoca(email,vocaTitle);//inputvoca 가져옴
-        List<String> tempWord = Arrays.asList(i.getWord().split(","));//inputvoca에서 가져온 영단어를 ,기준으로 분리->리스트 저장
+        InputVoca i = getInputVoca(email,vocaTitle);
+        List<String> tempWord = Arrays.asList(i.getWord().split(","));
 
-        Collections.shuffle(tempWord);//영단어의 순서를 셔플
+        Collections.shuffle(tempWord);
 
-        HashMap<String, String> map = new HashMap<String, String>();//<문장,답> 저장할 맵 생성
+        HashMap<String, String> map = new HashMap<String, String>();
 
-        int len = tempWord.size();//사용자가 입력한 단어의 개수 세기
+        int len = tempWord.size();
 
         for(int j=0;j<len;j++){
-            map = (HashMap<String, String>) crawling(tempWord.get(j));//리스트에 저장된 순서가 랜덤이 영단어를 하나씩 크롤링해 문장과 답 가져옴
+            map = (HashMap<String, String>) crawling(tempWord.get(j));
         }
 
-        List<String> tempsentence = new ArrayList(map.keySet());//문장을 저장할 리스트 생성
-        List<String> tempanswer= new ArrayList<String>();//답을 저장할 리스트 생성
+        List<String> tempsentence = new ArrayList(map.keySet());
+        List<String> tempanswer= new ArrayList<String>();
 
         Iterator<String> it = tempsentence.iterator();
 
