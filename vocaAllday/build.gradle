@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation'org.springframework.boot:spring-boot-starter-validation'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.2'
+	implementation 'org.jsoup:jsoup:1.15.3'
 	compileOnly 'org.projectlombok:lombok'
 	compileOnly("org.springframework.boot:spring-boot-devtools")
 	implementation 'com.mysql:mysql-connector-j'
