@@ -5,8 +5,6 @@ var cnt_add = 9; //입력창개수(임시 8개 고정)
 */
 const regex_en = /^[a-z|A-Z]+$/;            //영어
 const regex_ko = /^[ㄱ-ㅎ|가-힣]+$/;        //한글
-const regex_num = /^[0-9]+$/;               //숫자
-const regex_spc = /[~!@#$%^&*()_+|<>?:{}]/; //특수문자
 
 //add버튼 클릭 시 단어입력창 추가
 /*
