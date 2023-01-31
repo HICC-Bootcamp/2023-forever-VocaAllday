@@ -28,13 +28,15 @@ public class CrawlingService {
     public Map<String, String> crawling (String ARR ) throws IOException{
 
         String KEY_WORD = ARR;
+        String params = KEY_WORD + ".html";
 
-        Document doc = Jsoup.connect(URL + getParameter(KEY_WORD)).get();
+        Document doc = Jsoup.connect(URL + params).get();
         Elements el = doc.getElementsByAttributeValue("class","sent_list");
 
         String sent = el.select("li").get(0).text();
         String word = el.select("li").get(0).select("font").text();
-        String sentence = makeBlank(sent,word);
+
+        String sentence = sent.replace(word,"_______");
 
         HashMap<String,String> map = new HashMap<String,String>();
 
@@ -43,23 +45,12 @@ public class CrawlingService {
         return map;
     }
 
-    public static String getParameter(String KEY_WORD){
-        String params = KEY_WORD + ".html";
-        return params;
-    }
-
     public  InputVoca  getInputVoca(String email, String vocaTitle){
         Member member = memberRepository.findByEmail(email);
         Long id = member.getId();
         Report report = reportRepository.findByReport(id,vocaTitle);
         InputVoca inputVoca = report.getInputVoca();
         return inputVoca;
-    }
-
-
-    public static String makeBlank(String sentence, String word){
-        String sent = sentence.replace(word, "_______");
-        return sent;
     }
 
     public SentenceInfoDto makeTest (String email, String vocaTitle) throws IOException {
@@ -82,8 +73,8 @@ public class CrawlingService {
         Iterator<String> it = tempsentence.iterator();
 
         while (it.hasNext()) {
-            String s = it.next();
-            tempanswer.add(map.get(s));
+            String key = it.next();
+            tempanswer.add(map.get(key));
         }
 
         SentenceInfoDto sentinfo = new SentenceInfoDto(tempsentence,tempanswer , tempWord);
