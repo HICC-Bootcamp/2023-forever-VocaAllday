@@ -27,7 +27,7 @@ public class CrawlingService {
         this.memberRepository = memberRepository;
     }
 
-    public Map<String, String> crawling (String ARR ) throws IOException{
+    public List<String > crawling (String ARR ) throws IOException{
 
         String KEY_WORD = ARR;
         String params = KEY_WORD + ".html";
@@ -40,11 +40,11 @@ public class CrawlingService {
 
         String sentence = sent.replace(word,"_______");
 
-        HashMap<String,String> map = new HashMap<String,String>();
+        List<String > sent_word =  new ArrayList<String>();
+        sent_word.add(sentence);
+        sent_word.add(word);
 
-        map.put(sentence,word);
-
-        return map;
+        return sent_word;
     }
 
     public  InputVoca  getInputVoca(String email, String vocaTitle){
@@ -66,7 +66,8 @@ public class CrawlingService {
         int len = tempWord.size();
 
         for(int j=0;j<len;j++){
-            map = (HashMap<String, String>) crawling(tempWord.get(j));
+            List<String> templist = crawling(tempWord.get(j));
+            map.put(templist.get(0),templist.get(1));
         }
 
         List<String> tempsentence = new ArrayList(map.keySet());
