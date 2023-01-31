@@ -4,6 +4,7 @@ import forever.vocaAllday.dto.InputInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
+import forever.vocaAllday.entity.WrongVoca;
 import forever.vocaAllday.repository.InputVocaRepository;
 import forever.vocaAllday.repository.MemberRepository;
 import forever.vocaAllday.repository.ReportRepository;
@@ -32,7 +33,8 @@ public class ReportService {
         String meaning = String.join(",", inputInfoDto.getMeaning());
 
         InputVoca inputVoca = inputInfoDto.createInputVoca(word, meaning);
-        Report report = new Report(member, vocaTitle, inputVoca);
+        WrongVoca wrongVoca = new WrongVoca(null,null);
+        Report report = new Report(member, vocaTitle, inputVoca, wrongVoca);
 
         inputVocaRepository.save(inputVoca);
         reportRepository.save(report);

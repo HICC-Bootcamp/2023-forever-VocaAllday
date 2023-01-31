@@ -3,6 +3,7 @@ package forever.vocaAllday.controller;
 import forever.vocaAllday.dto.ExamInfoDto;
 import forever.vocaAllday.dto.ValueFormDto;
 import forever.vocaAllday.service.ExamService;
+import forever.vocaAllday.service.GradeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import java.security.Principal;
 public class ExamController {
 
     private final ExamService examService;
+    private final GradeService gradeService;
 
     @GetMapping(value = "/word")
     public String showWordExam(Principal principal, @RequestParam("title") String title,
@@ -23,16 +25,16 @@ public class ExamController {
 
         String email = principal.getName();
         ExamInfoDto exam = examService.makeExam(email, title, type);
-
         model.addAttribute("examInfoDto",exam);
-        model.addAttribute("valueFormDto",new ValueFormDto());
 
-        return "makeTest/makeTest";
+        return "makeTest/solveTestWord";
     }
 
     @PostMapping(value = "/word")
-    public String GetUserValue(@ModelAttribute("userValue") ValueFormDto valueFormDto,
+    public String GetUserValue(@ModelAttribute ValueFormDto valueFormDto,
                                Principal principal) {
+        String email = principal.getName();
+        gradeService.grade(email,valueFormDto);
 
         return "redirect:/"; //forward
 

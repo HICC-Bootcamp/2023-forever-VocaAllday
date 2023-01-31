@@ -52,7 +52,7 @@ public class ExamService {
             meaning.add(map.get(s));
         }
 
-        ExamInfoDto examInfoDto = new ExamInfoDto(word,meaning,type);
+        ExamInfoDto examInfoDto = new ExamInfoDto(word,meaning,type,vocaTitle);
 
         return examInfoDto;
 
