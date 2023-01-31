@@ -49,9 +49,9 @@ public class ExamController {
                                  @RequestParam("type") String type, Model model) throws IOException {
 
         String email = principal.getName();
-        SentenceInfoDto S = crawlingService.makeTest(email,title);
+        SentenceInfoDto examInfo = crawlingService.makeTest(email,title);
 
-        model.addAttribute("sentenceInfo",S);
+        model.addAttribute("sentenceInfo",examInfo);
         model.addAttribute("valueFormDto",new ValueFormDto());
 
         return "makeTest/makeTest";

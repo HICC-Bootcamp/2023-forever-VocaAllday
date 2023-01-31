@@ -63,8 +63,8 @@ public class CrawlingService {
     }
 
     public SentenceInfoDto makeTest (String email, String vocaTitle) throws IOException {
-        InputVoca i = getInputVoca(email,vocaTitle);
-        List<String> tempWord = Arrays.asList(i.getWord().split(","));
+        InputVoca inputvoca = getInputVoca(email,vocaTitle);
+        List<String> tempWord = Arrays.asList(inputvoca.getWord().split(","));
 
         Collections.shuffle(tempWord);
 
