@@ -41,15 +41,15 @@ public class InputInfoController {
 
         if(ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);
-            return "redirect:/test/example-sentence";
+            return "redirect:/exam/example-sentence";
         } else if(ExamType.MEANING.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
-            return "redirect:/test/word";
+            return "redirect:/exam/word";
         } else if(ExamType.WORD.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
-            return "redirect:/test/word";
+            return "redirect:/exam/word";
         }
 
         return "redirect:/";
