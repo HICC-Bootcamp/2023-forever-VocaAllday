@@ -27,7 +27,7 @@ public class ExamController {
         model.addAttribute("examInfoDto",exam);
         model.addAttribute("valueFormDto",new ValueFormDto());
 
-        return "makeTest/makeTest";
+        return "makeTest/solveTestWord";
     }
 
     @PostMapping(value = "/word")
