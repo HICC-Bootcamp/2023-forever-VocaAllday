@@ -116,14 +116,12 @@
             </div>
 
             <!--백에서 받은 정보 그대로 돌려주기: answer->meaningList-->
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[0]}">
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[1]}">
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[2]}">
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[3]}">
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[4]}">
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[5]}">
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[6]}">
-            <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[7]}">
+            <tr th:each="num :  ${#numbers.sequence(0,7)}">
+                <td>
+                    <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[__${num}__]}" >
+                </td>
+            </tr>
+            
 
             <div class="right_footer">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
