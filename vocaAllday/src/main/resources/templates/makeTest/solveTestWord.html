@@ -121,9 +121,26 @@
             </div>
 
             <!--백에서 받은 정보 그대로 돌려주기(meaning,words,type=>wordList,meaningList,examType)-->
-            <input type="hidden" th:value="${examInfoDto.words}" name="wordList">
-            <input type="hidden" th:value="${examInfoDto.meanings}" name="meaningList">
-            <input type="hidden" th:value="${examInfoDto.type}" name="examType">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[0]}">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[1]}">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[2]}">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[3]}">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[4]}">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[5]}">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[6]}">
+            <input type="hidden" name="wordList" th:value="${examInfoDto.words[7]}">
+
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[0]}">
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[1]}">
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[2]}">
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[3]}">
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[4]}">
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[5]}">
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[6]}">
+            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[7]}">
+
+            <input type="hidden" name="examType" th:value="${examInfoDto.type}" >
+            <input type="hidden" name="vocaTitle" th:value="${examInfoDto.vocaTitle}">
 
             <div class="right_footer">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
