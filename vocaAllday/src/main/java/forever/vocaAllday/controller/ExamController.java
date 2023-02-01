@@ -1,6 +1,7 @@
 package forever.vocaAllday.controller;
 
 import forever.vocaAllday.dto.ExamInfoDto;
+import forever.vocaAllday.dto.SentenceFormDto;
 import forever.vocaAllday.dto.SentenceInfoDto;
 import forever.vocaAllday.dto.ValueFormDto;
 import forever.vocaAllday.service.CrawlingService;
@@ -52,7 +53,7 @@ public class ExamController {
         SentenceInfoDto examInfo = crawlingService.makeTest(email,title);
 
         model.addAttribute("sentenceInfo",examInfo);
-        model.addAttribute("valueFormDto",new ValueFormDto());
+        model.addAttribute("SentenceFormDto",new SentenceFormDto());
 
         return "makeTest/solveTestSentence";
     }
