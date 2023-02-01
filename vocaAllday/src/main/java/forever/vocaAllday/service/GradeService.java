@@ -1,6 +1,8 @@
 package forever.vocaAllday.service;
 
+import forever.vocaAllday.dto.ResultDto;
 import forever.vocaAllday.dto.ValueFormDto;
+import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
 import forever.vocaAllday.entity.WrongVoca;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -24,11 +26,15 @@ public class GradeService {
     private final MemberRepository memberRepository;
     private final WrongVocaRepository wrongVocaRepository;
 
-    public void updateWrongVoca(String email, String vocaTitle,
-                                String word, String meaning) {
+    public Report findReport(String email, String vocaTitle) {
         Member member = memberRepository.findByEmail(email);
         Long id = member.getId();
         Report report = reportRepository.findByReport(id, vocaTitle);
+        return report;
+    }
+
+    public void updateWrongVoca(Report report,
+                                String word, String meaning) {
         WrongVoca wrongVoca = report.getWrongVoca();
         Long wrongId = wrongVoca.getWrongId();
         System.out.println(word);
@@ -48,7 +54,7 @@ public class GradeService {
         List<String> wrongMeanings = new ArrayList<>(); // 틀린 의미 저장 배열
 
         int index = 0;
-       
+
         if (type.equals("MEANING")) {
             for (String meaning : meanings) {
                 if (!(meaning.equals(userValues.get(index)))) {
@@ -69,10 +75,27 @@ public class GradeService {
 
         String wrongMeaning = String.join(",", wrongMeanings);
         String wrongWord = String.join(",", wrongWords);
-        String title=valueFormDto.getVocaTitle();
-
-        updateWrongVoca(email, title, wrongWord, wrongMeaning);
+        String title = valueFormDto.getVocaTitle();
+        Report report = findReport(email, title);
+        updateWrongVoca(report, wrongWord, wrongMeaning);
 
     }
+
+    public ResultDto showGradingResult(String email, String title) {
+        Report report = findReport(email, title);
+        WrongVoca wrongVoca = report.getWrongVoca();
+        InputVoca inputVoca = report.getInputVoca();
+
+        List<String> AllWordList = Arrays.asList(inputVoca.getWord().split(","));
+        List<String> AllMeaningList = Arrays.asList(inputVoca.getMeaning().split(","));
+
+        List<String> WrongWordList = Arrays.asList(wrongVoca.getWord().split(","));
+        List<String> WrongMeaningList = Arrays.asList(wrongVoca.getMeaning().split(","));
+
+        ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList);
+
+        return resultDto;
+    }
+
 }
 
