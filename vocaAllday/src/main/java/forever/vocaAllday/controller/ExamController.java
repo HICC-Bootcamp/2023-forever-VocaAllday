@@ -58,17 +58,7 @@ public class ExamController {
     }
 
     @PostMapping(value = "/example-sentence")
-    public String GetUservalue(@ModelAttribute("userValue") ValueFormDto valueFormDto,@RequestParam("title") String title,
-                               Principal principal,Model model) throws IOException {
-
-        String email = principal.getName();
-
-        try {
-            crawlingService.makeTest(email,title);
-        } catch (IllegalStateException e){
-            model.addAttribute("invalidworderror", e.getMessage());
-            return "makeTest/makeTest";
-        }
+    public String GetUservalue(@ModelAttribute("userValue") ValueFormDto valueFormDto)  {
 
         return "test/word";
 
