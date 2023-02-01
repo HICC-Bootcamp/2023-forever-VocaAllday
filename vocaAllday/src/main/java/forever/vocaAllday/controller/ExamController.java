@@ -70,7 +70,7 @@ public class ExamController {
     }
 
     @GetMapping(value = "/word/grading-result")
-    public String ShowGradingResult(Principal principal,, Model model,
+    public String ShowGradingResult(Principal principal, Model model,
                                     @RequestParam("title") String title) {
         String email = principal.getName();
         ResultDto resultDto = gradeService.showGradingResult(email, title);
