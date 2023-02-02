@@ -2,6 +2,7 @@ package forever.vocaAllday.service;
 
 import forever.vocaAllday.dto.ResultDto;
 import forever.vocaAllday.dto.SentenceFormDto;
+import forever.vocaAllday.dto.ValueFormDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -25,12 +26,14 @@ public class GradeService {
     private final ReportRepository reportRepository;
     private final MemberRepository memberRepository;
     private final WrongVocaRepository wrongVocaRepository;
+
     public Report findReport(String email, String vocaTitle) {
         Member member = memberRepository.findByEmail(email);
         Long id = member.getId();
         Report report = reportRepository.findByReport(id, vocaTitle);
         return report;
     }
+
     public void updateWrongVoca(Report report,
                                 String word, String meaning) {
         WrongVoca wrongVoca = report.getWrongVoca();
@@ -57,6 +60,7 @@ public class GradeService {
                 wrongMeanings.add(meanings.get(index));
             }
             index++;
+    
         }
 
         String wrongMeaning = String.join(",", wrongMeanings);
@@ -77,8 +81,10 @@ public class GradeService {
         List<String> WrongWordList = Arrays.asList(wrongVoca.getWord().split(","));//입력된 영단어
         List<String> WrongMeaningList = Arrays.asList(wrongVoca.getMeaning().split(","));//입력된 뜻
 
+
         ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList);
 
         return resultDto;
     }
 }
+

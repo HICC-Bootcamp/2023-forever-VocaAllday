@@ -15,3 +15,4 @@ public interface WrongVocaRepository extends JpaRepository<WrongVoca, Long> {
     @Query("update WrongVoca set word = :word where wrong_id = :wrong_id")
     void updateWord(@Param("wrong_id") Long id, @Param("word") String word);
 }
+

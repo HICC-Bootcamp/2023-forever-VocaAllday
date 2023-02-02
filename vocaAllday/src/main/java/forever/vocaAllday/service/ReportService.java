@@ -36,6 +36,7 @@ public class ReportService {
         WrongVoca wrongVoca = new WrongVoca(null,null);
         Report report = new Report(member, vocaTitle, inputVoca,wrongVoca);
 
+
         inputVocaRepository.save(inputVoca);
         reportRepository.save(report);
 

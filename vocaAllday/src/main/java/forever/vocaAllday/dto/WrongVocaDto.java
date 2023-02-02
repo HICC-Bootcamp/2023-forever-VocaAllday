@@ -1,5 +1,6 @@
 package forever.vocaAllday.dto;
 
+import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.WrongVoca;
 import lombok.Getter;
 import lombok.Setter;
