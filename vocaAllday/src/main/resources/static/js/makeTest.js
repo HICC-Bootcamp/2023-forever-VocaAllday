@@ -1,4 +1,4 @@
-var cnt_add = 9; //입력창개수(임시 8개 고정)
+var cnt_add = 8; //입력창개수(임시 8개 고정)
 
 /*
     유효성 검사용 정규식
@@ -7,8 +7,9 @@ const regex_en = /^[a-z|A-Z]+$/;            //영어
 const regex_ko = /^[ㄱ-ㅎ|가-힣]+$/;        //한글
 
 //add버튼 클릭 시 단어입력창 추가
-/*
+
 const add_input_word = () => {
+    /*
     //입력창 추가 개수 제한
     if(cnt_add>30){
         Swal.fire('단어 추가 실패!',"단어는 최대 30개까지만 입력할 수 있습니다.",'warning').then(function(){
@@ -37,10 +38,15 @@ const add_input_word = () => {
         //DOM에 추가
         var container = document.getElementById("left_body")
         container.appendChild(new_input)
+    */
 
     cnt_add++;
 }
-*/
+
+const ck_cnt = () => {
+    return cnt_add;
+}
+
 
 //유효성 검사 후 form submit
 const ck_validation = () => {
@@ -48,7 +54,7 @@ const ck_validation = () => {
     let form = document.getElementById("form");
     let i = 1;
     //입력값 유효성 검사
-    for (i; i<cnt_add; i++){
+    for (i; i<=cnt_add; i++){
 
         //word,meaning 한쌍 유효성검사
         let word = document.getElementById('word'+i).value;

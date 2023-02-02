@@ -1,4 +1,4 @@
-var cnt_add = 9; //입력창개수(임시 8개 고정)
+var cnt_add = 8; //입력창개수(임시 8개 고정)
 
 /*
     유효성 검사용 정규식
@@ -26,7 +26,7 @@ const ck_validation = () => {
     let i = 1;
 
     //입력값 유효성 검사(비어있는지 여부만 확인)
-    for (i; i<cnt_add; i++){
+    for (i; i<=cnt_add; i++){
         //word,meaning 한쌍 유효성검사
         let word = document.getElementById('answer'+i).value;
         if(word===""){

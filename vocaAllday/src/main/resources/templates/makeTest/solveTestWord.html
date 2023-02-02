@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<form action="/test/word" id="form" method="post" onsubmit="return false" th:object="${ValueFormDto}">
+<form action="/exam/word" id="form" method="post" onsubmit="return false" th:object="${valueFormDto}">
     <div class="wrapper">
 
         <!-- 문제지 -->
@@ -121,26 +121,14 @@
             </div>
 
             <!--백에서 받은 정보 그대로 돌려주기(meaning,words,type=>wordList,meaningList,examType)-->
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[0]}">
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[1]}">
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[2]}">
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[3]}">
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[4]}">
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[5]}">
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[6]}">
-            <input type="hidden" name="wordList" th:value="${examInfoDto.words[7]}">
-
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[0]}">
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[1]}">
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[2]}">
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[3]}">
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[4]}">
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[5]}">
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[6]}">
-            <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[7]}">
-
             <input type="hidden" name="examType" th:value="${examInfoDto.type}" >
             <input type="hidden" name="vocaTitle" th:value="${examInfoDto.vocaTitle}">
+            <tr th:each="num :  ${#numbers.sequence(0,7)}">
+                <td>
+                    <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[__${num}__]}" >
+                    <input type="hidden" name="wordList" th:value="${examInfoDto.words[__${num}__]}" >
+                </td>
+            </tr>
 
             <div class="right_footer">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
