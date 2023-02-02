@@ -1,6 +1,7 @@
 package forever.vocaAllday.service;
 
 import forever.vocaAllday.dto.ResultDto;
+import forever.vocaAllday.dto.SentenceFormDto;
 import forever.vocaAllday.dto.ValueFormDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
@@ -80,6 +81,32 @@ public class GradeService {
         Report report = findReport(email, title);
         updateWrongVoca(report, wrongWord, wrongMeaning);
 
+    }
+    public void gradeTest(String email, SentenceFormDto sentenceFormDto){
+        List<String> userValues = sentenceFormDto.getUserValues(); //사용자 입력 값
+        List<String> meanings = sentenceFormDto.getMeaningList(); // 의미
+        List<String> answers = sentenceFormDto.getAnswerList(); // 정답
+        List<String> words = sentenceFormDto.getWordList();//<보기> 단어
+
+        List<String> wrongWords = new ArrayList<>();
+        List<String> wrongMeanings = new ArrayList<>();
+
+        int index = 0;
+
+        for(String answer: answers){
+            if(!(answer.equals(userValues.get(index))));{
+                wrongWords.add(words.get(index));
+                wrongMeanings.add(meanings.get(index));
+            }
+            index++;
+
+        }
+
+        String wrongMeaning = String.join(",", wrongMeanings);
+        String wrongWord = String.join(",", wrongWords);
+        String title = sentenceFormDto.getVocaTitle();
+        Report report = findReport(email, title);
+        updateWrongVoca(report, wrongWord, wrongMeaning);
     }
 
     public ResultDto showGradingResult(String email, String title) {

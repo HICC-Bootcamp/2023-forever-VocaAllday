@@ -60,9 +60,16 @@ public class ExamController {
     }
 
     @PostMapping(value = "/example-sentence")
-    public String GetUservalue(@ModelAttribute("userValue") ValueFormDto valueFormDto) {
+    public String GetUservalue(@ModelAttribute SentenceFormDto sentenceFormDto, Principal principal,
+                               RedirectAttributes redirectAttributes)  {
+        String email = principal.getName();
+        gradeService.gradeTest(email,sentenceFormDto);
 
-        return "test/word";
+        String title = sentenceFormDto.getVocaTitle();
+        redirectAttributes.addAttribute("title",title);
+
+
+        return "redirect:/exam/sentence/grading-result";// 추후 수정
 
     }
 
