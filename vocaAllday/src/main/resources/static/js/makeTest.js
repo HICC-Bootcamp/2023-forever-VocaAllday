@@ -43,13 +43,13 @@ const add_input_word = () => {
     cnt_add++;
 }
 
-const ck_cnt = () => {
+const check_cnt = () => {
     return cnt_add;
 }
 
 
 //유효성 검사 후 form submit
-const ck_validation = () => {
+const check_validation = () => {
     let validation = true //가입 조건 통과 여부
     let form = document.getElementById("form");
     let i = 1;

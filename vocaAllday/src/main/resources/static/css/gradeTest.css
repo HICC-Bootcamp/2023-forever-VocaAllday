@@ -71,7 +71,7 @@ html, body{
     padding-bottom: 20px ;
 }
 .sentence_text_box{
-    width: 100%;
+    width: 75%;
     height: 56px;
     padding-left: 10px;
 
@@ -83,6 +83,7 @@ html, body{
     border: 3px solid #E8ECEB;
     border-radius: 12px;
 }
+
 
 .word_text_box{
     width: 20%;

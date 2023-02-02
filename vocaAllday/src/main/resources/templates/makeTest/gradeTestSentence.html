@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko"xmlns:th="http://www.thymleaf.org">
+<head>
+    <title>gradeTestWord</title>
+    <link href="/css/gradeTest.css" th:href="@{/css/gradeTest.css}" rel="stylesheet">
+    <script src="/js/gradeTest.js" th:src="@{/js/gradeTest.js}"></script>
+    <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <!--받은 객체
+public class resultDto {
+    AllWordList     //입력단어 리스트
+    AllMeaningList  //입력 뜻 리스트
+    WrongWordList   //틀린 단어 리스트
+    WrongMeaningList//틀린 뜻 리스트
+}
+-->
+
+    <!-- 문제지 -->
+    <div class="wrapper_left">
+
+        <div class="left_header">
+            <div class="input_title">채점결과</div>
+        </div>
+
+        <div class="left_body" id="left_body">
+
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[0]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[0]}"></span>
+            </div>
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[1]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[1]}"></span>
+            </div>
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[2]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[2]}"></span>
+            </div>
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[3]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[3]}"></span>
+            </div>
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[4]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[4]}"></span>
+            </div>
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[5]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[5]}"></span>
+            </div>
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[6]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[6]}"></span>
+            </div>
+            <div class="word_container">
+                <span class="word_text_box" th:text="${resultDto.AllWordList[7]}"></span>
+                <span class="word_text_box"th:text="${resultDto.AllMeaningList[7]}"></span>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- 채점결과 -->
+    <div class="wrapper_right" id="wrapper_right" >
+        <div class="right_header">
+            <div class="header_logo">
+                <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+            </div>
+            <div class="header_text">
+                <div class="title">채점결과 보기</div>
+                <div class="subtitle">채점 결과를 확인해보세요!</div>
+            </div>
+        </div>
+        <div class="dividedLine"></div>
+
+        <div class="right_body">
+            <div id="test_name" class="info_title">시험 점수</div>
+            <div id="test_socre" class="info_title">
+                <span >맞은 개수  :</span>
+                <span id="correct_num" th:text="8-${#lists.size(resultDto.WrongWordList)}" >null</span> / <span>8</span>
+            </div>
+            <div class="info_title">
+                <span>틀린 단어  :</span><br>
+                <div id="wrong_word"  th:each="wrong_word : ${resultDto.WrongMeaningList}">
+                    <span class="word_text_box" th:text="${wrong_word}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
