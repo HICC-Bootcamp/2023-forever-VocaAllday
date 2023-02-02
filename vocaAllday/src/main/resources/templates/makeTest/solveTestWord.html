@@ -83,37 +83,37 @@
                 <span id="hint1" th:case="WORD" th:text="${examInfoDto.meanings[0]}"></span>
                 <span id="hint1" th:case="MEANING" th:text="${examInfoDto.words[0]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+                <span th:switch="${examInfoDto.type}">
                 <input type="checkbox" id="hint_ck2" onclick="delete_hint(2)">
                 <span id="hint2" th:case="WORD" th:text="${examInfoDto.meanings[1]}"></span>
                 <span id="hint2" th:case="MEANING" th:text="${examInfoDto.words[1]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+                <span th:switch="${examInfoDto.type}">
                 <input type="checkbox" id="hint_ck3" onclick="delete_hint(3)">
                 <span id="hint3" th:case="WORD" th:text="${examInfoDto.meanings[2]}"></span>
                 <span id="hint3" th:case="MEANING" th:text="${examInfoDto.words[2]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+                <span th:switch="${examInfoDto.type}">
                 <input type="checkbox" id="hint_ck4" onclick="delete_hint(4)">
                 <span id="hint4" th:case="WORD" th:text="${examInfoDto.meanings[3]}"></span>
                 <span id="hint4" th:case="MEANING" th:text="${examInfoDto.words[3]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+                <span th:switch="${examInfoDto.type}">
                 <input type="checkbox" id="hint_ck5" onclick="delete_hint(5)">
                 <span id="hint5" th:case="WORD" th:text="${examInfoDto.meanings[4]}"></span>
                 <span id="hint5" th:case="MEANING" th:text="${examInfoDto.words[4]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+                <span th:switch="${examInfoDto.type}">
                 <input type="checkbox" id="hint_ck6" onclick="delete_hint(6)">
                 <span id="hint6" th:case="WORD" th:text="${examInfoDto.meanings[5]}"></span>
                 <span id="hint6" th:case="MEANING" th:text="${examInfoDto.words[5]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+                <span th:switch="${examInfoDto.type}">
                 <input type="checkbox" id="hint_ck7" onclick="delete_hint(7)">
                 <span id="hint7" th:case="WORD" th:text="${examInfoDto.meanings[6]}"></span>
                 <span id="hint7" th:case="MEANING" th:text="${examInfoDto.words[6]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+                <span th:switch="${examInfoDto.type}">
                 <input type="checkbox" id="hint_ck8" onclick="delete_hint(8)">
                 <span id="hint8" th:case="WORD" th:text="${examInfoDto.meanings[7]}"></span>
                 <span id="hint8" th:case="MEANING" th:text="${examInfoDto.words[7]}"></span>
@@ -132,7 +132,7 @@
 
             <div class="right_footer">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                <button class="button" id="submit_but" onclick="ck_validation()">
+                <button class="button" id="submit_but" onclick="check_validation()">
                     <i class="fa-sharp fa-solid fa-check"></i>
                     <span class="submit_but_text">Submit</span>
                 </button>
