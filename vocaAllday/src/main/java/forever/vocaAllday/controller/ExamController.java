@@ -47,8 +47,8 @@ public class ExamController {
     }
 
     @GetMapping(value = "/example-sentence")
-    public String showEXSentence(Principal principal, @RequestParam("title") String title,
-                                 @RequestParam("type") String type, Model model) throws IOException {
+    public String showEXSentence(Principal principal, @RequestParam("title") String title
+            , Model model) throws IOException {
 
         String email = principal.getName();
         SentenceInfoDto examInfo = crawlingService.makeTest(email,title);
@@ -60,10 +60,11 @@ public class ExamController {
     }
 
     @PostMapping(value = "/example-sentence")
-    public String GetUservalue(@ModelAttribute("userValue") SentenceFormDto sentenceFormDto, Principal principal,
+    public String GetUservalue(@ModelAttribute SentenceFormDto sentenceFormDto, Principal principal,
                                RedirectAttributes redirectAttributes)  {
         String email = principal.getName();
         gradeService.gradeTest(email,sentenceFormDto);
+
         String title = sentenceFormDto.getVocaTitle();
         redirectAttributes.addAttribute("title",title);
 
