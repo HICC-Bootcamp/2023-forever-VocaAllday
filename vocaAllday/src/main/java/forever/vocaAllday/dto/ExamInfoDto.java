@@ -11,5 +11,5 @@ public class ExamInfoDto {  //프론트 시험 정보 전달 DTO
     List<String> words;
     List<String> meanings;
     String type;
-
+    String vocaTitle;
 }
