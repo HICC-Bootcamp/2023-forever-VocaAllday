@@ -19,7 +19,7 @@
 -->
 
 <body>
-    <form action="/mypage" id="form" method="post" onsubmit="return false">
+    <form action="/mypage" id="form" method="post">
 
     <div class="wrapper">
         <!--시험지 기록 보기-->
@@ -30,8 +30,8 @@
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="userInfo">
-                    <div class="title" th:text="${UserInfo.name}">NULL</div>
-                    <div class="subtitle" th:text="${UserInfo.email}">aaaaaaaa@naver.com</div>
+                    <div class="title" th:text="*{UserInfoDto.name}">NULL</div>
+                    <div class="subtitle" th:text="*{UserInfoDto.email}">aaaaaaaa@naver.com</div>
                 </div>
             </div>
             <div class="dividedLine"></div>
@@ -45,10 +45,11 @@
                     </div>
                     <div class="record_body">
                         <!--vocatitle 선택해서 Post-->
-                        <select class="select_box" id="vocaTitle" name="vocaTitle">
-                            <option th:each="vocaTitle : ${vocaTitleList}" th:value="${vocaTitle}" th:text="${vocaTitle}">vocaTitle NULL</option>
+                        <select class="select_box" id="vocaTitle" name="vocaTitle" field="${vocaTitle}">
+                            <option th:each="vocaName : ${vocaTitleList}" th:value="'${vocaName}'" th:text="${vocaName}">vocaTitle NULL</option>
                         </select>
 
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                         <button class="button" id="select_but" type="submit">
                             <i class="fa-sharp fa-solid fa-check"></i>
                             <span class="submit_but_text">select</span>
