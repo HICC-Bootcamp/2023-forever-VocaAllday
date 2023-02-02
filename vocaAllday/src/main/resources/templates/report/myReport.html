@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"xmlns:th="http://www.thymleaf.org">
 <head>
-    <title>solveTestWord</title>
+    <title>myReport</title>
     <link href="/css/report.css" th:href="@{/css/report.css}" rel="stylesheet">
     <script src="/js/report.js" th:src="@{/js/report.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@
 -->
 
 <body>
-    <form action="" id="form" method="post" onsubmit="return false">
+    <form action="/mypage" id="form" method="post" onsubmit="return false">
 
     <div class="wrapper">
         <!--시험지 기록 보기-->
@@ -30,8 +30,8 @@
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="userInfo">
-                    <div class="title" th:text="${UserInfo.name}">이은비</div>
-                    <div class="subtitle" th:text="${UserInfo.email}">ekdldkaa@naver.com</div>
+                    <div class="title" th:text="${UserInfo.name}">NULL</div>
+                    <div class="subtitle" th:text="${UserInfo.email}">aaaaaaaa@naver.com</div>
                 </div>
             </div>
             <div class="dividedLine"></div>
@@ -45,11 +45,14 @@
                     </div>
                     <div class="record_body">
                         <!--vocatitle 선택해서 Post-->
-                        <select class="select_box" id="vocaTitle" name="" th:value="">
-                            <option>vocaTitle[0]</option>
-                            <option>vocaTitle[1]</option>
-                            <option>vocaTitle[2]</option>
+                        <select class="select_box" id="vocaTitle" name="vocaTitle">
+                            <option th:each="vocaTitle : ${vocaTitleList}" th:value="${vocaTitle}" th:text="${vocaTitle}">vocaTitle NULL</option>
                         </select>
+
+                        <button class="button" id="select_but" type="submit">
+                            <i class="fa-sharp fa-solid fa-check"></i>
+                            <span class="submit_but_text">select</span>
+                        </button>
                         <!--vocatitle과 연결된 단어 뜻 리스트 (현 파일에서 빈박스)-->
                         <div class="vocaTitle_word_box"></div>
                     </div>
