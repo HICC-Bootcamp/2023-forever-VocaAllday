@@ -51,10 +51,13 @@ public class ExamController {
                                  @RequestParam("type") String type, Model model) throws IOException {
 
         String email = principal.getName();
-        SentenceInfoDto examInfo = crawlingService.makeTest(email, title);
-
-        model.addAttribute("sentenceInfo",examInfo);
-        model.addAttribute("SentenceFormDto",new SentenceFormDto());
+        try {
+            SentenceInfoDto examInfo = crawlingService.makeTest(email, title);
+            model.addAttribute("sentenceInfo",examInfo);
+        }catch (IOException e) {
+            model.addAttribute("invalidworderror", false);
+            return "redirect:/";
+        }
 
         return "makeTest/solveTestSentence";
     }
@@ -64,13 +67,20 @@ public class ExamController {
                                RedirectAttributes redirectAttributes)  {
         String email = principal.getName();
         gradeService.gradeTest(email,sentenceFormDto);
-
         String title = sentenceFormDto.getVocaTitle();
         redirectAttributes.addAttribute("title",title);
 
 
         return "redirect:/exam/sentence/grading-result";// 추후 수정
 
+    }
+    @GetMapping(value = "/sentence/grading-result")
+    public String ShowGradingresult(Principal principal, Model model,
+                                    @RequestParam("title") String title) {
+        String email = principal.getName();
+        ResultDto resultDto = gradeService.showGradingResult(email, title);
+        model.addAttribute("resultDto", resultDto);
+        return "makeTest/gradeTestSentence";//추후 수정
     }
 
     @GetMapping(value = "/word/grading-result")
