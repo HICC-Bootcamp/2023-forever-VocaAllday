@@ -9,19 +9,21 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-<form action="/exam/exam-sentence" id="form" method="post" onsubmit="return false" th:object="${SentenceFormDto}">
+<form action="/exam/example-sentence" id="form" method="post" onsubmit="return false" th:object="${SentenceFormDto}">
     <!--
 받은객체 이름:sentenceInfo
 List sentence;//예문
 List answer;//답
 List word;//<보기>에 들어갈 단어
 List meaning;//뜻
+vocaTitle
 
 보낼 객체 이름:SentenceFormDto
 List userValues;//사용자 입력 값
 List wordList;//<보기>에 들어간 단어
 List meaningList;//뜻
 List answerList;//정답
+vocaTitle
     -->
     <div class="wrapper">
         <!-- 문제지 -->
@@ -123,6 +125,7 @@ List answerList;//정답
                     <input type="hidden" name="wordList" th:value="${sentenceInfo.answer[__${num}__]}" >
                 </td>
             </tr>
+            <input type="hidden" name="vocaTitle" th:value="${sentenceInfo.vocaTitle}">
             
 
             <div class="right_footer">
