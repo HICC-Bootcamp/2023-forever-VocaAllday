@@ -9,20 +9,59 @@
 </head>
 
 <body>
-<form action="" id="" method="post" onsubmit="return false">
     <div class="wrapper">
+        <!--받은 객체
+    public class resultDto {
+        AllWordList     //입력단어 리스트
+        AllMeaningList  //입력 뜻 리스트
+        WrongWordList   //틀린 단어 리스트
+        WrongMeaningList//틀린 뜻 리스트
+    }
+    -->
 
         <!-- 문제지 -->
         <div class="wrapper_left">
 
             <div class="left_header">
-                <div class="input_title" th:text="${ReportDto.vocatitle} 채점결과"> 23/01/27 채점결과</div>
+                <div class="input_title">채점결과</div>
             </div>
 
             <div class="left_body" id="left_body">
-                <div class="sentence_text_box">
-                    <span>______ word is not good&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[0]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[0]}"></span>
                 </div>
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[1]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[1]}"></span>
+                </div>
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[2]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[2]}"></span>
+                </div>
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[3]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[3]}"></span>
+                </div>
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[4]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[4]}"></span>
+                </div>
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[5]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[5]}"></span>
+                </div>
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[6]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[6]}"></span>
+                </div>
+                <div class="word_container">
+                    <span class="word_text_box" th:text="${resultDto.AllWordList[7]}"></span>
+                    <span class="word_text_box"th:text="${resultDto.AllMeaningList[7]}"></span>
+                </div>
+
+
             </div>
         </div>
 
@@ -40,18 +79,19 @@
             <div class="dividedLine"></div>
 
             <div class="right_body">
-                <div id="test_name" class="info_title" th:text="${ReportDto.vocaTitle}">23/01/23</div>
+                <div id="test_name" class="info_title">시험 점수</div>
                 <div id="test_socre" class="info_title">
-                    <span >시험 점수  :</span>
-                    <span id="correct_num">8</span> / <span>10</span>
+                    <span >맞은 개수  :</span>
+                    <span id="correct_num" th:text="8-${#lists.size(resultDto.WrongWordList)}" >null</span> / <span>8</span>
                 </div>
                 <div class="info_title">
-                    <span>틀린 단어  :</span>
-                    <div id="wrong_word"> temporal, word, gogo, wlejr</div>
+                    <span>틀린 단어  :</span><br>
+                    <div id="wrong_word"  th:each="wrong_word : ${resultDto.WrongMeaningList}">
+                        <span class="word_text_box" th:text="${wrong_word}"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</form>
 </body>
 </html>

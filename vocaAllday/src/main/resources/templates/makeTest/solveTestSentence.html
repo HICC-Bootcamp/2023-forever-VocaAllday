@@ -9,19 +9,19 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-<form action="/test/word" id="form" method="post" onsubmit="return false" th:object="${ValueFormDto}">
-    <!--받은 객체
-    public class SentenceInfoDto {
-    List<String > sentence;//예문
-    List<String > answer;//답
-    List<String > word;//<보기>에 들어갈 단어=사용자가 입력한 단어
-    }
-    -->
-    <!--보낼 객체
-    public class ValueFormDto {
-    private List<String> userValues;
-    private List<String> meaningList;
-    }
+<form action="/exam/exam-sentence" id="form" method="post" onsubmit="return false" th:object="${valueFormDto}">
+    <!--
+받은객체 이름:sentenceInfo
+List sentence;//예문
+List answer;//답
+List word;//<보기>에 들어갈 단어
+List meaning;//뜻
+
+보낼 객체 이름:SentenceFormDto
+List userValues;//사용자 입력 값
+List wordList;//<보기>에 들어간 단어
+List meaningList;//뜻
+List answerList;//정답
     -->
     <div class="wrapper">
         <!-- 문제지 -->
@@ -115,10 +115,12 @@
 
             </div>
 
-            <!--백에서 받은 정보 그대로 돌려주기: answer->meaningList-->
+            <!--백에서 받은 정보 그대로 돌려주기: answer=>answerList, meaning=>meaningList, word=>wordList -->
             <tr th:each="num :  ${#numbers.sequence(0,7)}">
                 <td>
-                    <input type="hidden" name="meaningList" th:value="${sentenceInfo.answer[__${num}__]}" >
+                    <input type="hidden" name="answerList" th:value="${sentenceInfo.answer[__${num}__]}" >
+                    <input type="hidden" name="meaningList" th:value="${sentenceInfo.meaning[__${num}__]}" >
+                    <input type="hidden" name="wordList" th:value="${sentenceInfo.answer[__${num}__]}" >
                 </td>
             </tr>
             
