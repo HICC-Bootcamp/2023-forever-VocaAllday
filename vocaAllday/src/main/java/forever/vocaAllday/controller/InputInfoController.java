@@ -39,15 +39,15 @@ public class InputInfoController {
             return "makeTest/makeTest";
         }
 
-        if(ExamType.EXAMPLE_SENTENCE.equals(examType)) {
+        if (ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
             return "redirect:/exam/example-sentence";
-        } else if(ExamType.MEANING.equals(examType)) {
+        } else if (ExamType.MEANING.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
             return "redirect:/exam/word";
-        } else if(ExamType.WORD.equals(examType)) {
+        } else if (ExamType.WORD.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
             return "redirect:/exam/word";
