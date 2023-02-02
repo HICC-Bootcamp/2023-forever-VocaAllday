@@ -59,6 +59,7 @@ public class ExamController {
         return "makeTest/solveTestSentence";
     }
 
+
     @PostMapping(value = "/example-sentence")
     public String GetUservalue(@ModelAttribute SentenceFormDto sentenceFormDto, Principal principal,
                                RedirectAttributes redirectAttributes)  {
@@ -71,6 +72,14 @@ public class ExamController {
 
         return "redirect:/exam/sentence/grading-result";// 추후 수정
 
+    }
+    @GetMapping(value = "/sentence/grading-result")
+    public String ShowGradingresult(Principal principal, Model model,
+                                    @RequestParam("title") String title) {
+        String email = principal.getName();
+        ResultDto resultDto = gradeService.showGradingResult(email, title);
+        model.addAttribute("resultDto", resultDto);
+        return "makeTest/gradeTestSentence";//추후 수정
     }
 
     @GetMapping(value = "/word/grading-result")
