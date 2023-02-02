@@ -1,7 +1,5 @@
 package forever.vocaAllday.controller;
 
-package forever.vocaAllday.controller;
-
 import forever.vocaAllday.dto.MyPageDto;
 import forever.vocaAllday.dto.ResultDto;
 import forever.vocaAllday.service.MyPageService;
