@@ -47,13 +47,13 @@ public class GradeService {
     public void grade(String email, ValueFormDto valueFormDto) {
 
         String type = valueFormDto.getExamType();
-        List<String> userValues = valueFormDto.getUserValues(); // 유저 입력 값
+        List<String> userValues = valueFormDto.getUserValues();
 
-        List<String> meanings = valueFormDto.getMeaningList(); // 정답 의미
-        List<String> words = valueFormDto.getWordList(); // 정답 단어
+        List<String> meanings = valueFormDto.getMeaningList();
+        List<String> words = valueFormDto.getWordList();
 
-        List<String> wrongWords = new ArrayList<>(); // 틀린 단어 저장 배열
-        List<String> wrongMeanings = new ArrayList<>(); // 틀린 의미 저장 배열
+        List<String> wrongWords = new ArrayList<>();
+        List<String> wrongMeanings = new ArrayList<>();
 
         int index = 0;
 
@@ -84,10 +84,10 @@ public class GradeService {
 
     }
     public void gradeTest(String email, SentenceFormDto sentenceFormDto){
-        List<String> userValues = sentenceFormDto.getUserValues(); //사용자 입력 값
-        List<String> meanings = sentenceFormDto.getMeaningList(); // 의미
-        List<String> answers = sentenceFormDto.getAnswerList(); // 정답
-        List<String> words = sentenceFormDto.getWordList();//<보기> 단어
+        List<String> userValues = sentenceFormDto.getUserValues();
+        List<String> meanings = sentenceFormDto.getMeaningList();
+        List<String> answers = sentenceFormDto.getAnswerList();
+        List<String> words = sentenceFormDto.getWordList();
         //테스트용
 
 

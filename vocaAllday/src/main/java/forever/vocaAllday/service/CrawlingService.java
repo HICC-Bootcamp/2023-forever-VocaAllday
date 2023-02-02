@@ -13,6 +13,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
 public class CrawlingService {
@@ -44,6 +45,7 @@ public class CrawlingService {
         sent_word.add(word);
 
         return sent_word;
+
     }
 
     public  InputVoca  getInputVoca(String email, String vocaTitle){
@@ -59,7 +61,7 @@ public class CrawlingService {
         List<String> tempWord = Arrays.asList(inputvoca.getWord().split(","));
         List<String> tempMeaning = Arrays.asList(inputvoca.getMeaning().split(","));
 
-        HashMap<String, String> map = new HashMap<String, String>();//<보기,뜻>
+        HashMap<String, String> map = new HashMap<String, String>();
 
         for (int j = 0; j <8; j++) {
             map.put(tempWord.get(j), tempMeaning.get(j));
@@ -77,6 +79,8 @@ public class CrawlingService {
 
         List<String > tempsent = new ArrayList<>();
         List<String > tempan = new ArrayList<>();
+
+
 
         for(int i=0;i<8;i++){
             List<String> templist = crawling(word.get(i));

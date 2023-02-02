@@ -51,9 +51,13 @@ public class ExamController {
                                  @RequestParam("type") String type, Model model) throws IOException {
 
         String email = principal.getName();
-        SentenceInfoDto examInfo = crawlingService.makeTest(email, title);
-
-        model.addAttribute("sentenceInfo",examInfo);
+        try {
+            SentenceInfoDto examInfo = crawlingService.makeTest(email, title);
+            model.addAttribute("sentenceInfo",examInfo);
+        }catch (IOException e) {
+            model.addAttribute("invalidworderror", false);
+            return "redirect:/";
+        }
 
         return "makeTest/solveTestSentence";
     }
