@@ -1,5 +1,6 @@
 package forever.vocaAllday.dto;
 
+import forever.vocaAllday.enums.ExamType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -7,5 +8,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class MyPageDto {
     private String vocaTitle;
-    private String examType;
+    private ExamType examType;
 }

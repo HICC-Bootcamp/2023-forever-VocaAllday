@@ -2,7 +2,9 @@ package forever.vocaAllday.controller;
 
 import forever.vocaAllday.dto.MyPageDto;
 import forever.vocaAllday.dto.ResultDto;
+import forever.vocaAllday.dto.TitleDto;
 import forever.vocaAllday.dto.UserInfoDto;
+import forever.vocaAllday.enums.ExamType;
 import forever.vocaAllday.service.MyPageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,7 +31,8 @@ public class MyPageController {
     }
 
     @PostMapping("/mypage")
-    public String selectVocaTitle(@RequestBody String vocaTitle, RedirectAttributes redirectAttr) {
+    public String selectVocaTitle(@ModelAttribute TitleDto titleDto, RedirectAttributes redirectAttr) {
+        String vocaTitle = titleDto.getVocaTitle();
         redirectAttr.addAttribute("title", vocaTitle);
         return "redirect:/mypage/info";
     }
@@ -48,7 +52,10 @@ public class MyPageController {
     public String selectReExamInfo(@ModelAttribute MyPageDto myPageDto,
                                    RedirectAttributes redirectAttr) {
         String title = myPageDto.getVocaTitle();
-        String examType = myPageDto.getExamType();
+        ExamType examType = myPageDto.getExamType();
+
+        System.out.println(title);
+        System.out.println(examType);
 
         if (forever.vocaAllday.enums.ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);
