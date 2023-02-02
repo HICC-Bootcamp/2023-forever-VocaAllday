@@ -44,9 +44,15 @@
                         <div class="title">문제지 기록</div>
                     </div>
                     <div class="record_body">
-                        <!--vocatitle 선택해서 Post-->
-                        <select class="select_box" id="vocaTitle" name="vocaTitle" field="${vocaTitle}">
-                            <option th:each="vocaName : ${vocaTitleList}" th:value="'${vocaName}'" th:text="${vocaName}">vocaTitle NULL</option>
+                        <!--vocatitle 선택해서 Post
+                        <select class="select_box" name="examType" field="*{examType}">
+                        <option th:value="MEANING" select="selected">의미</option>
+                        <option th:value="WORD">영어</option>
+                        <option th:value="EXAMPLE_SENTENCE">문장</option>
+                    </select>
+                        -->
+                        <select class="select_box" id="vocaTitle" name="vocaTitle" field="*{titleDto.vocaTitle}">
+                            <option th:each="vocaName : ${vocaTitleList}" th:value="${vocaName}" th:text="${vocaName}">vocaTitle NULL</option>
                         </select>
 
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">

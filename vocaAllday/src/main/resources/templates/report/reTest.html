@@ -26,7 +26,7 @@
 -->
 
 <body>
-<form action="/mypage/info" id="form" method="post" onsubmit="return false" th:object="${MyPageDto}">
+<form action="/mypage/info" id="form" method="post">
 
     <div class="wrapper">
         <!--시험지 기록 보기-->
@@ -51,8 +51,21 @@
                         <div class="title">문제지 기록</div>
                     </div>
                     <div class="record_body">
+                        <!--vocatitle 선택해서 Post
+                        <select class="select_box" name="examType" field="*{examType}">
+                        <option th:value="MEANING" select="selected">의미</option>
+                        <option th:value="WORD">영어</option>
+                        <option th:value="EXAMPLE_SENTENCE">문장</option>
+                    </select>
 
-                        <div class="word_box" name="vocaTitle" th:value="${vocaTitle}" th:text="${vocaTitle}"></div>
+                        <select class="select_box" id="vocaTitle" name="vocaTitle" field="*{titleDto.vocaTitle}">
+                            <option th:each="vocaName : ${vocaTitleList}" th:value="${vocaName}" th:text="${vocaName}">vocaTitle NULL</option>
+                        </select>
+                        -->
+
+                        <select class="select_box" id="vocaTitle" name="vocaTitle" field="*{myPageDto.vocaTitle}">
+                            <option  th:value="${vocaTitle}" th:text="${vocaTitle}" select="selected">vocaTitle NULL</option>
+                        </select>
 
                         <button class="button" id="select_but" type="submit" disabled="true">
                             <i class="fa-sharp fa-solid fa-check"></i>
@@ -91,7 +104,7 @@
                 <!--시험 유형 선택-->
                 <div class="test_type">
                     <span class="select_title">문제지 유형</span>
-                    <select class="select_box" name="examType" field="*{examType}">
+                    <select class="select_box" name="examType" field="*{myPageDto.examType}">
                         <option th:value="MEANING" select="selected">의미</option>
                         <option th:value="WORD">영어</option>
                         <option th:value="EXAMPLE_SENTENCE">문장</option>
