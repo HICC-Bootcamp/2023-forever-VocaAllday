@@ -2,6 +2,7 @@ package forever.vocaAllday.controller;
 
 import forever.vocaAllday.dto.MyPageDto;
 import forever.vocaAllday.dto.ResultDto;
+import forever.vocaAllday.dto.UserInfoDto;
 import forever.vocaAllday.service.MyPageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,15 +21,16 @@ public class MyPageController {
     @GetMapping("/mypage")
     public String showVocaTitleList(Principal principal, Model model) {
         List<String> vocaTitleList = myPageService.getVocaTitleList(principal.getName());
+        UserInfoDto userInfoDto = myPageService.getUserInfo(principal.getName());
+        model.addAttribute("UserInfoDto",userInfoDto);
         model.addAttribute("vocaTitleList", vocaTitleList);
-        return "mypage";
+        return "report/myReport";
     }
 
     @PostMapping("/mypage")
-    public String selectVocaTitle(@RequestBody String vocaTitle,
-                                  RedirectAttributes redirectAttr) {
+    public String selectVocaTitle(@RequestBody String vocaTitle, RedirectAttributes redirectAttr) {
         redirectAttr.addAttribute("title", vocaTitle);
-        return "redirect:/mypage/word";
+        return "redirect:/mypage/info";
     }
 
     @GetMapping("/mypage/info")
@@ -37,7 +39,9 @@ public class MyPageController {
         ResultDto resultDto = myPageService.showVocaInfo(email, title);
         model.addAttribute("vocaTitle", title);
         model.addAttribute("resultDto", resultDto);
-        return "mypage/info";
+        UserInfoDto userInfoDto = myPageService.getUserInfo(principal.getName());
+        model.addAttribute("UserInfoDto",userInfoDto);
+        return "report/reTest";
     }
 
     @PostMapping("/mypage/info")
