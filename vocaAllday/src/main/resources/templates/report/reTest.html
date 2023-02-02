@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko"xmlns:th="http://www.thymleaf.org">
+<head>
+    <title>solveTestWord</title>
+    <link href="/css/report.css" th:href="@{/css/report.css}" rel="stylesheet">
+    <script src="/js/report.js" th:src="@{/js/report.js}"></script>
+    <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<!--
+    받은 객체 resultDto
+AllWordList
+AllMeaningList
+WrongWordList
+WrongMeaningList
+
+vocaTitle
+    보낼 객체 MyPageDto
+vocaTitle,examType
+-->
+
+<body>
+<form action="/mypage/info" id="form" method="post" onsubmit="return false" th:object="${MyPageDto}">
+
+    <div class="wrapper">
+        <!--시험지 기록 보기-->
+        <div class="wrapper_left">
+            <div class="left_header">
+                <!--사용자 정보(좌끝)-->
+                <div class="header_logo">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="userInfo">
+                    <div class="title" th:text="${UserInfo.name}">NULL</div>
+                    <div class="subtitle" th:text="${UserInfo.email}">aaaaaaaa@naver.com</div>
+                </div>
+            </div>
+            <div class="dividedLine"></div>
+            <div class="left_body">
+                <div class="record">
+                    <div class="record_header">
+                        <div class="header_logo">
+                            <i class="fa-solid fa-file-word"></i>
+                        </div>
+                        <div class="title">문제지 기록</div>
+                    </div>
+                    <div class="record_body">
+
+                        <div class="word_box" name="vocaTitle" th:value="${vocaTitle}" th:text="${vocaTitle}"></div>
+
+                        <button class="button" id="select_but" type="submit" disabled="true">
+                            <i class="fa-sharp fa-solid fa-check"></i>
+                            <span class="submit_but_text">select</span>
+                        </button>
+
+                        <!--vocatitle과 연결된 단어 뜻 리스트-->
+                        <div class="vocaTitle_word_box">
+                            <!--
+                            <option th:each="vocaTitle : ${vocaTitleList}" th:value="${vocaTitle}" th:text="${vocaTitle}">vocaTitle NULL</option>
+                            -->
+                            <div class="left_box">
+                                <div th:each="word : ${resultDto.AllWordList}" th:text="${word}">NULL</div>
+                            </div>
+                            <div class="right_box">
+                                <div th:each="meaning : ${resultDto.AllMeaningList}" th:text="${meaning}">NULL</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 재시험 만들기 -->
+        <div class="wrapper_right">
+            <div class="right_header">
+                <div class="header_logo">
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                </div>
+                <div class="header_text">
+                    <div class="title">재시험지 만들기</div>
+                    <div class="subtitle">나의 시험지를 다시 풀어보세요!</div>
+                </div>
+            </div>
+            <div class="dividedLine"></div>
+            <div class="right_body">
+                <!--시험 유형 선택(현 파일에서 disabled)-->
+                <div class="test_type">
+                    <span class="select_title">문제지 유형</span>
+                    <select class="select_box" name="examType" field="*{examType}">
+                        <option th:value="MEANING" select="selected">의미</option>
+                        <option th:value="WORD">영어</option>
+                        <option th:value="EXAMPLE_SENTENCE">문장</option>
+                    </select>
+                </div>
+            </div>
+            <div class="right_footer">
+                <!--재시험지 만들기 버튼(현 파일에서 disabled)-->
+                <button class="button" id="submit_but" type="submit">
+                    <i class="fa-sharp fa-solid fa-check"></i>
+                    <span class="submit_but_text">Submit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
