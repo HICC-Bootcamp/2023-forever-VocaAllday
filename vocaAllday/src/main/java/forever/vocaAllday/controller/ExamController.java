@@ -1,12 +1,14 @@
 package forever.vocaAllday.controller;
 
 import forever.vocaAllday.dto.ExamInfoDto;
+import forever.vocaAllday.dto.SentenceFormDto;
 import forever.vocaAllday.dto.SentenceInfoDto;
 import forever.vocaAllday.dto.ValueFormDto;
 import forever.vocaAllday.service.CrawlingService;
 import forever.vocaAllday.service.ExamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +21,6 @@ import java.security.Principal;
 public class ExamController {
 
     private final ExamService examService;
-
     private final CrawlingService crawlingService;
 
 
@@ -44,7 +45,7 @@ public class ExamController {
 
     }
 
-    @GetMapping(value = "/sentence")
+    @GetMapping(value = "/example-sentence")
     public String showEXSentence(Principal principal, @RequestParam("title") String title,
                                  @RequestParam("type") String type, Model model) throws IOException {
 
@@ -52,16 +53,15 @@ public class ExamController {
         SentenceInfoDto examInfo = crawlingService.makeTest(email,title);
 
         model.addAttribute("sentenceInfo",examInfo);
-        model.addAttribute("valueFormDto",new ValueFormDto());
+        model.addAttribute("SentenceFormDto",new SentenceFormDto());
 
-        return "makeTest/makeTest";
+        return "makeTest/solveTestSentence";
     }
 
-    @PostMapping(value = "/sentence")
-    public String GetUservalue(@ModelAttribute("userValue") ValueFormDto valueFormDto,
-                               Principal principal) {
+    @PostMapping(value = "/example-sentence")
+    public String GetUservalue(@ModelAttribute("userValue") ValueFormDto valueFormDto)  {
 
-        return "redirect:/"; //forward
+        return "test/word";
 
     }
 

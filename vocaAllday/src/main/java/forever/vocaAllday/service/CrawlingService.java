@@ -12,23 +12,24 @@ import forever.vocaAllday.entity.InputVoca;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CrawlingService {
     private final ReportRepository reportRepository;
 
     private final MemberRepository memberRepository;
-
-    private static String URL = "https://ko.ichacha.net/sentence/";
 
     public CrawlingService(ReportRepository reportRepository, MemberRepository memberRepository) {
         this.reportRepository = reportRepository;
         this.memberRepository = memberRepository;
     }
 
-    public Map<String, String> crawling (String ARR ) throws IOException{
+    public List<String > crawling (String ARR ) throws IOException{
 
-        String KEY_WORD = ARR;
-        String params = KEY_WORD + ".html";
+        String URL = "https://ko.ichacha.net/sentence/";
+
+        String params = ARR + ".html";
 
         Document doc = Jsoup.connect(URL + params).get();
         Elements el = doc.getElementsByAttributeValue("class","sent_list");
@@ -38,11 +39,11 @@ public class CrawlingService {
 
         String sentence = sent.replace(word,"_______");
 
-        HashMap<String,String> map = new HashMap<String,String>();
+        List<String > sent_word =  new ArrayList<String>();
+        sent_word.add(sentence);
+        sent_word.add(word);
 
-        map.put(sentence,word);
-
-        return map;
+        return sent_word;
     }
 
     public  InputVoca  getInputVoca(String email, String vocaTitle){
@@ -56,28 +57,43 @@ public class CrawlingService {
     public SentenceInfoDto makeTest (String email, String vocaTitle) throws IOException {
         InputVoca inputvoca = getInputVoca(email,vocaTitle);
         List<String> tempWord = Arrays.asList(inputvoca.getWord().split(","));
+        List<String> tempMeaning = Arrays.asList(inputvoca.getMeaning().split(","));
 
-        Collections.shuffle(tempWord);
+        HashMap<String, String> map1 = new HashMap<String, String>();//<문장,답>
+        HashMap<String, String> map2 = new HashMap<String, String>();//<보기,뜻>
 
-        HashMap<String, String> map = new HashMap<String, String>();
-
-        int len = tempWord.size();
-
-        for(int j=0;j<len;j++){
-            map = (HashMap<String, String>) crawling(tempWord.get(j));
+        for (int j = 0; j < tempMeaning.size(); j++) {
+            map2.put(tempWord.get(j), tempMeaning.get(j));
         }
+        List<String> word = new ArrayList(map2.keySet());
+        List<String> meaning = new ArrayList<String>();
+        Collections.shuffle(word);
 
-        List<String> tempsentence = new ArrayList(map.keySet());
-        List<String> tempanswer= new ArrayList<String>();
-
-        Iterator<String> it = tempsentence.iterator();
+        Iterator<String> it = word.iterator();
 
         while (it.hasNext()) {
-            String key = it.next();
-            tempanswer.add(map.get(key));
+            String s = it.next();
+            meaning.add(map2.get(s));
         }
 
-        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsentence,tempanswer , tempWord);
+        int len = word.size();
+
+        for(int j=0;j<len;j++){
+            List<String> templist = crawling(word.get(j));
+            map1.put(templist.get(0),templist.get(1));
+        }
+
+        List<String> tempsentence = new ArrayList(map1.keySet());
+        List<String> tempanswer= new ArrayList<String>();
+
+        Iterator<String> its = tempsentence.iterator();
+
+        while (its.hasNext()) {
+            String key = its.next();
+            tempanswer.add(map1.get(key));
+        }
+
+        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsentence, tempanswer , word, meaning);
         return sentinfo;
     }
 }
