@@ -29,16 +29,15 @@ public class Report {
     @JoinColumn(name = "input_id")
     private InputVoca inputVoca;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "wrong_id")
     private WrongVoca wrongVoca;
 
-    public Report(Member member, String vocaTitle, InputVoca inputVoca){
+    public Report(Member member, String vocaTitle, InputVoca inputVoca,WrongVoca wrongVoca){
         this.member=member;
         this.vocaTitle=vocaTitle;
         this.inputVoca=inputVoca;
-        this.wrongVoca=null;
-
+        this.wrongVoca=wrongVoca;
     }
 
 }

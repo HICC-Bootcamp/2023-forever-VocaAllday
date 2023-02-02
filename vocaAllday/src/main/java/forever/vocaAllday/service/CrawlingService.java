@@ -93,7 +93,7 @@ public class CrawlingService {
             tempanswer.add(map1.get(key));
         }
 
-        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsentence, tempanswer , word, meaning);
+        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsentence, tempanswer , word, meaning, vocaTitle);
         return sentinfo;
     }
 }
