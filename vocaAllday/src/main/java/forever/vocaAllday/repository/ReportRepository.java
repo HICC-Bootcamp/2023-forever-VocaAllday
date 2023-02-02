@@ -11,7 +11,7 @@ public interface ReportRepository extends JpaRepository<Report,Long> {
     @Query("select r from Report r where member_id = :member_id and vocaTitle = :vocaTitle")
     Report findByReport(@Param("member_id") Long id, @Param("vocaTitle") String vocaTitle);
 
-    @Query("select voca_title from Report r,Member m where r.member_id = m.member_id and m.email = :email")
+    @Query(value = "select voca_title from Report r,Member m where r.member_id = m.member_id and m.email = :email",nativeQuery = true)
     List<String> findByVocaTitles(@Param("email") String email);
 
 }
