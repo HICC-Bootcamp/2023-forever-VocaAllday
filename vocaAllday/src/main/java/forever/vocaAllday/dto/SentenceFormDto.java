@@ -1,10 +1,12 @@
 package forever.vocaAllday.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
+@AllArgsConstructor
 public class SentenceFormDto {
     private List<String> userValues;//사용자 입력 값
     private List<String> wordList;//<보기>에 들어간 단어

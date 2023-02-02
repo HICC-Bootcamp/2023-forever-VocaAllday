@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -87,19 +88,17 @@ public class GradeService {
         List<String> meanings = sentenceFormDto.getMeaningList(); // 의미
         List<String> answers = sentenceFormDto.getAnswerList(); // 정답
         List<String> words = sentenceFormDto.getWordList();//<보기> 단어
+        //테스트용
+
 
         List<String> wrongWords = new ArrayList<>();
         List<String> wrongMeanings = new ArrayList<>();
 
-        int index = 0;
-
-        for(String answer: answers){
-            if(!(answer.equals(userValues.get(index))));{
-                wrongWords.add(words.get(index));
-                wrongMeanings.add(meanings.get(index));
+        for(int i=0;i<8;i++){
+            if(!Objects.equals(answers.get(i), userValues.get(i))){
+                wrongWords.add(words.get(i));
+                wrongMeanings.add(meanings.get(i));
             }
-            index++;
-
         }
 
         String wrongMeaning = String.join(",", wrongMeanings);

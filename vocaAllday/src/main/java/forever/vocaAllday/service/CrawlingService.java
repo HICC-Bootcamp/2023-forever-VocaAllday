@@ -59,13 +59,12 @@ public class CrawlingService {
         List<String> tempWord = Arrays.asList(inputvoca.getWord().split(","));
         List<String> tempMeaning = Arrays.asList(inputvoca.getMeaning().split(","));
 
-        HashMap<String, String> map1 = new HashMap<String, String>();//<문장,답>
-        HashMap<String, String> map2 = new HashMap<String, String>();//<보기,뜻>
+        HashMap<String, String> map = new HashMap<String, String>();//<보기,뜻>
 
-        for (int j = 0; j < tempMeaning.size(); j++) {
-            map2.put(tempWord.get(j), tempMeaning.get(j));
+        for (int j = 0; j <8; j++) {
+            map.put(tempWord.get(j), tempMeaning.get(j));
         }
-        List<String> word = new ArrayList(map2.keySet());
+        List<String> word = new ArrayList(map.keySet());
         List<String> meaning = new ArrayList<String>();
         Collections.shuffle(word);
 
@@ -73,27 +72,19 @@ public class CrawlingService {
 
         while (it.hasNext()) {
             String s = it.next();
-            meaning.add(map2.get(s));
+            meaning.add(map.get(s));
         }
 
-        int len = word.size();
+        List<String > tempsent = new ArrayList<>();
+        List<String > tempan = new ArrayList<>();
 
-        for(int j=0;j<len;j++){
-            List<String> templist = crawling(word.get(j));
-            map1.put(templist.get(0),templist.get(1));
+        for(int i=0;i<8;i++){
+            List<String> templist = crawling(word.get(i));
+            tempsent.add(templist.get(0));
+            tempan.add(templist.get(1));
         }
 
-        List<String> tempsentence = new ArrayList(map1.keySet());
-        List<String> tempanswer= new ArrayList<String>();
-
-        Iterator<String> its = tempsentence.iterator();
-
-        while (its.hasNext()) {
-            String key = its.next();
-            tempanswer.add(map1.get(key));
-        }
-
-        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsentence, tempanswer , word, meaning, vocaTitle);
+        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsent, tempan , word, meaning, vocaTitle);
         return sentinfo;
     }
 }
