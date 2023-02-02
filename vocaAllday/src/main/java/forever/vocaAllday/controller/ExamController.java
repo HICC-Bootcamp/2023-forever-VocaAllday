@@ -42,7 +42,7 @@ public class ExamController {
         String title = valueFormDto.getVocaTitle();
         redirectAttr.addAttribute("title", title);
 
-        return "redirect:/word/grading-result";
+        return "redirect:/exam/word/grading-result";
 
     }
 

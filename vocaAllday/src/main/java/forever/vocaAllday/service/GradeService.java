@@ -56,18 +56,19 @@ public class GradeService {
         int index = 0;
 
         if (type.equals("MEANING")) {
-            for (String meaning : meanings) {
-                if (!(meaning.equals(userValues.get(index)))) {
-                    wrongWords.add(meaning);
-                    wrongMeanings.add(words.get(index));
-                }
-                index++;
-            }
-        } else if (type.equals("WORD")) {
             for (String word : words) {
                 if (!(word.equals(userValues.get(index)))) {
                     wrongWords.add(word);
                     wrongMeanings.add(meanings.get(index));
+                }
+                index++;
+            }
+
+        } else if (type.equals("WORD")) {
+            for (String meaning : meanings) {
+                if (!(meaning.equals(userValues.get(index)))) {
+                    wrongWords.add(meaning);
+                    wrongMeanings.add(words.get(index));
                 }
                 index++;
             }
