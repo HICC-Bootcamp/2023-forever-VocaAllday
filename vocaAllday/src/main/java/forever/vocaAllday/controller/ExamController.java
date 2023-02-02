@@ -67,7 +67,7 @@ public class ExamController {
         String title = sentenceFormDto.getVocaTitle();
         redirectAttributes.addAttribute("title",title);
 
-        return "redirect:/sentence/grading-result";// 추후 수정
+        return "redirect:/exam/sentence/grading-result";// 추후 수정
 
     }
     @GetMapping(value = "/sentence/grading-result")
