@@ -22,44 +22,44 @@
             </div>
 
             <div class="left_body" id="left_body">
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[0]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[0]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[0]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[0]}"></span>
                     <input class="word_text_box" id="answer1" name="userValues" field="*{userValues[0]}" placeholder="1번 답">
                 </div>
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[1]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[1]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[1]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[1]}"></span>
                     <input class="word_text_box" id="answer2" name="userValues" field="*{userValues[1]}" placeholder="2번 답">
                 </div>
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[2]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[2]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[2]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[2]}"></span>
                     <input class="word_text_box" id="answer3" name="userValues" field="*{userValues[2]}" placeholder="3번 답">
                 </div>
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[3]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[3]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[3]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[3]}"></span>
                     <input class="word_text_box" id="answer4" name="userValues" field="*{userValues[3]}" placeholder="4번 답">
                 </div>
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[4]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[4]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[4]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[4]}"></span>
                     <input class="word_text_box" id="answer5" name="userValues" field="*{userValues[4]}" placeholder="5번 답">
                 </div>
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[5]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[5]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[5]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[5]}"></span>
                     <input class="word_text_box" id="answer6" name="userValues" field="*{userValues[5]}" placeholder="6번 답">
                 </div>
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[6]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[6]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[6]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[6]}"></span>
                     <input class="word_text_box" id="answer7" name="userValues" field="*{userValues[6]}" placeholder="7번 답">
                 </div>
-                <div class="word_container" th:switch="${examInfoDto.type}">
-                    <span class="word_text_box" th:case="WORD" th:text="${examInfoDto.words[7]}"></span>
-                    <span class="word_text_box" th:case="MEANING" th:text="${examInfoDto.meanings[7]}"></span>
+                <div class="word_container" th:switch="${wordInfoDto.type}">
+                    <span class="word_text_box" th:case="WORD" th:text="${wordInfoDto.words[7]}"></span>
+                    <span class="word_text_box" th:case="MEANING" th:text="${wordInfoDto.meanings[7]}"></span>
                     <input class="word_text_box" id="answer8" name="userValues" field="*{userValues[7]}" placeholder="8번 답">
                 </div>
 
@@ -80,55 +80,55 @@
             <div class="dividedLine"></div>
 
             <div class="right_body">
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck1" onclick="delete_hint(1)">
-                <span id="hint1" th:case="WORD" th:text="${examInfoDto.meanings[0]}"></span>
-                <span id="hint1" th:case="MEANING" th:text="${examInfoDto.words[0]}"></span>
+                <span id="hint1" th:case="WORD" th:text="${wordInfoDto.meanings[0]}"></span>
+                <span id="hint1" th:case="MEANING" th:text="${wordInfoDto.words[0]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck2" onclick="delete_hint(2)">
-                <span id="hint2" th:case="WORD" th:text="${examInfoDto.meanings[1]}"></span>
-                <span id="hint2" th:case="MEANING" th:text="${examInfoDto.words[1]}"></span>
+                <span id="hint2" th:case="WORD" th:text="${wordInfoDto.meanings[1]}"></span>
+                <span id="hint2" th:case="MEANING" th:text="${wordInfoDto.words[1]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck3" onclick="delete_hint(3)">
-                <span id="hint3" th:case="WORD" th:text="${examInfoDto.meanings[2]}"></span>
-                <span id="hint3" th:case="MEANING" th:text="${examInfoDto.words[2]}"></span>
+                <span id="hint3" th:case="WORD" th:text="${wordInfoDto.meanings[2]}"></span>
+                <span id="hint3" th:case="MEANING" th:text="${wordInfoDto.words[2]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck4" onclick="delete_hint(4)">
-                <span id="hint4" th:case="WORD" th:text="${examInfoDto.meanings[3]}"></span>
-                <span id="hint4" th:case="MEANING" th:text="${examInfoDto.words[3]}"></span>
+                <span id="hint4" th:case="WORD" th:text="${wordInfoDto.meanings[3]}"></span>
+                <span id="hint4" th:case="MEANING" th:text="${wordInfoDto.words[3]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck5" onclick="delete_hint(5)">
-                <span id="hint5" th:case="WORD" th:text="${examInfoDto.meanings[4]}"></span>
-                <span id="hint5" th:case="MEANING" th:text="${examInfoDto.words[4]}"></span>
+                <span id="hint5" th:case="WORD" th:text="${wordInfoDto.meanings[4]}"></span>
+                <span id="hint5" th:case="MEANING" th:text="${wordInfoDto.words[4]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck6" onclick="delete_hint(6)">
-                <span id="hint6" th:case="WORD" th:text="${examInfoDto.meanings[5]}"></span>
-                <span id="hint6" th:case="MEANING" th:text="${examInfoDto.words[5]}"></span>
+                <span id="hint6" th:case="WORD" th:text="${wordInfoDto.meanings[5]}"></span>
+                <span id="hint6" th:case="MEANING" th:text="${wordInfoDto.words[5]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck7" onclick="delete_hint(7)">
-                <span id="hint7" th:case="WORD" th:text="${examInfoDto.meanings[6]}"></span>
-                <span id="hint7" th:case="MEANING" th:text="${examInfoDto.words[6]}"></span>
+                <span id="hint7" th:case="WORD" th:text="${wordInfoDto.meanings[6]}"></span>
+                <span id="hint7" th:case="MEANING" th:text="${wordInfoDto.words[6]}"></span>
             </span>
-            <span th:switch="${examInfoDto.type}">
+            <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck8" onclick="delete_hint(8)">
-                <span id="hint8" th:case="WORD" th:text="${examInfoDto.meanings[7]}"></span>
-                <span id="hint8" th:case="MEANING" th:text="${examInfoDto.words[7]}"></span>
+                <span id="hint8" th:case="WORD" th:text="${wordInfoDto.meanings[7]}"></span>
+                <span id="hint8" th:case="MEANING" th:text="${wordInfoDto.words[7]}"></span>
             </span>
             </div>
 
             <!--백에서 받은 정보 그대로 돌려주기(meaning,words,type=>wordList,meaningList,examType)-->
-            <input type="hidden" name="examType" th:value="${examInfoDto.type}" >
-            <input type="hidden" name="vocaTitle" th:value="${examInfoDto.vocaTitle}">
+            <input type="hidden" name="examType" th:value="${wordInfoDto.type}" >
+            <input type="hidden" name="vocaTitle" th:value="${wordInfoDto.vocaTitle}">
             <tr th:each="num :  ${#numbers.sequence(0,7)}">
                 <td>
-                    <input type="hidden" name="meaningList" th:value="${examInfoDto.meanings[__${num}__]}" >
-                    <input type="hidden" name="wordList" th:value="${examInfoDto.words[__${num}__]}" >
+                    <input type="hidden" name="meaningList" th:value="${wordInfoDto.meanings[__${num}__]}" >
+                    <input type="hidden" name="wordList" th:value="${wordInfoDto.words[__${num}__]}" >
                 </td>
             </tr>
 
