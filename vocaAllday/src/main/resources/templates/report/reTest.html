@@ -2,8 +2,8 @@
 <html lang="ko"xmlns:th="http://www.thymleaf.org">
 <head>
     <title>myReport::reTest</title>
-    <link href="/css/report.css" th:href="@{/css/report.css}" rel="stylesheet">
-    <script src="/js/report.js" th:src="@{/js/report.js}"></script>
+    <link href="/css/reTest.css" th:href="@{/css/reTest.css}" rel="stylesheet">
+    <script src="/js/reTest.js" th:src="@{/js/reTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -49,11 +49,6 @@
                             <i class="fa-solid fa-file-word"></i>
                         </div>
                         <div class="title">문제지 기록</div>
-                    </div>
-                    <div class="record_body">
-                        <!--vocatitle 선택해서 Post
-                        -->
-
                         <select class="select_box" id="vocaTitle" name="vocaTitle" field="*{myPageDto.vocaTitle}">
                             <option  th:value="${vocaTitle}" th:text="${vocaTitle}" select="selected">vocaTitle NULL</option>
                         </select>
@@ -62,14 +57,17 @@
                             <i class="fa-sharp fa-solid fa-check"></i>
                             <span class="submit_but_text">select</span>
                         </button>
-
+                    </div>
+                    <div class="record_body">
+                        <!--vocatitle 선택해서 Post
+                        -->
                         <!--vocatitle과 연결된 단어 뜻 리스트-->
                         <div class="vocaTitle_word_box">
                             <div class="left_box">
-                                <div th:each="word : ${resultDto.AllWordList}" th:text="${word}">NULL</div>
+                                <div class="text_box" th:each="word : ${resultDto.AllWordList}" th:text="${word}">NULL</div>
                             </div>
                             <div class="right_box">
-                                <div th:each="meaning : ${resultDto.AllMeaningList}" th:text="${meaning}">NULL</div>
+                                <div class="text_box" th:each="meaning : ${resultDto.AllMeaningList}" th:text="${meaning}">NULL</div>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ html, body{
 /* 왼: 시험지 기록 */
 .wrapper_left{
     width: 660px;
-    height: 500px;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -33,7 +33,7 @@ html, body{
 }
 .left_header{
     width: 88%;
-    height: 90px;
+    height: 110px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -60,27 +60,60 @@ html, body{
 .record{
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 .record_header{
-    width: 25%;
+    width: 100%;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-right: 10px;
 
 }
 .record_body{
-    width: 70%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
 }
+.vocaTitle_word_box{
+    width: 55%;
 
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
 
+    border: 2px solid #8CBDB9;
+    border-radius: 10px;
+    background-color:white;
+}
+.left_box{
+}
+.right_box{
+}
+.text_box{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 550;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    padding-bottom: 15px;
+}
 /* 재시험 만들기 */
 .wrapper_right{
     width: 400px;
