@@ -66,10 +66,10 @@
                         <!--vocatitle과 연결된 단어 뜻 리스트-->
                         <div class="vocaTitle_word_box">
                             <div class="left_box">
-                                <div class="text_box" th:each="word : ${resultDto.AllWordList}" id="|ko${word.count}|" th:text="${word}">NULL</div>
+                                <div class="text_box" th:each="word : ${resultDto.AllWordList}" id="${word.count}" th:text="${word}">NULL</div>
                             </div>
                             <div class="right_box">
-                                <div class="text_box" th:each="meaning : ${resultDto.AllMeaningList}" id="|en${meaning.count}|" th:text="${meaning}">NULL</div>
+                                <div class="text_box" th:each="meaning : ${resultDto.AllMeaningList}" id="${meaning.count}" th:text="${meaning}">NULL</div>
                             </div>
                         </div>
                     </div>
@@ -128,11 +128,14 @@
         for (i; i<cnt_add; i++){  
             console.log(wrongWord);
             if(wrongWord.includes(allWord[i])){
+                alert("틀림!")
                 //i번째가 틀린 경우
                 console.log(allWord[i]);
-                //color:red;
-                document.getElementById("en"+i).className="wrong_text";
-                document.getElementById("ko"+i).className="wrong_text";
+
+                /*
+                document.getElementById(i).className="wrong_text";
+                document.getElementById(i).className="wrong_text";
+                */
             }
         }
 
