@@ -114,6 +114,22 @@ html, body{
     text-transform: capitalize;
     padding-bottom: 15px;
 }
+.wrong_text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+       font-family: 'IBM Plex Sans';
+       font-style: normal;
+       font-weight: 550;
+       font-size: 16px;
+       line-height: 150%;
+       letter-spacing: 0.05em;
+       text-transform: capitalize;
+       padding-bottom: 15px;
+   
+    color: red;
+}
 /* 재시험 만들기 */
 .wrapper_right{
     width: 400px;

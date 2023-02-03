@@ -105,11 +105,20 @@
             왼쪽 정답단어/틀린단어 색전환 기능
         */
 
-        var resultDto = [[${resultDto}]];   //js로 thymeleaf 객체 전달
+        //js로 thymeleaf 객체 전달
+        var allWord = [[${resultDto.AllWordList}]]; 
+        var wrongWord = [[${resultDto.WrongWordList}]];  
         let i = 0;
         var cnt_add = 8;
         for (i; i<cnt_add; i++){  
-            console.log(resultDto.AllWordList[i]);
+            console.log(wrongWord);
+            if(wrongWord.includes(allWord[i])){
+                //i번째가 틀린 경우
+                console.log(allWord[i]);
+                //color:red;
+                document.getElementById("en"+i).className="wrong_text";
+                document.getElementById("ko"+i).className="wrong_text";
+            }
         }
 
     });

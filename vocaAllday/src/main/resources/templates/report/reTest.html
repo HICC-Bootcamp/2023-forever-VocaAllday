@@ -66,10 +66,10 @@
                         <!--vocatitle과 연결된 단어 뜻 리스트-->
                         <div class="vocaTitle_word_box">
                             <div class="left_box">
-                                <div class="text_box" th:each="word : ${resultDto.AllWordList}" th:text="${word}">NULL</div>
+                                <div class="text_box" th:each="word : ${resultDto.AllWordList}" id="|ko${word.count}|" th:text="${word}">NULL</div>
                             </div>
                             <div class="right_box">
-                                <div class="text_box" th:each="meaning : ${resultDto.AllMeaningList}" th:text="${meaning}">NULL</div>
+                                <div class="text_box" th:each="meaning : ${resultDto.AllMeaningList}" id="|en${meaning.count}|" th:text="${meaning}">NULL</div>
                             </div>
                         </div>
                     </div>
@@ -111,5 +111,34 @@
     </div>
 
 </form>
+
+<script th:inline="javascript">
+    //타임리프 사용하는 js기능
+
+    $(document).ready(function () {
+        /*
+            왼쪽 정답단어/틀린단어 색전환 기능
+        */
+
+        //js로 thymeleaf 객체 전달
+        var allWord = [[${resultDto.AllWordList}]]; 
+        var wrongWord = [[${resultDto.WrongWordList}]];  
+        let i = 0;
+        var cnt_add = 8;
+        for (i; i<cnt_add; i++){  
+            console.log(wrongWord);
+            if(wrongWord.includes(allWord[i])){
+                //i번째가 틀린 경우
+                console.log(allWord[i]);
+                //color:red;
+                document.getElementById("en"+i).className="wrong_text";
+                document.getElementById("ko"+i).className="wrong_text";
+            }
+        }
+
+    });
+
+</script>
+
 </body>
 </html>
