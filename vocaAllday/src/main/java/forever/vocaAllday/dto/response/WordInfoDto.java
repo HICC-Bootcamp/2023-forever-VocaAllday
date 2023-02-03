@@ -1,13 +1,14 @@
-package forever.vocaAllday.dto;
+package forever.vocaAllday.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.List;
 
-@AllArgsConstructor
+
 @Getter
-public class ExamInfoDto {  //프론트 시험 정보 전달 DTO
+@AllArgsConstructor
+public class WordInfoDto {  //프론트 word 시험 정보 전달 DTO
     List<String> words;
     List<String> meanings;
     String type;

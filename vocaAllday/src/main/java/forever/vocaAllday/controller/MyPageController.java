@@ -1,9 +1,9 @@
 package forever.vocaAllday.controller;
 
-import forever.vocaAllday.dto.MyPageDto;
-import forever.vocaAllday.dto.ResultDto;
-import forever.vocaAllday.dto.TitleDto;
-import forever.vocaAllday.dto.UserInfoDto;
+import forever.vocaAllday.dto.request.MyPageDto;
+import forever.vocaAllday.dto.response.ResultDto;
+import forever.vocaAllday.dto.response.TitleDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.enums.ExamType;
 import forever.vocaAllday.service.MyPageService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -53,9 +52,6 @@ public class MyPageController {
                                    RedirectAttributes redirectAttr) {
         String title = myPageDto.getVocaTitle();
         ExamType examType = myPageDto.getExamType();
-
-        System.out.println(title);
-        System.out.println(examType);
 
         if (forever.vocaAllday.enums.ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);

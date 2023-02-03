@@ -1,4 +1,4 @@
-package forever.vocaAllday.dto;
+package forever.vocaAllday.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

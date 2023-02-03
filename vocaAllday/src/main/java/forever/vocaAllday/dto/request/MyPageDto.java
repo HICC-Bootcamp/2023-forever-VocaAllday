@@ -1,4 +1,4 @@
-package forever.vocaAllday.dto;
+package forever.vocaAllday.dto.request;
 
 import forever.vocaAllday.enums.ExamType;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,10 @@
 package forever.vocaAllday.controller;
 
-import forever.vocaAllday.dto.*;
+import forever.vocaAllday.dto.request.SentenceFormDto;
+import forever.vocaAllday.dto.request.WordFormDto;
+import forever.vocaAllday.dto.response.WordInfoDto;
+import forever.vocaAllday.dto.response.ResultDto;
+import forever.vocaAllday.dto.response.SentenceInfoDto;
 import forever.vocaAllday.service.CrawlingService;
 import forever.vocaAllday.service.ExamService;
 import forever.vocaAllday.service.GradeService;
@@ -28,14 +32,14 @@ public class ExamController {
                                @RequestParam("type") String type, Model model) {
 
         String email = principal.getName();
-        ExamInfoDto exam = examService.makeExam(email, title, type);
-        model.addAttribute("examInfoDto", exam);
+        WordInfoDto exam = examService.makeExam(email, title, type);
+        model.addAttribute("wordInfoDto", exam);
 
         return "makeTest/solveTestWord";
     }
 
     @PostMapping(value = "/word")
-    public String GetUserValue(@ModelAttribute ValueFormDto valueFormDto, Principal principal,
+    public String GetUserValue(@ModelAttribute WordFormDto valueFormDto, Principal principal,
                                RedirectAttributes redirectAttr) {
         String email = principal.getName();
         gradeService.grade(email, valueFormDto);
