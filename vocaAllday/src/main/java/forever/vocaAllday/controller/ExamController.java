@@ -45,11 +45,11 @@ public class ExamController {
     }
 
     @PostMapping(value = "/word")
-    public String GetUserValue(@ModelAttribute WordFormDto valueFormDto, Principal principal,
+    public String GetUserValue(@ModelAttribute WordFormDto wordFormDto, Principal principal,
                                RedirectAttributes redirectAttr) {
         String email = principal.getName();
-        gradeService.grade(email, valueFormDto);
-        String title = valueFormDto.getVocaTitle();
+        gradeService.grade(email, wordFormDto);
+        String title = wordFormDto.getVocaTitle();
         redirectAttr.addAttribute("title", title);
 
         return "redirect:/exam/word/grading-result";
@@ -98,4 +98,3 @@ public class ExamController {
     }
 
 }
-
