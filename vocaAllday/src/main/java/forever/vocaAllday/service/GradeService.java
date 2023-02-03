@@ -3,6 +3,7 @@ package forever.vocaAllday.service;
 import forever.vocaAllday.dto.response.ResultDto;
 import forever.vocaAllday.dto.request.SentenceFormDto;
 import forever.vocaAllday.dto.request.WordFormDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -45,14 +47,14 @@ public class GradeService {
 
     public void grade(String email, WordFormDto wordFormDto) {
 
-        String type = wordFormDto.getExamType();
-        List<String> userValues = wordFormDto.getUserValues(); // 유저 입력 값
+        String type = valueFormDto.getExamType();
+        List<String> userValues = valueFormDto.getUserValues();
 
-        List<String> meanings = wordFormDto.getMeaningList(); // 정답 의미
-        List<String> words = wordFormDto.getWordList(); // 정답 단어
+        List<String> meanings = valueFormDto.getMeaningList();
+        List<String> words = valueFormDto.getWordList();
 
-        List<String> wrongWords = new ArrayList<>(); // 틀린 단어 저장 배열
-        List<String> wrongMeanings = new ArrayList<>(); // 틀린 의미 저장 배열
+        List<String> wrongWords = new ArrayList<>();
+        List<String> wrongMeanings = new ArrayList<>();
 
         int index = 0;
 
@@ -83,23 +85,21 @@ public class GradeService {
 
     }
     public void gradeTest(String email, SentenceFormDto sentenceFormDto){
-        List<String> userValues = sentenceFormDto.getUserValues(); //사용자 입력 값
-        List<String> meanings = sentenceFormDto.getMeaningList(); // 의미
-        List<String> answers = sentenceFormDto.getAnswerList(); // 정답
-        List<String> words = sentenceFormDto.getWordList();//<보기> 단어
+        List<String> userValues = sentenceFormDto.getUserValues();
+        List<String> meanings = sentenceFormDto.getMeaningList();
+        List<String> answers = sentenceFormDto.getAnswerList();
+        List<String> words = sentenceFormDto.getWordList();
+        //테스트용
+
 
         List<String> wrongWords = new ArrayList<>();
         List<String> wrongMeanings = new ArrayList<>();
 
-        int index = 0;
-
-        for(String answer: answers){
-            if(!(answer.equals(userValues.get(index))));{
-                wrongWords.add(words.get(index));
-                wrongMeanings.add(meanings.get(index));
+        for(int i=0;i<8;i++){
+            if(!Objects.equals(answers.get(i), userValues.get(i))){
+                wrongWords.add(words.get(i));
+                wrongMeanings.add(meanings.get(i));
             }
-            index++;
-
         }
 
         String wrongMeaning = String.join(",", wrongMeanings);
@@ -125,5 +125,5 @@ public class GradeService {
         return resultDto;
     }
 
-}
 
+}
