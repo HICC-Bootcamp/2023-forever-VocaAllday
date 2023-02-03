@@ -1,6 +1,6 @@
 package forever.vocaAllday.controller;
 
-import forever.vocaAllday.dto.InputInfoDto;
+import forever.vocaAllday.dto.request.InputInfoDto;
 import forever.vocaAllday.enums.ExamType;
 import forever.vocaAllday.service.ReportService;
 import lombok.RequiredArgsConstructor;

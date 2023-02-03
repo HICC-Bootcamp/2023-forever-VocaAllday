@@ -1,7 +1,7 @@
 package forever.vocaAllday.service;
 
-import forever.vocaAllday.dto.ResultDto;
-import forever.vocaAllday.dto.UserInfoDto;
+import forever.vocaAllday.dto.response.ResultDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;

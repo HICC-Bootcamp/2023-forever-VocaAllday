@@ -1,6 +1,6 @@
 package forever.vocaAllday.service;
 
-import forever.vocaAllday.dto.SentenceInfoDto;
+import forever.vocaAllday.dto.response.SentenceInfoDto;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
 import forever.vocaAllday.repository.MemberRepository;

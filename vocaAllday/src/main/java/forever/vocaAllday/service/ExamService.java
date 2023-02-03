@@ -1,7 +1,7 @@
 package forever.vocaAllday.service;
 
 
-import forever.vocaAllday.dto.ExamInfoDto;
+import forever.vocaAllday.dto.response.WordInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -29,7 +29,7 @@ public class ExamService {
         return inputVoca;
     }
 
-    public ExamInfoDto makeExam(String email, String vocaTitle, String type) {
+    public WordInfoDto makeExam(String email, String vocaTitle, String type) {
 
         InputVoca inputVoca = getInputVoca(email, vocaTitle);
         List<String> tempWord = Arrays.asList(inputVoca.getWord().split(","));
@@ -52,9 +52,9 @@ public class ExamService {
             meaning.add(map.get(s));
         }
 
-        ExamInfoDto examInfoDto = new ExamInfoDto(word,meaning,type,vocaTitle);
+        WordInfoDto wordInfoDto = new WordInfoDto(word,meaning,type,vocaTitle);
 
-        return examInfoDto;
+        return wordInfoDto;
 
     }
 
