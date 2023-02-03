@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class MyPageService {
 
     private final ReportRepository reportRepository;
     private final MemberRepository memberRepository;
-    private final WrongVocaRepository wrongVocaRepository;
+
 
     public Report findReport(String email, String vocaTitle) {
         Member member = memberRepository.findByEmail(email);
@@ -35,7 +36,6 @@ public class MyPageService {
         return reportRepository.findByVocaTitles(email);
 
     }
-
     public UserInfoDto getUserInfo(String email){
         Member member = memberRepository.findByEmail(email);
         String name = member.getName();
@@ -51,8 +51,13 @@ public class MyPageService {
         List<String> AllWordList = Arrays.asList(inputVoca.getWord().split(","));
         List<String> AllMeaningList = Arrays.asList(inputVoca.getMeaning().split(","));
 
-        List<String> WrongWordList = Arrays.asList(wrongVoca.getWord().split(","));
-        List<String> WrongMeaningList = Arrays.asList(wrongVoca.getMeaning().split(","));
+        List<String> WrongWordList = new ArrayList<>();
+        List<String> WrongMeaningList = new ArrayList<>();
+
+        if(wrongVoca.getWord()!=null){
+            WrongWordList = Arrays.asList(wrongVoca.getWord().split(","));
+            WrongMeaningList = Arrays.asList(wrongVoca.getMeaning().split(","));
+        }
 
         ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList);
 

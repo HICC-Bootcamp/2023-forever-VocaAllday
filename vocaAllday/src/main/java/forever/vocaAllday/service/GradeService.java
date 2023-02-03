@@ -3,6 +3,7 @@ package forever.vocaAllday.service;
 import forever.vocaAllday.dto.response.ResultDto;
 import forever.vocaAllday.dto.request.SentenceFormDto;
 import forever.vocaAllday.dto.request.WordFormDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -124,6 +125,7 @@ public class GradeService {
 
         return resultDto;
     }
+
 
 }
 

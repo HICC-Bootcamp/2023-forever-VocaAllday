@@ -1,6 +1,7 @@
 package forever.vocaAllday.service;
 
 
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.dto.response.WordInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
@@ -57,6 +58,7 @@ public class ExamService {
         return wordInfoDto;
 
     }
+
 
 
 }
