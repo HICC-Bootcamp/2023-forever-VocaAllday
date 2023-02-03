@@ -7,8 +7,8 @@
 <body>
 <div th:fragment="header">
     <div class="fragment_header">
-        <img class="logo"  id="menuMain" src="/img/logo1.png" th:src="@{/img/logo1.png}">
-        <button class="login" id="menuLogin">login</button>
+        <img class="logo"  id="menuMain" src="/img/logo1.png" th:src="@{/img/logo1.png}" th:onclick="|location.href='@{/}'|">
+        <button class="login" id="menuLogin" th:onclick="|location.href='@{/mypage}'|">myTest</button>
     </div>
     <div class="fragment_dividedLine"></div>
 </div>
