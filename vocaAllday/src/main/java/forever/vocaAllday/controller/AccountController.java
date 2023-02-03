@@ -1,6 +1,6 @@
 package forever.vocaAllday.controller;
 
-import forever.vocaAllday.dto.MemberFormDto;
+import forever.vocaAllday.dto.request.MemberFormDto;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.service.MemberService;
 import lombok.RequiredArgsConstructor;
