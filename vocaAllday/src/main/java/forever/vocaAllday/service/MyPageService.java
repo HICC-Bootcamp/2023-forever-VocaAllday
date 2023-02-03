@@ -59,7 +59,9 @@ public class MyPageService {
             WrongMeaningList = Arrays.asList(wrongVoca.getMeaning().split(","));
         }
 
-        ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList);
+        int wrongNum = WrongWordList.size();
+
+        ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList,wrongNum);
 
         return resultDto;
     }

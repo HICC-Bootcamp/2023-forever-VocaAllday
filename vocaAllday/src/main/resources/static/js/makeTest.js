@@ -75,7 +75,6 @@ const check_validation = () => {
 
     if(validation){
         //유효성 검사 통과
-        Swal.fire('단어입력 성공',"문제지를 제작하고 있습니다!",'success')
         form.submit();
     }else{
         Swal.fire('문제지 제작 실패',"입력한 단어,의미,단어장이름을 확인해주세요!",'error')
