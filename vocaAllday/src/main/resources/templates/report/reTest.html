@@ -3,6 +3,7 @@
 <head>
     <title>myReport::reTest</title>
     <link href="/css/reTest.css" th:href="@{/css/reTest.css}" rel="stylesheet">
+    <link href="/css/header.css" th:href="@{/css/header.css}" rel="stylesheet">
     <script src="/js/reTest.js" th:src="@{/js/reTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -26,6 +27,7 @@
 -->
 
 <body>
+<div th:replace="fragments/header :: header">-- thymeleaf header will be inserted here. --</div>
 <form action="/mypage/info" id="form" method="post">
 
     <div class="wrapper">

@@ -3,6 +3,7 @@
 <head>
     <title>myReport</title>
     <link href="/css/report.css" th:href="@{/css/report.css}" rel="stylesheet">
+    <link href="/css/header.css" th:href="@{/css/header.css}" rel="stylesheet">
     <script src="/js/report.js" th:src="@{/js/report.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -19,6 +20,7 @@
 -->
 
 <body>
+<div th:replace="fragments/header :: header">-- thymeleaf header will be inserted here. --</div>
     <form action="/mypage" id="form" method="post">
 
     <div class="wrapper">

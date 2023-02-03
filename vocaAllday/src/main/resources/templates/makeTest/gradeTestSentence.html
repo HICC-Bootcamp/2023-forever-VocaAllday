@@ -3,12 +3,14 @@
 <head>
     <title>gradeTestWord</title>
     <link href="/css/gradeTest.css" th:href="@{/css/gradeTest.css}" rel="stylesheet">
+    <link href="/css/header.css" th:href="@{/css/header.css}" rel="stylesheet">
     <script src="/js/gradeTest.js" th:src="@{/js/gradeTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
+<div th:replace="fragments/header :: header">-- thymeleaf header will be inserted here. --</div>
 <div class="wrapper">
     <!--받은 객체
 public class resultDto {
