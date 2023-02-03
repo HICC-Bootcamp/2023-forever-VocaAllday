@@ -7,6 +7,7 @@
     <script src="/js/makeTest.js" th:src="@{/js/makeTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header">-- thymeleaf header will be inserted here. --</div>
@@ -23,35 +24,43 @@
             <div class="left_body" id="left_body">
                 <div class="input_word">
                     <input class="text_box" type="text" id=word1 name="word" field="*{word[0]}" placeholder="1">
-                    <input class="text_box" type="text" id=meaning1 name="meaning" field="*{meaning[0]}" placeholder="1">
+                    <input class="text_box" type="text" id=meaning1 name="meaning" field="*{meaning[0]}"
+                           placeholder="1">
                 </div>
                 <div class="input_word">
                     <input class="text_box" type="text" id=word2 name="word" field="*{word[1]}" placeholder="2">
-                    <input class="text_box" type="text" id=meaning2 name="meaning" field="*{meaning[1]}" placeholder="2">
+                    <input class="text_box" type="text" id=meaning2 name="meaning" field="*{meaning[1]}"
+                           placeholder="2">
                 </div>
                 <div class="input_word">
                     <input class="text_box" type="text" id=word3 name="word" field="*{word[2]}" placeholder="3">
-                    <input class="text_box" type="text" id=meaning3 name="meaning" field="*{meaning[2]}" placeholder="3">
+                    <input class="text_box" type="text" id=meaning3 name="meaning" field="*{meaning[2]}"
+                           placeholder="3">
                 </div>
                 <div class="input_word">
                     <input class="text_box" type="text" id=word4 name="word" field="*{word[3]}" placeholder="4">
-                    <input class="text_box" type="text" id=meaning4 name="meaning" field="*{meaning[3]}" placeholder="4">
+                    <input class="text_box" type="text" id=meaning4 name="meaning" field="*{meaning[3]}"
+                           placeholder="4">
                 </div>
                 <div class="input_word">
                     <input class="text_box" type="text" id=word5 name="word" field="*{word[4]}" placeholder="5">
-                    <input class="text_box" type="text" id=meaning5 name="meaning" field="*{meaning[4]}" placeholder="5">
+                    <input class="text_box" type="text" id=meaning5 name="meaning" field="*{meaning[4]}"
+                           placeholder="5">
                 </div>
                 <div class="input_word">
                     <input class="text_box" type="text" id=word6 name="word" field="*{word[5]}" placeholder="6">
-                    <input class="text_box" type="text" id=meaning6 name="meaning" field="*{meaning[5]}" placeholder="6">
+                    <input class="text_box" type="text" id=meaning6 name="meaning" field="*{meaning[5]}"
+                           placeholder="6">
                 </div>
                 <div class="input_word">
                     <input class="text_box" type="text" id=word7 name="word" field="*{word[6]}" placeholder="7">
-                    <input class="text_box" type="text" id=meaning7 name="meaning" field="*{meaning[6]}" placeholder="7">
+                    <input class="text_box" type="text" id=meaning7 name="meaning" field="*{meaning[6]}"
+                           placeholder="7">
                 </div>
                 <div class="input_word">
                     <input class="text_box" type="text" id=word8 name="word" field="*{word[7]}" placeholder="8">
-                    <input class="text_box" type="text" id=meaning8 name="meaning" field="*{meaning[7]}" placeholder="8">
+                    <input class="text_box" type="text" id=meaning8 name="meaning" field="*{meaning[7]}"
+                           placeholder="8">
                 </div>
             </div>
 
@@ -64,7 +73,7 @@
 
         </div>
         <!-- 시험지 유형 선택 창 -->
-        <div class="wrapper_right" id="wrapper_right" >
+        <div class="wrapper_right" id="wrapper_right">
             <div class="right_header">
                 <div class="header_logo">
                     <i class="fa-sharp fa-solid fa-pen-to-square"></i>
@@ -77,11 +86,11 @@
             <div class="dividedLine"></div>
             <div class="right_body">
                 <div class="test_name">
-                    <span class="select_title" >단어장 이름</span>
+                    <span class="select_title">단어장 이름</span>
                     <input class="vocaTitle" id="vocaTitle" type="text" name="vocaTitle" field="*{vocaTitle}">
                 </div>
                 <div class="test_num">
-                    <span class="select_title" >단어 당 문제 개수</span>
+                    <span class="select_title">단어 당 문제 개수</span>
                     <select class="select_box" name="numOfQuestions" field="*{numOfQuestions}">
                         <option th:value="1" select="selected">1개</option>
                     </select>
@@ -104,9 +113,31 @@
                 </button>
                 <!--(임시) 버튼 클릭 시 레포트로 이동-->
                 <button th:onclick="|location.href='@{/mypage}'|">내레포트</button>
+                <button th:onclick="|location.href='@{/auth/login}'|">로그아웃</button>
             </div>
         </div>
     </div>
 </form>
+
+<script th:inline="javascript">
+
+    $(document).ready(function () {
+        let vocaMessage = [[${vocaTitleError}]];
+        let wordMessage = [[${wordError}]];
+        let notExistMessage = [[${notExistError}]];
+        if (vocaMessage != null) {
+            Swal.fire('단어입력 실패',"단어장 이름이 중복되었습니다",'error')
+        }
+        if (wordMessage != null) {
+            Swal.fire('단어입력 실패',"중복된 단어가 있습니다",'error')
+        }
+        if (notExistMessage != null) {
+            Swal.fire('단어입력 실패',"사전에 등재되지 않은 단어가 있습니다",'error')
+        }
+    });
+
+
+</script>
+
 </body>
 </html>

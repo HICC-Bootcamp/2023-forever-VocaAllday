@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Service
 @Transactional
@@ -30,12 +32,12 @@ public class ReportService {
         String vocaTitle = inputInfoDto.getVocaTitle();
         validateDuplicateTitle(member.getId(), vocaTitle);
 
-        String[] words = inputInfoDto.getWord();
+        List<String> words = inputInfoDto.getWord();
 
-        for(int i=0;i<words.length;i++){
-            for(int j=i+1;j<words.length;j++){
-                if(words[i]!=null&words[i].equals(words[j])){
-                    throw new IllegalStateException("단어가 중복되었습니다.");
+        for (int i = 0; i < words.size(); i++) {
+            for (int j = i + 1; j < words.size(); j++) {
+                if (words.get(i) != null & words.get(i).equals(words.get(j))) {
+                    throw new IllegalStateException("wordError");
                 }
             }
         }
@@ -44,7 +46,7 @@ public class ReportService {
         String meaning = String.join(",", inputInfoDto.getMeaning());
 
         InputVoca inputVoca = inputInfoDto.createInputVoca(word, meaning);
-        WrongVoca wrongVoca = new WrongVoca(null,null);
+        WrongVoca wrongVoca = new WrongVoca(null, null);
         Report report = new Report(member, vocaTitle, inputVoca, wrongVoca);
 
         inputVocaRepository.save(inputVoca);
@@ -54,13 +56,12 @@ public class ReportService {
 
     }
 
-    private void validateDuplicateTitle(Long id, String title){
-        Report report = reportRepository.findByReport(id,title);
-        if(report != null){
+    private void validateDuplicateTitle(Long id, String title) {
+        Report report = reportRepository.findByReport(id, title);
+        if (report != null) {
             throw new IllegalStateException("vocaTitleError");
         }
     }
-
 
 
 }

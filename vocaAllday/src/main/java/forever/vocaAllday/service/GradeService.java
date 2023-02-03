@@ -1,9 +1,8 @@
 package forever.vocaAllday.service;
 
-import forever.vocaAllday.dto.response.ResultDto;
 import forever.vocaAllday.dto.request.SentenceFormDto;
 import forever.vocaAllday.dto.request.WordFormDto;
-import forever.vocaAllday.dto.response.UserInfoDto;
+import forever.vocaAllday.dto.response.ResultDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -47,11 +46,11 @@ public class GradeService {
 
     public void grade(String email, WordFormDto wordFormDto) {
 
-        String type = valueFormDto.getExamType();
-        List<String> userValues = valueFormDto.getUserValues();
+        String type = wordFormDto.getExamType();
+        List<String> userValues = wordFormDto.getUserValues();
 
-        List<String> meanings = valueFormDto.getMeaningList();
-        List<String> words = valueFormDto.getWordList();
+        List<String> meanings = wordFormDto.getMeaningList();
+        List<String> words = wordFormDto.getWordList();
 
         List<String> wrongWords = new ArrayList<>();
         List<String> wrongMeanings = new ArrayList<>();
@@ -84,7 +83,8 @@ public class GradeService {
         updateWrongVoca(report, wrongWord, wrongMeaning);
 
     }
-    public void gradeTest(String email, SentenceFormDto sentenceFormDto){
+
+    public void gradeTest(String email, SentenceFormDto sentenceFormDto) {
         List<String> userValues = sentenceFormDto.getUserValues();
         List<String> meanings = sentenceFormDto.getMeaningList();
         List<String> answers = sentenceFormDto.getAnswerList();
@@ -95,8 +95,8 @@ public class GradeService {
         List<String> wrongWords = new ArrayList<>();
         List<String> wrongMeanings = new ArrayList<>();
 
-        for(int i=0;i<8;i++){
-            if(!Objects.equals(answers.get(i), userValues.get(i))){
+        for (int i = 0; i < 8; i++) {
+            if (!Objects.equals(answers.get(i), userValues.get(i))) {
                 wrongWords.add(words.get(i));
                 wrongMeanings.add(meanings.get(i));
             }
@@ -120,7 +120,13 @@ public class GradeService {
         List<String> WrongWordList = Arrays.asList(wrongVoca.getWord().split(","));
         List<String> WrongMeaningList = Arrays.asList(wrongVoca.getMeaning().split(","));
 
-        ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList);
+        int wrongNum = WrongWordList.size();
+
+        if(WrongWordList.equals("[]")){
+            wrongNum = 0;
+        }
+        
+        ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList,wrongNum);
 
         return resultDto;
     }

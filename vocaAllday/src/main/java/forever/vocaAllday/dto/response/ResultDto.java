@@ -14,4 +14,5 @@ public class ResultDto {
     private List<String> AllMeaningList;
     private List<String> WrongWordList;
     private List<String> WrongMeaningList;
+    private int wrongNum;
 }

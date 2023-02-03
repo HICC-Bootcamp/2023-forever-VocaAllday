@@ -2,6 +2,7 @@ package forever.vocaAllday.controller;
 
 import forever.vocaAllday.dto.request.InputInfoDto;
 import forever.vocaAllday.dto.response.UserInfoDto;
+import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.enums.ExamType;
 import forever.vocaAllday.service.MyPageService;
 import forever.vocaAllday.service.ReportService;
@@ -25,7 +26,7 @@ public class InputInfoController {
     @GetMapping(value = "/")
     public String infoForm(Model model, Principal principal) {
         UserInfoDto userInfoDto = myPageService.getUserInfo(principal.getName());
-        model.addAttribute("UserInfoDto",userInfoDto);
+        model.addAttribute("UserInfoDto", userInfoDto);
         return "makeTest/makeTest";
 
     }
@@ -41,10 +42,17 @@ public class InputInfoController {
         try {
             reportService.saveReport(inputInfoDto, email);
         } catch (IllegalStateException e) {
-            if(e.getMessage().equals("vocaTitleError")){
+            System.out.println(e.getMessage());
+            if (e.getMessage().equals("vocaTitleError")) {
+                System.out.println(e.getMessage());
                 model.addAttribute("vocaTitleError", e.getMessage());
+
+                return "makeTest/makeTest";
+            } else if (e.getMessage().equals("wordError")) {
+                model.addAttribute("wordError", e.getMessage());
+                return "makeTest/makeTest";
             }
-            return "makeTest/makeTest";
+
         }
 
         if (ExamType.EXAMPLE_SENTENCE.equals(examType)) {
