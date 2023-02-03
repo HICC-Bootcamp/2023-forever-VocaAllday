@@ -30,6 +30,16 @@ public class ReportService {
         String vocaTitle = inputInfoDto.getVocaTitle();
         validateDuplicateTitle(member.getId(), vocaTitle);
 
+        String[] words = inputInfoDto.getWord();
+
+        for(int i=0;i<words.length;i++){
+            for(int j=i+1;j<words.length;j++){
+                if(words[i]!=null&words[i].equals(words[j])){
+                    throw new IllegalStateException("단어가 중복되었습니다.");
+                }
+            }
+        }
+
         String word = String.join(",", inputInfoDto.getWord());
         String meaning = String.join(",", inputInfoDto.getMeaning());
 
@@ -54,6 +64,3 @@ public class ReportService {
 
 
 }
-
-
-

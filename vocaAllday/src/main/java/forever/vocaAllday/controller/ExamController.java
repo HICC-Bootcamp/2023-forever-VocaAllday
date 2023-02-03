@@ -65,24 +65,31 @@ public class ExamController {
         UserInfoDto userInfoDto = myPageService.getUserInfo(email);
 
         model.addAttribute("sentenceInfo", examInfo);
-        model.addAttribute("SentenceFormDto", new SentenceFormDto());
         model.addAttribute("UserInfoDto",userInfoDto);
 
         return "makeTest/solveTestSentence";
     }
 
     @PostMapping(value = "/example-sentence")
-    public String GetUservalue(@ModelAttribute SentenceFormDto sentenceFormDto, Principal principal,
+    public String GetUservalue(@ModelAttribute SentenceFormDto SentenceFormDto, Principal principal,
                                RedirectAttributes redirectAttributes) {
         String email = principal.getName();
-        gradeService.gradeTest(email, sentenceFormDto);
+        gradeService.gradeTest(email, SentenceFormDto);
 
-        String title = sentenceFormDto.getVocaTitle();
+        String title = SentenceFormDto.getVocaTitle();
         redirectAttributes.addAttribute("title", title);
 
 
         return "redirect:/exam/sentence/grading-result";// 추후 수정
 
+    }
+    @GetMapping(value = "/sentence/grading-result")
+    public String ShowGradingresult(Principal principal, Model model,
+                                    @RequestParam("title") String title) {
+        String email = principal.getName();
+        ResultDto resultDto = gradeService.showGradingResult(email, title);
+        model.addAttribute("resultDto", resultDto);
+        return "makeTest/gradeTestSentence";//추후 수정
     }
 
     @GetMapping(value = "/word/grading-result")
