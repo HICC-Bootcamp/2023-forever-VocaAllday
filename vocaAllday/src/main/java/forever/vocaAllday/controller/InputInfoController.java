@@ -1,7 +1,9 @@
 package forever.vocaAllday.controller;
 
 import forever.vocaAllday.dto.request.InputInfoDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.enums.ExamType;
+import forever.vocaAllday.service.MyPageService;
 import forever.vocaAllday.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,8 +20,12 @@ import java.security.Principal;
 public class InputInfoController {
     private final ReportService reportService;
 
+    private final MyPageService myPageService;
+
     @GetMapping(value = "/")
-    public String infoForm() {
+    public String infoForm(Model model, Principal principal) {
+        UserInfoDto userInfoDto = myPageService.getUserInfo(principal.getName());
+        model.addAttribute("UserInfoDto",userInfoDto);
         return "makeTest/makeTest";
 
     }

@@ -1,6 +1,7 @@
 package forever.vocaAllday.service;
 
 import forever.vocaAllday.dto.request.InputInfoDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -49,6 +50,8 @@ public class ReportService {
             throw new IllegalStateException("단어장 이름이 중복되었습니다.");
         }
     }
+
+
 
 }
 

@@ -23,7 +23,7 @@ public class MyPageService {
 
     private final ReportRepository reportRepository;
     private final MemberRepository memberRepository;
-    private final WrongVocaRepository wrongVocaRepository;
+
 
     public Report findReport(String email, String vocaTitle) {
         Member member = memberRepository.findByEmail(email);
@@ -35,7 +35,6 @@ public class MyPageService {
         return reportRepository.findByVocaTitles(email);
 
     }
-
     public UserInfoDto getUserInfo(String email){
         Member member = memberRepository.findByEmail(email);
         String name = member.getName();
