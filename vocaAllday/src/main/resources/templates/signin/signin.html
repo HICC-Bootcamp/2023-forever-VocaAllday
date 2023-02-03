@@ -3,6 +3,7 @@
 <head>
     <title>signin</title>
     <link href="/css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet">
+    <link href="/css/header.css" th:href="@{/css/header.css}" rel="stylesheet">
     <script src="/js/signin.js" th:src="@{/js/signin.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -10,6 +11,7 @@
 
 </head>
 <body>
+<div th:replace="fragments/header :: header">-- thymeleaf header will be inserted here. --</div>
 <div class="wrapper">
     <form action="/auth/new" id="form" method="post" th:object="${memberFormDto}" onsubmit="return false">
 
