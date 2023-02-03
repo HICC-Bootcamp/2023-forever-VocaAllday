@@ -85,7 +85,7 @@
                 <div id="test_name" class="info_title">시험 점수</div>
                 <div id="test_socre" class="info_title">
                     <span >맞은 개수  :</span>
-                    <span id="correct_num" th:text="8-${#lists.size(resultDto.WrongWordList)}" >null</span> / <span>8</span>
+                    <span id="correct_num" th:text="8-${#numbers.formatInteger(resultDto.wrongNum,1)}" >null</span> / <span>8</span>
                 </div>
                 <div class="info_title">
                     <span>틀린 단어  :</span><br>

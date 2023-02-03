@@ -58,13 +58,19 @@ public class ExamController {
 
     @GetMapping(value = "/example-sentence")
     public String showEXSentence(Principal principal, @RequestParam("title") String title,
-                                 @RequestParam("type") String type, Model model) throws IOException {
+                                 Model model) {
 
         String email = principal.getName();
-        SentenceInfoDto examInfo = crawlingService.makeTest(email, title);
         UserInfoDto userInfoDto = myPageService.getUserInfo(email);
 
-        model.addAttribute("sentenceInfo", examInfo);
+        try {
+            SentenceInfoDto examInfo = crawlingService.makeTest(email, title);
+            model.addAttribute("sentenceInfo",examInfo);
+        }catch (IOException e) {
+            model.addAttribute("notExistError", e.getMessage());
+            return "makeTest/makeTest";
+        }
+
         model.addAttribute("UserInfoDto",userInfoDto);
 
         return "makeTest/solveTestSentence";
