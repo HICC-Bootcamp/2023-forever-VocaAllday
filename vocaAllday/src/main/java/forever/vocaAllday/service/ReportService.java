@@ -47,7 +47,7 @@ public class ReportService {
     private void validateDuplicateTitle(Long id, String title){
         Report report = reportRepository.findByReport(id,title);
         if(report != null){
-            throw new IllegalStateException("단어장 이름이 중복되었습니다.");
+            throw new IllegalStateException("vocaTitleError");
         }
     }
 

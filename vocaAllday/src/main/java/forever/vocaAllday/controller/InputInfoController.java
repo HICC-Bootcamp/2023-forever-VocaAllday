@@ -41,7 +41,9 @@ public class InputInfoController {
         try {
             reportService.saveReport(inputInfoDto, email);
         } catch (IllegalStateException e) {
-            model.addAttribute("errorMessage", e.getMessage());
+            if(e.getMessage().equals("vocaTitleError")){
+                model.addAttribute("vocaTitleError", e.getMessage());
+            }
             return "makeTest/makeTest";
         }
 

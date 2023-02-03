@@ -91,7 +91,7 @@ public class ExamController {
         String email = principal.getName();
         ResultDto resultDto = gradeService.showGradingResult(email, title);
         UserInfoDto userInfoDto = myPageService.getUserInfo(email);
-        
+
         model.addAttribute("UserInfoDto",userInfoDto);
         model.addAttribute("resultDto", resultDto);
         return "makeTest/gradeTestWord";
