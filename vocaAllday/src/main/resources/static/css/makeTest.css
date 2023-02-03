@@ -100,9 +100,8 @@ html, body{
     justify-content: flex-start;
     align-items: center;
 
-    position: fixed;
+    position: sticky;
     top: 50px;
-    right: 50px;
 
     border-radius: 10px;
 }

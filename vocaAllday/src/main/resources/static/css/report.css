@@ -33,7 +33,7 @@ html, body{
 }
 .left_header{
     width: 88%;
-    height: 90px;
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -92,7 +92,6 @@ html, body{
     justify-content: flex-start;
     align-items: center;
 
-    position: fixed;
     top: 100px;
     right: 150px;
 
@@ -100,7 +99,7 @@ html, body{
 }
 .right_header{
     width: 80%;
-    height: 30%;
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
