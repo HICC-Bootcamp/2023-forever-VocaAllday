@@ -43,13 +43,6 @@ public class MyPageService {
         return userInfoDto;
     }
 
-    public UserInfoDto getUserInfo(String email){
-        Member member = memberRepository.findByEmail(email);
-        String name = member.getName();
-        UserInfoDto userInfoDto = new UserInfoDto(email,name);
-        return userInfoDto;
-    }
-
     public ResultDto showVocaInfo(String email, String title) {
         Report report = findReport(email, title);
         WrongVoca wrongVoca = report.getWrongVoca();
