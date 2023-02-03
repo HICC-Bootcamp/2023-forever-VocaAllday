@@ -100,6 +100,7 @@
     //타임리프 사용하는 js기능
 
     $(document).ready(function () {
+        const regex_en = /^[a-z|A-Z]+$/;            //영어판단 정규식
         /*
             왼쪽 정답단어/틀린단어 색전환 기능
         */
@@ -107,10 +108,21 @@
         //js로 thymeleaf 객체 전달
         let allWord = [[${resultDto.AllWordList}]];
         let wrongWord = [[${resultDto.WrongWordList}]];
+
+        //문제유형 판단
+        if(!regex_en.test(wrongWord[0])){
+            //비교 불가
+            wrongWord = [[${resultDto.WrongMeaningList}]];
+        }
+
         let i = 1;
         var cnt_add = 8;
+
+        console.log(allWord)
+        console.log(wrongWord)
         for (i; i<=cnt_add; i++){
             if(wrongWord.includes(allWord[i-1])){
+                console.log(allWord[i-1])
                 //color:red;
                 document.getElementById("en"+i).className="wrong_text";
                 document.getElementById("ko"+i).className="wrong_text";

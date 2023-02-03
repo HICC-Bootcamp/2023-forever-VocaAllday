@@ -88,8 +88,8 @@ html, body{
     flex-direction: row;
     gap: 50px;
     justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
     padding-top: 10px;
 
     border: 2px solid #8CBDB9;

@@ -66,10 +66,10 @@
                         <!--vocatitle과 연결된 단어 뜻 리스트-->
                         <div class="vocaTitle_word_box">
                             <div class="left_box">
-                                <div class="text_box" th:each="word : ${resultDto.AllWordList}" id="${word.count}" th:text="${word}">NULL</div>
+                                <div class="text_box" th:each="word : ${resultDto.AllWordList}" th:id="${word}" th:value="${word}" th:text="${word}">NULL</div>
                             </div>
                             <div class="right_box">
-                                <div class="text_box" th:each="meaning : ${resultDto.AllMeaningList}" id="${meaning.count}" th:text="${meaning}">NULL</div>
+                                <div class="text_box" th:each="meaning : ${resultDto.AllMeaningList}" th:id="${meaning}" th:value="${meaning}" th:text="${meaning}">NULL</div>
                             </div>
                         </div>
                     </div>
@@ -116,26 +116,33 @@
     //타임리프 사용하는 js기능
 
     $(document).ready(function () {
+        const regex_en = /^[a-z|A-Z]+$/;            //영어판단 정규식
         /*
             왼쪽 정답단어/틀린단어 색전환 기능
         */
 
         //js로 thymeleaf 객체 전달
-        var allWord = [[${resultDto.AllWordList}]]; 
-        var wrongWord = [[${resultDto.WrongWordList}]];  
-        let i = 0;
-        var cnt_add = 8;
-        for (i; i<cnt_add; i++){  
-            console.log(wrongWord);
-            if(wrongWord.includes(allWord[i])){
-                alert("틀림!")
-                //i번째가 틀린 경우
-                console.log(allWord[i]);
+        let allWord = [[${resultDto.AllWordList}]];
+        let allMean = [[${resultDto.AllMeaningList}]];
+        let wrongWord = [[${resultDto.WrongWordList}]];
 
-                /*
-                document.getElementById(i).className="wrong_text";
-                document.getElementById(i).className="wrong_text";
-                */
+        //문제유형 판단
+        if(!regex_en.test(wrongWord[0])){
+            //비교 불가
+            wrongWord = [[${resultDto.WrongMeaningList}]];
+        }
+
+        let i = 1;
+        var cnt_add = 8;
+
+        console.log(allWord)
+        console.log(wrongWord)
+        for (i; i<=cnt_add; i++){
+            if(wrongWord.includes(allWord[i-1])){
+                console.log(allWord[i-1])
+                //color:red;
+                document.getElementById(allWord[i-1]).className="wrong_text";
+                document.getElementById(allMean[i-1]).className="wrong_text";
             }
         }
 
