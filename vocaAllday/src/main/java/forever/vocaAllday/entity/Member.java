@@ -1,7 +1,7 @@
 package forever.vocaAllday.entity;
 
 import forever.vocaAllday.enums.Role;
-import forever.vocaAllday.dto.MemberFormDto;
+import forever.vocaAllday.dto.request.MemberFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

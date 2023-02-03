@@ -1,15 +1,17 @@
-package forever.vocaAllday.dto;
+package forever.vocaAllday.dto.request;
 
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.enums.ExamType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 public class InputInfoDto {
-    private String[] word;
-    private String[] meaning;
+    private List<String> word;
+    private List<String> meaning;
     private String vocaTitle;
     private ExamType examType; // 시험 유형
 

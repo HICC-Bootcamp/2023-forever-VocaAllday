@@ -4,12 +4,14 @@
 }
 html, body{
     width: 100%;
-    height: 100%;
+    height: 110%;
+    background: linear-gradient(0deg, rgba(140, 189, 185, 0.5), rgba(140, 189, 185, 0.5)), #FFFFFF;
 }
 .wrapper{
     width: 100%;
     height: 100%;
-    padding: 50px 50px 20px 50px;
+    padding: 100px 200px 20px 200px;
+    padding-right: 200px;
 
     display: flex;
     flex-direction: row;
@@ -17,79 +19,102 @@ html, body{
     align-items: flex-start;
 }
 
-/* 단어 입력 창 */
+/* 왼: 시험지 기록 */
 .wrapper_left{
-    width: 65%;
-    height: 100%;
-
+    width: 660px;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    background-color: #EBECEB;
+    border-radius: 10px;
 }
 .left_header{
-    width: 100%;
-    height: 25px;
+    width: 88%;
+    height: 100px;
     display: flex;
     flex-direction: row;
-
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    align-items: center;
 }
-.input_title{
-    width: 336px;
-    height: 24px;
-    background: #E8ECEB;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-
-    border-radius: 10px;
-
+.userInfo{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1px 0px;
+    gap: 2px;
+
+    width: 182px;
+    height: 48px;
+    padding-left: 10px;
 }
 
 .left_body{
+    width: 88%;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.record{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 20px;
+    justify-content: space-between;
 }
-.input_word{
+.record_header{
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding-bottom: 20px ;
-}
-.text_box{
-    width: 336px;
-    height: 56px;
-
-    border: 3px solid #E8ECEB;
-    border-radius: 12px;
-}
-.left_footer{
-    width: 100%;
-    height: 100px;
 
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
 
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 10px;
-    padding-bottom: 50px;
 }
+.record_body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+.vocaTitle_word_box{
+    width: 55%;
 
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
 
-/* 시험지 유형 선택 창 */
+    border: 2px solid #8CBDB9;
+    border-radius: 10px;
+    background-color:white;
+}
+.left_box{
+}
+.right_box{
+}
+.text_box{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 550;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    padding-bottom: 15px;
+}
+/* 재시험 만들기 */
 .wrapper_right{
     width: 400px;
     height:400px;
@@ -100,8 +125,8 @@ html, body{
     justify-content: flex-start;
     align-items: center;
 
-    position: sticky;
-    top: 50px;
+    top: 100px;
+    right: 150px;
 
     border-radius: 10px;
 }
@@ -207,6 +232,11 @@ html, body{
     border: 2px solid #8CBDB9;
     border-radius: 12px;
     cursor: pointer;
+}
+#vocaTitle{
+    width: 250px;
+    height: 48px;
+    padding-left: 10px;
 }
 .vocaTitle{
     width: 120px;

@@ -1,6 +1,7 @@
 package forever.vocaAllday.service;
 
-import forever.vocaAllday.dto.ResultDto;
+import forever.vocaAllday.dto.response.ResultDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -33,6 +34,13 @@ public class MyPageService {
     public List<String> getVocaTitleList(String email){
         return reportRepository.findByVocaTitles(email);
 
+    }
+
+    public UserInfoDto getUserInfo(String email){
+        Member member = memberRepository.findByEmail(email);
+        String name = member.getName();
+        UserInfoDto userInfoDto = new UserInfoDto(email,name);
+        return userInfoDto;
     }
 
     public ResultDto showVocaInfo(String email, String title) {

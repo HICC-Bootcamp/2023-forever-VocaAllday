@@ -1,6 +1,6 @@
 package forever.vocaAllday.controller;
 
-import forever.vocaAllday.dto.InputInfoDto;
+import forever.vocaAllday.dto.request.InputInfoDto;
 import forever.vocaAllday.enums.ExamType;
 import forever.vocaAllday.service.ReportService;
 import lombok.RequiredArgsConstructor;
@@ -39,15 +39,15 @@ public class InputInfoController {
             return "makeTest/makeTest";
         }
 
-        if(ExamType.EXAMPLE_SENTENCE.equals(examType)) {
+        if (ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
             return "redirect:/exam/example-sentence";
-        } else if(ExamType.MEANING.equals(examType)) {
+        } else if (ExamType.MEANING.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
             return "redirect:/exam/word";
-        } else if(ExamType.WORD.equals(examType)) {
+        } else if (ExamType.WORD.equals(examType)) {
             redirectAttr.addAttribute("title", title);
             redirectAttr.addAttribute("type", examType);
             return "redirect:/exam/word";

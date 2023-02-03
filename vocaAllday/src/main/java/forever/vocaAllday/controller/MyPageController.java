@@ -1,17 +1,15 @@
 package forever.vocaAllday.controller;
 
-package forever.vocaAllday.controller;
-
-import forever.vocaAllday.dto.MyPageDto;
-import forever.vocaAllday.dto.ResultDto;
+import forever.vocaAllday.dto.request.MyPageDto;
+import forever.vocaAllday.dto.response.ResultDto;
+import forever.vocaAllday.dto.response.TitleDto;
+import forever.vocaAllday.dto.response.UserInfoDto;
+import forever.vocaAllday.enums.ExamType;
 import forever.vocaAllday.service.MyPageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
@@ -25,14 +23,17 @@ public class MyPageController {
     @GetMapping("/mypage")
     public String showVocaTitleList(Principal principal, Model model) {
         List<String> vocaTitleList = myPageService.getVocaTitleList(principal.getName());
+        UserInfoDto userInfoDto = myPageService.getUserInfo(principal.getName());
+        model.addAttribute("UserInfoDto",userInfoDto);
         model.addAttribute("vocaTitleList", vocaTitleList);
-        return "mypage";
+        return "report/myReport";
     }
 
     @PostMapping("/mypage")
-    public String selectVocaTitle(@ModelAttribute String vocaTitle, RedirectAttributes redirectAttr) {
+    public String selectVocaTitle(@ModelAttribute TitleDto titleDto, RedirectAttributes redirectAttr) {
+        String vocaTitle = titleDto.getVocaTitle();
         redirectAttr.addAttribute("title", vocaTitle);
-        return "redirect:/mypage/word";
+        return "redirect:/mypage/info";
     }
 
     @GetMapping("/mypage/info")
@@ -41,14 +42,16 @@ public class MyPageController {
         ResultDto resultDto = myPageService.showVocaInfo(email, title);
         model.addAttribute("vocaTitle", title);
         model.addAttribute("resultDto", resultDto);
-        return "mypage/info";
+        UserInfoDto userInfoDto = myPageService.getUserInfo(principal.getName());
+        model.addAttribute("UserInfoDto",userInfoDto);
+        return "report/reTest";
     }
 
     @PostMapping("/mypage/info")
     public String selectReExamInfo(@ModelAttribute MyPageDto myPageDto,
                                    RedirectAttributes redirectAttr) {
         String title = myPageDto.getVocaTitle();
-        String examType = myPageDto.getExamType();
+        ExamType examType = myPageDto.getExamType();
 
         if (forever.vocaAllday.enums.ExamType.EXAMPLE_SENTENCE.equals(examType)) {
             redirectAttr.addAttribute("title", title);

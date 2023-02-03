@@ -3,11 +3,13 @@
 <head>
     <title>makeTest</title>
     <link href="/css/makeTest.css" th:href="@{/css/makeTest.css}" rel="stylesheet">
+    <link href="/css/header.css" th:href="@{/css/header.css}" rel="stylesheet">
     <script src="/js/makeTest.js" th:src="@{/js/makeTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
+<div th:replace="fragments/header :: header">-- thymeleaf header will be inserted here. --</div>
 <form action="/" id="form" th:object="${InputInfoDto}" method="post" onsubmit="return false">
     <div class="wrapper">
 
@@ -100,6 +102,8 @@
                     <i class="fa-sharp fa-solid fa-check"></i>
                     <span class="submit_but_text">Submit</span>
                 </button>
+                <!--(임시) 버튼 클릭 시 레포트로 이동-->
+                <button th:onclick="|location.href='@{/mypage}'|">내레포트</button>
             </div>
         </div>
     </div>

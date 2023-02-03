@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html-head">
+    <title>header</title>
+    <link href="/css/header.css" th:href="@{/css/header.css}" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="header">
+    <div class="fragment_header">
+        <img class="logo"  id="menuMain" src="/img/logo1.png" th:src="@{/img/logo1.png}">
+        <button class="login" id="menuLogin">login</button>
+    </div>
+    <div class="fragment_dividedLine"></div>
+</div>
+</body>

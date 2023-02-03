@@ -1,8 +1,8 @@
 package forever.vocaAllday.service;
 
-import forever.vocaAllday.dto.ResultDto;
-import forever.vocaAllday.dto.SentenceFormDto;
-import forever.vocaAllday.dto.ValueFormDto;
+import forever.vocaAllday.dto.response.ResultDto;
+import forever.vocaAllday.dto.request.SentenceFormDto;
+import forever.vocaAllday.dto.request.WordFormDto;
 import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
@@ -44,7 +44,7 @@ public class GradeService {
         wrongVocaRepository.updateWord(wrongId, word);
     }
 
-    public void grade(String email, ValueFormDto valueFormDto) {
+    public void grade(String email, WordFormDto wordFormDto) {
 
         String type = valueFormDto.getExamType();
         List<String> userValues = valueFormDto.getUserValues();
@@ -78,7 +78,7 @@ public class GradeService {
 
         String wrongMeaning = String.join(",", wrongMeanings);
         String wrongWord = String.join(",", wrongWords);
-        String title = valueFormDto.getVocaTitle();
+        String title = wordFormDto.getVocaTitle();
         Report report = findReport(email, title);
         updateWrongVoca(report, wrongWord, wrongMeaning);
 
@@ -125,4 +125,3 @@ public class GradeService {
     }
 
 }
-
