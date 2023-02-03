@@ -55,7 +55,7 @@ public class ExamController {
             SentenceInfoDto examInfo = crawlingService.makeTest(email, title);
             model.addAttribute("sentenceInfo",examInfo);
         }catch (IOException e) {
-            model.addAttribute("invalidworderror", false);
+            model.addAttribute("notExistError", e.getMessage());
             return "redirect:/";
         }
 
