@@ -7,6 +7,7 @@
     <script src="/js/gradeTest.js" th:src="@{/js/gradeTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
@@ -31,36 +32,36 @@ public class resultDto {
         <div class="left_body" id="left_body">
 
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[0]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[0]}"></span>
+                <span class="sentence_text_box" id="en1" th:value="${exSentence[0]}" th:text="${exSentence[0]}"></span>
+                <span class="word_text_box" id="ko1" th:value="${resultDto.AllWordList[0]}" th:text="${resultDto.AllWordList[0]}"></span>
             </div>
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[1]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[1]}"></span>
+                <span class="sentence_text_box" id="en2" th:value="${exSentence[1]}" th:text="${exSentence[1]}"></span>
+                <span class="word_text_box" id="ko2" th:value="${resultDto.AllWordList[1]}" th:text="${resultDto.AllWordList[1]}"></span>
             </div>
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[2]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[2]}"></span>
+                <span class="sentence_text_box" id="en3" th:value="${exSentence[2]}" th:text="${exSentence[2]}"></span>
+                <span class="word_text_box" id="ko3" th:value="${resultDto.AllWordList[2]}" th:text="${resultDto.AllWordList[2]}"></span>
             </div>
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[3]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[3]}"></span>
+                <span class="sentence_text_box" id="en4" th:value="${exSentence[3]}" th:text="${exSentence[3]}"></span>
+                <span class="word_text_box" id="ko4" th:value="${resultDto.AllWordList[3]}" th:text="${resultDto.AllWordList[3]}"></span>
             </div>
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[4]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[4]}"></span>
+                <span class="sentence_text_box" id="en5" th:value="${exSentence[4]}" th:text="${exSentence[4]}"></span>
+                <span class="word_text_box" id="ko5" th:value="${resultDto.AllWordList[4]}" th:text="${resultDto.AllWordList[4]}"></span>
             </div>
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[5]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[5]}"></span>
+                <span class="sentence_text_box" id="en6" th:value="${exSentence[5]}" th:text="${exSentence[5]}"></span>
+                <span class="word_text_box" id="ko6" th:value="${resultDto.AllWordList[5]}" th:text="${resultDto.AllWordList[5]}"></span>
             </div>
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[6]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[6]}"></span>
+                <span class="sentence_text_box" id="en7"  th:value="${exSentence[6]}" th:text="${exSentence[6]}"></span>
+                <span class="word_text_box" id="ko7" th:value="${resultDto.AllWordList[6]}" th:text="${resultDto.AllWordList[6]}"></span>
             </div>
             <div class="word_container">
-                <span class="word_text_box" th:text="${resultDto.AllWordList[7]}"></span>
-                <span class="word_text_box"th:text="${resultDto.AllMeaningList[7]}"></span>
+                <span class="sentence_text_box" id="en8" th:value="${exSentence[7]}" th:text="${exSentence[7]}"></span>
+                <span class="word_text_box" id="ko8" th:value="${resultDto.AllWordList[7]}" th:text="${resultDto.AllWordList[7]}"></span>
             </div>
 
 
@@ -88,12 +89,36 @@ public class resultDto {
             </div>
             <div class="info_title">
                 <span>틀린 단어  :</span><br>
-                <div id="wrong_word"  th:each="wrong_word : ${resultDto.WrongMeaningList}">
+                <div id="wrong_word"  th:each="wrong_word : ${resultDto.WrongWordList}">
                     <span class="word_text_box" th:text="${wrong_word}"></span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script th:inline="javascript">
+    //타임리프 사용하는 js기능
+
+    $(document).ready(function () {
+        /*
+            왼쪽 정답단어/틀린단어 색전환 기능
+        */
+
+        //js로 thymeleaf 객체 전달
+        let allWord = [[${resultDto.AllWordList}]];
+        let wrongWord = [[${resultDto.WrongWordList}]];
+        let i = 1;
+        var cnt_add = 8;
+        for (i; i<=cnt_add; i++){
+            if(wrongWord.includes(allWord[i-1])){
+                //color:red;
+                document.getElementById("en"+i).className="wrong_sentence_text_box";
+                document.getElementById("ko"+i).className="wrong_text";
+            }
+        }
+
+    });
+
+</script>
 </body>
 </html>

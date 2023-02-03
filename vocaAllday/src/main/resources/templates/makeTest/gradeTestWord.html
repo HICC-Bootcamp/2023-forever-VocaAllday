@@ -4,7 +4,6 @@
     <title>gradeTestWord</title>
     <link href="/css/gradeTest.css" th:href="@{/css/gradeTest.css}" rel="stylesheet">
     <link href="/css/header.css" th:href="@{/css/header.css}" rel="stylesheet">
-    <script src="/js/gradeTest.js" th:src="@{/js/gradeTest.js}"></script>
     <script src="https://kit.fontawesome.com/c50c4da782.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -97,7 +96,7 @@
         </div>
     </div>
     
-    <script th:inline="javascript">
+<script th:inline="javascript">
     //타임리프 사용하는 js기능
 
     $(document).ready(function () {
@@ -106,15 +105,12 @@
         */
 
         //js로 thymeleaf 객체 전달
-        var allWord = [[${resultDto.AllWordList}]]; 
-        var wrongWord = [[${resultDto.WrongWordList}]];  
-        let i = 0;
+        let allWord = [[${resultDto.AllWordList}]];
+        let wrongWord = [[${resultDto.WrongWordList}]];
+        let i = 1;
         var cnt_add = 8;
-        for (i; i<cnt_add; i++){  
-            console.log(wrongWord);
-            if(wrongWord.includes(allWord[i])){
-                //i번째가 틀린 경우
-                console.log(allWord[i]);
+        for (i; i<=cnt_add; i++){
+            if(wrongWord.includes(allWord[i-1])){
                 //color:red;
                 document.getElementById("en"+i).className="wrong_text";
                 document.getElementById("ko"+i).className="wrong_text";
@@ -123,6 +119,6 @@
 
     });
 
-    </script>
+</script>
 </body>
 </html>

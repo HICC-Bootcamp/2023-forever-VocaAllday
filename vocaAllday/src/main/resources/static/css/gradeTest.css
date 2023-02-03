@@ -99,6 +99,34 @@ html, body{
     border-radius: 12px;
     color: green;
 }
+.sentence_text_box{
+    width: 75%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+}
+.wrong_sentence_text_box{
+    width: 75%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+
+    color:#DA100B;
+}
 .wrong_text{
     width: 20%;
     height: 56px;
