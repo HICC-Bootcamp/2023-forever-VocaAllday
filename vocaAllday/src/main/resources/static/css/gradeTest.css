@@ -70,6 +70,11 @@ html, body{
     justify-content: space-evenly;
     padding-bottom: 20px ;
 }
+
+.wrong_word_container{
+    padding-right: 50px
+}
+
 .sentence_text_box{
     width: 75%;
     height: 56px;
@@ -97,6 +102,60 @@ html, body{
 
     border: 3px solid #E8ECEB;
     border-radius: 12px;
+    color: green;
+}
+.sentence_text_box{
+    width: 75%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+}
+.wrong_sentence_text_box{
+    width: 75%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+
+    color:#DA100B;
+}
+.wrong_text{
+    width: 20%;
+    height: 56px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid #E8ECEB;
+    border-radius: 12px;
+
+    color:#DA100B;
+}
+.wrong_word{
+    color:#DA100B;
+    padding-right:30px;
+
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
 }
 
 

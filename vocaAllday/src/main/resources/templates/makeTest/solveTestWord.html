@@ -80,45 +80,37 @@
             <div class="dividedLine"></div>
 
             <div class="right_body">
-            <span th:switch="${wordInfoDto.type}">
+            <span>
                 <input type="checkbox" id="hint_ck1" onclick="delete_hint(1)">
-                <span id="hint1" th:case="WORD" th:text="${wordInfoDto.meanings[0]}"></span>
-                <span id="hint1" th:case="MEANING" th:text="${wordInfoDto.words[0]}"></span>
+                <span id="hint1">NULL</span>
             </span>
             <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck2" onclick="delete_hint(2)">
-                <span id="hint2" th:case="WORD" th:text="${wordInfoDto.meanings[1]}"></span>
-                <span id="hint2" th:case="MEANING" th:text="${wordInfoDto.words[1]}"></span>
+                <span id="hint2">NULL</span>
             </span>
             <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck3" onclick="delete_hint(3)">
-                <span id="hint3" th:case="WORD" th:text="${wordInfoDto.meanings[2]}"></span>
-                <span id="hint3" th:case="MEANING" th:text="${wordInfoDto.words[2]}"></span>
+                <span id="hint3">NULL</span>
             </span>
             <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck4" onclick="delete_hint(4)">
-                <span id="hint4" th:case="WORD" th:text="${wordInfoDto.meanings[3]}"></span>
-                <span id="hint4" th:case="MEANING" th:text="${wordInfoDto.words[3]}"></span>
+                <span id="hint4">NULL</span>
             </span>
             <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck5" onclick="delete_hint(5)">
-                <span id="hint5" th:case="WORD" th:text="${wordInfoDto.meanings[4]}"></span>
-                <span id="hint5" th:case="MEANING" th:text="${wordInfoDto.words[4]}"></span>
+                <span id="hint5">NULL</span>
             </span>
             <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck6" onclick="delete_hint(6)">
-                <span id="hint6" th:case="WORD" th:text="${wordInfoDto.meanings[5]}"></span>
-                <span id="hint6" th:case="MEANING" th:text="${wordInfoDto.words[5]}"></span>
+                <span id="hint6">NULL</span>
             </span>
             <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck7" onclick="delete_hint(7)">
-                <span id="hint7" th:case="WORD" th:text="${wordInfoDto.meanings[6]}"></span>
-                <span id="hint7" th:case="MEANING" th:text="${wordInfoDto.words[6]}"></span>
+                <span id="hint7">NULL</span>
             </span>
             <span th:switch="${wordInfoDto.type}">
                 <input type="checkbox" id="hint_ck8" onclick="delete_hint(8)">
-                <span id="hint8" th:case="WORD" th:text="${wordInfoDto.meanings[7]}"></span>
-                <span id="hint8" th:case="MEANING" th:text="${wordInfoDto.words[7]}"></span>
+                <span id="hint8">NULL</span>
             </span>
             </div>
 
@@ -142,6 +134,41 @@
         </div>
     </div>
 </form>
+
+<script th:inline="javascript">
+    //타임리프 사용하는 js기능
+
+    $(document).ready(function () {
+
+        /*
+            타입확인해 힌트 결정
+        */
+        var type = [[${wordInfoDto.type}]];
+        let hint =  [[${wordInfoDto.words}]];
+        console.log("type : ", type)
+
+        //문제유형 판단
+        if(type != "MEANING"){
+            //비교 불가
+            hint =  [[${wordInfoDto.meanings}]];
+        }
+        console.log("hint : ", hint)
+
+        /*
+            힌트 셔플 기능
+        */
+        let hint_shuffled = Object.assign([], hint); //list deepcopy
+        hint_shuffled.sort(() => Math.random() - 0.5); //list shuffle
+        console.log("hintshuffled : ",hint_shuffled)
+
+        let i = 1;
+        var cnt_add = 8;
+        for (i; i<=cnt_add; i++){
+            document.getElementById("hint"+i).innerText = hint_shuffled[i-1]
+        }
+
+    });
+</script>
 
 </body>
 </html>

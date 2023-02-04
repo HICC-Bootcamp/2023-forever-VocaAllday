@@ -88,8 +88,8 @@ html, body{
     flex-direction: row;
     gap: 50px;
     justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
     padding-top: 10px;
 
     border: 2px solid #8CBDB9;
@@ -113,6 +113,22 @@ html, body{
     letter-spacing: 0.05em;
     text-transform: capitalize;
     padding-bottom: 15px;
+}
+.wrong_text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+       font-family: 'IBM Plex Sans';
+       font-style: normal;
+       font-weight: 550;
+       font-size: 16px;
+       line-height: 150%;
+       letter-spacing: 0.05em;
+       text-transform: capitalize;
+       padding-bottom: 15px;
+   
+    color: red;
 }
 /* 재시험 만들기 */
 .wrapper_right{
