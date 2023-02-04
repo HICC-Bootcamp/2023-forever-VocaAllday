@@ -36,7 +36,7 @@ html, body{
     height: 100px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 .userInfo{
@@ -266,4 +266,30 @@ html, body{
 }
 #next_but_text{
     color: #0F56B3;
+}
+.user_container{
+    display:flex;
+    flex-direction:row;
+}
+.logout{
+    width: 150px;
+    height: 50px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+    background: #329494;
+    border-radius: 999px;
+    border: solid 0px;
+
+    cursor: pointer;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

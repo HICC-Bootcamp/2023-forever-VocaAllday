@@ -3,8 +3,8 @@ var cnt_add = 8; //입력창개수(임시 8개 고정)
 /*
     유효성 검사용 정규식
 */
-const regex_en = /^[a-z|A-Z]+$/;            //영어
-const regex_ko = /^[ㄱ-ㅎ|가-힣]+$/;        //한글
+const regex_en = /^[\s|a-z|A-Z]+$/;            //영어+공백
+const regex_ko = /^[\s|ㄱ-ㅎ|가-힣]+$/;        //한글+공백
 
 //add버튼 클릭 시 단어입력창 추가
 
@@ -61,22 +61,30 @@ const check_validation = () => {
         let meaning = document.getElementById('meaning'+i).value;
         if(word===""||!regex_en.test(word)){
             //word입력오류
-            validation=false
+            validation=false;
+            Swal.fire('문제지 제작 실패',"입력한 단어를 확인해주세요!",'error');
+            return;
         }
         if(meaning===""||!regex_ko.test(meaning)){
             //meaning입력오류
             validation=false
+            Swal.fire('문제지 제작 실패',"입력한 의미를 확인해주세요!",'error');
+            return;
         }
     }
-    if(vocaTitle===""){
+
+    let vocaTitle = document.getElementById('vocaTitle').value;
+    if(vocaTitle===""||null){
        //vocaTitle입력오류
        validation=false
+       Swal.fire('문제지 제작 실패',"단어장 이름을 입력하세요!",'error')
+       return;
     }
 
     if(validation){
         //유효성 검사 통과
         form.submit();
     }else{
-        Swal.fire('문제지 제작 실패',"입력한 단어,의미,단어장이름을 확인해주세요!",'error')
+        Swal.fire('문제지 제작 실패',"입력값을 확인해주세요!",'error')
     }
 }

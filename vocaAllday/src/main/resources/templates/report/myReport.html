@@ -28,13 +28,18 @@
         <div class="wrapper_left">
             <div class="left_header">
                 <!--사용자 정보(좌끝)-->
-                <div class="header_logo">
-                    <i class="fa-solid fa-user"></i>
+                <div class="user_container">
+                    <div class="header_logo">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="userInfo">
+                        <div class="title" th:text="*{UserInfoDto.name}">NULL</div>
+                        <div class="subtitle" th:text="*{UserInfoDto.email}">aaaaaaaa@naver.com</div>
+                    </div>
                 </div>
-                <div class="userInfo">
-                    <div class="title" th:text="*{UserInfoDto.name}">NULL</div>
-                    <div class="subtitle" th:text="*{UserInfoDto.email}">aaaaaaaa@naver.com</div>
-                </div>
+
+                <!--로그아웃 버튼(우끝)-->
+                <div class="logout" th:onclick="|location.href='@{/auth/login}'|">Log out</div>
             </div>
             <div class="dividedLine"></div>
             <div class="left_body">
