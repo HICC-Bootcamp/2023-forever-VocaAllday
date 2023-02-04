@@ -129,6 +129,15 @@ public class resultDto {
             }
         }
 
+        /*
+           틀린 개수 0개일때 오류처리
+        */
+        if(wrongWord[0]==''){
+            //빈리스트
+            document.getElementById("correct_num").innerText="8"
+        }
+
+
     });
 
 </script>
