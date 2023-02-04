@@ -1,19 +1,18 @@
-package forever.vocaAllday.service;
+package forever.vocaAllday.service.exam;
 
 import forever.vocaAllday.dto.response.SentenceInfoDto;
+import forever.vocaAllday.entity.InputVoca;
 import forever.vocaAllday.entity.Member;
 import forever.vocaAllday.entity.Report;
 import forever.vocaAllday.repository.MemberRepository;
 import forever.vocaAllday.repository.ReportRepository;
-import java.io.IOException;
-import java.util.*;
-
-import forever.vocaAllday.entity.InputVoca;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
+
+import java.io.IOException;
+import java.util.*;
 
 @Service
 public class CrawlingService {
@@ -26,21 +25,21 @@ public class CrawlingService {
         this.memberRepository = memberRepository;
     }
 
-    public List<String > crawling (String ARR ) throws IOException{
+    public List<String> crawling(String ARR) throws IOException {
 
         String URL = "https://ko.ichacha.net/sentence/";
 
         String params = ARR + ".html";
 
         Document doc = Jsoup.connect(URL + params).get();
-        Elements el = doc.getElementsByAttributeValue("class","sent_list");
+        Elements el = doc.getElementsByAttributeValue("class", "sent_list");
 
         String sent = el.select("li").get(0).text();
         String word = el.select("li").get(0).select("font").text();
 
-        String sentence = sent.replace(word,"_______");
+        String sentence = sent.replace(word, "_______");
 
-        List<String > sent_word =  new ArrayList<String>();
+        List<String> sent_word = new ArrayList<String>();
         sent_word.add(sentence);
         sent_word.add(word);
 
@@ -48,22 +47,23 @@ public class CrawlingService {
 
     }
 
-    public  InputVoca  getInputVoca(String email, String vocaTitle){
+    public InputVoca getInputVoca(String email, String vocaTitle) {
         Member member = memberRepository.findByEmail(email);
         Long id = member.getId();
-        Report report = reportRepository.findByReport(id,vocaTitle);
+        Report report = reportRepository.findByReport(id, vocaTitle);
         InputVoca inputVoca = report.getInputVoca();
         return inputVoca;
     }
 
-    public SentenceInfoDto makeTest (String email, String vocaTitle) throws IOException {
-        InputVoca inputvoca = getInputVoca(email,vocaTitle);
+
+    public SentenceInfoDto makeTest(String email, String vocaTitle) throws IOException {
+        InputVoca inputvoca = getInputVoca(email, vocaTitle);
         List<String> tempWord = Arrays.asList(inputvoca.getWord().split(","));
         List<String> tempMeaning = Arrays.asList(inputvoca.getMeaning().split(","));
 
         HashMap<String, String> map = new HashMap<String, String>();
 
-        for (int j = 0; j <8; j++) {
+        for (int j = 0; j < 8; j++) {
             map.put(tempWord.get(j), tempMeaning.get(j));
         }
         List<String> word = new ArrayList(map.keySet());
@@ -77,18 +77,29 @@ public class CrawlingService {
             meaning.add(map.get(s));
         }
 
-        List<String > tempsent = new ArrayList<>();
-        List<String > tempan = new ArrayList<>();
+        List<String> tempsent = new ArrayList<>();
+        List<String> tempan = new ArrayList<>();
 
-
-
-        for(int i=0;i<8;i++){
+        for (int i = 0; i < 8; i++) {
             List<String> templist = crawling(word.get(i));
             tempsent.add(templist.get(0));
             tempan.add(templist.get(1));
         }
 
-        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsent, tempan , word, meaning, vocaTitle);
+        SentenceInfoDto sentinfo = new SentenceInfoDto(tempsent, tempan, word, meaning, vocaTitle);
         return sentinfo;
+    }
+
+    public List<String> getSentence(String email, String vocaTitle) throws IOException {
+        InputVoca inputvoca = getInputVoca(email, vocaTitle);
+        List<String> tempWord = Arrays.asList(inputvoca.getWord().split(","));
+
+        List<String> tempsent = new ArrayList<>();
+
+        for (int i = 0; i < tempWord.size(); i++) {
+            List<String> templist = crawling(tempWord.get(i));
+            tempsent.add(templist.get(0));
+        }
+        return tempsent;
     }
 }

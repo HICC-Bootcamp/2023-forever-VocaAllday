@@ -1,4 +1,4 @@
-package forever.vocaAllday.service;
+package forever.vocaAllday.service.exam;
 
 
 import forever.vocaAllday.dto.response.UserInfoDto;
