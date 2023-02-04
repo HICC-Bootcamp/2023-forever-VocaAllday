@@ -64,12 +64,6 @@
                 </div>
             </div>
 
-            <div class="left_footer">
-                <button class="button" id="add_but" onclick="add_input_word()">
-                    <i class="fa-sharp fa-solid fa-plus"></i>
-                    <span class="add_but_text" id="add_but_text">Add</span>
-                </button>
-            </div>
 
         </div>
         <!-- 시험지 유형 선택 창 -->
@@ -111,9 +105,6 @@
                     <i class="fa-sharp fa-solid fa-check"></i>
                     <span class="submit_but_text">Submit</span>
                 </button>
-                <!--(임시) 버튼 클릭 시 레포트로 이동-->
-                <button th:onclick="|location.href='@{/mypage}'|">내레포트</button>
-                <button th:onclick="|location.href='@{/auth/login}'|">로그아웃</button>
             </div>
         </div>
     </div>

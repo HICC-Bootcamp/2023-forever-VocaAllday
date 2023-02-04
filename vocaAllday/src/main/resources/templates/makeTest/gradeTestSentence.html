@@ -88,10 +88,10 @@ public class resultDto {
                 <span id="correct_num" th:text="8-${#lists.size(resultDto.WrongWordList)}" >null</span> / <span>8</span>
             </div>
             <div class="info_title">
-                <span>틀린 단어  :</span><br>
-                <div id="wrong_word"  th:each="wrong_word : ${resultDto.WrongWordList}">
-                    <span class="word_text_box" th:text="${wrong_word}"></span>
-                </div>
+                <span>틀린 단어  :</span>
+            </div>
+            <div class="wrong_word_container">
+                <span class="wrong_word" th:each="wrong_word : ${resultDto.WrongWordList}"th:text="${wrong_word}"></span>
             </div>
         </div>
     </div>
@@ -100,6 +100,7 @@ public class resultDto {
     //타임리프 사용하는 js기능
 
     $(document).ready(function () {
+        Swal.fire('답안입력 성공',"채점하고 있습니다!",'success')
         const regex_en = /^[a-z|A-Z]+$/;            //영어판단 정규식
         /*
             왼쪽 정답단어/틀린단어 색전환 기능

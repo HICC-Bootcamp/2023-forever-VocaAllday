@@ -91,7 +91,7 @@
 
                 </div>
                 <div class="wrong_word_container">
-                    <span class="wrong_word" th:each="wrong_word : ${resultDto.WrongMeaningList}"th:text="${wrong_word}"></span>
+                    <span class="wrong_word" th:each="wrong_word : ${resultDto.WrongWordList}"th:text="${wrong_word}"></span>
                 </div>
             </div>
         </div>
@@ -101,6 +101,8 @@
     //타임리프 사용하는 js기능
 
     $(document).ready(function () {
+        Swal.fire('답안입력 성공',"채점하고 있습니다!",'success')
+
         const regex_en = /^[a-z|A-Z]+$/;            //영어판단 정규식
         /*
             왼쪽 정답단어/틀린단어 색전환 기능
