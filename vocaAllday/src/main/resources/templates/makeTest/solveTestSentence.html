@@ -27,6 +27,7 @@ List meaningList;//뜻
 List answerList;//정답
 vocaTitle
     -->
+
     <div class="wrapper">
         <!-- 문제지 -->
         <div class="wrapper_left">
@@ -86,35 +87,35 @@ vocaTitle
             <div class="right_body">
                 <span>
                     <input type="checkbox" id="hint_ck1" onclick="delete_hint(1)">
-                    <span id="hint1" th:text="${sentenceInfo.word[0]}"></span>
+                    <span id="hint1">NULL</span>
                 </span>
                 <span>
                     <input type="checkbox" id="hint_ck2" onclick="delete_hint(2)">
-                    <span id="hint2" th:text="${sentenceInfo.word[1]}"></span>
+                    <span id="hint2">NULL</span>
                 </span>
                 <span>
                     <input type="checkbox" id="hint_ck3" onclick="delete_hint(3)">
-                    <span id="hint3" th:text="${sentenceInfo.word[2]}"></span>
+                    <span id="hint3">NULL</span>
                 </span>
                 <span>
                     <input type="checkbox" id="hint_ck4" onclick="delete_hint(4)">
-                    <span id="hint4" th:text="${sentenceInfo.word[3]}"></span>
+                    <span id="hint4">NULL</span>
                 </span>
                 <span>
                     <input type="checkbox" id="hint_ck5" onclick="delete_hint(5)">
-                    <span id="hint5" th:text="${sentenceInfo.word[4]}"></span>
+                    <span id="hint5">NULL</span>
                 </span>
                 <span>
                     <input type="checkbox" id="hint_ck6" onclick="delete_hint(6)">
-                    <span id="hint6" th:text="${sentenceInfo.word[5]}"></span>
+                    <span id="hint6">NULL</span>
                 </span>
                 <span>
                     <input type="checkbox" id="hint_ck7" onclick="delete_hint(7)">
-                    <span id="hint7" th:text="${sentenceInfo.word[6]}"></span>
+                    <span id="hint7">NULL</span>
                 </span>
                 <span>
                     <input type="checkbox" id="hint_ck8" onclick="delete_hint(8)">
-                    <span id="hint8" th:text="${sentenceInfo.word[7]}"></span>
+                    <span id="hint8">NULL</span>
                 </span>
 
             </div>
@@ -128,7 +129,6 @@ vocaTitle
                 </td>
             </tr>
             <input type="hidden" name="vocaTitle" th:value="${sentenceInfo.vocaTitle}">
-            
 
             <div class="right_footer">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
@@ -140,6 +140,29 @@ vocaTitle
         </div>
     </div>
 </form>
+
+<script th:inline="javascript">
+    //타임리프 사용하는 js기능
+
+    $(document).ready(function () {
+
+        /*
+            힌트 셔플 기능
+        */
+        let hint =  [[${sentenceInfo.word}]];
+        let hint_shuffled = Object.assign([], hint); //list deepcopy
+        hint_shuffled.sort(() => Math.random() - 0.5); //list shuffle
+        console.log("hint_shuffled:", hint_shuffled);
+        console.log("hint:", hint);
+
+        let i = 1;
+        var cnt_add = 8;
+        for (i; i<=cnt_add; i++){
+            document.getElementById("hint"+i).innerText = hint_shuffled[i-1]
+        }
+
+    });
+</script>
 
 </body>
 </html>
