@@ -70,6 +70,11 @@ html, body{
     justify-content: space-evenly;
     padding-bottom: 20px ;
 }
+
+.wrong_word_container{
+    padding-right: 50px
+}
+
 .sentence_text_box{
     width: 75%;
     height: 56px;
@@ -141,6 +146,16 @@ html, body{
     border-radius: 12px;
 
     color:#DA100B;
+}
+.wrong_word{
+    color:#DA100B;
+    padding-right:30px;
+
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
 }
 
 

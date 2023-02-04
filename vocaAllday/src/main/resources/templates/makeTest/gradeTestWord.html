@@ -87,10 +87,11 @@
                     <span id="correct_num" th:text="8-${#lists.size(resultDto.WrongWordList)}" >null</span> / <span>8</span>
                 </div>
                 <div class="info_title">
-                    <span>틀린 단어  :</span><br>
-                    <div id="wrong_word"  th:each="wrong_word : ${resultDto.WrongMeaningList}">
-                        <span class="word_text_box" th:text="${wrong_word}"></span>
-                    </div>
+                    <span>틀린 단어  :</span>
+
+                </div>
+                <div class="wrong_word_container">
+                    <span class="wrong_word" th:each="wrong_word : ${resultDto.WrongMeaningList}"th:text="${wrong_word}"></span>
                 </div>
             </div>
         </div>
