@@ -39,7 +39,7 @@
                 </div>
 
                 <!--로그아웃 버튼(우끝)-->
-                <div class="logout" th:onclick="|location.href='@{/auth/login}'|">Log out</div>
+                <div class="logout" th:onclick="|location.href='@{/auth/logout}'|">Log out</div>
             </div>
             <div class="dividedLine"></div>
             <div class="left_body">
@@ -102,5 +102,26 @@
     </div>
 
 </form>
+
+<script th:inline="javascript">
+    //타임리프 사용하는 js기능
+
+    $(document).ready(function () {
+        /*
+            vocaTitle 유효성 검사
+        */
+        var vocaTitleList = [[${vocaTitleList}]];
+        console.log("vocaTitleList : ", vocaTitleList)
+
+        //문제유형 판단
+        if(vocaTitleList==0){
+            console.log("단어장 없음 : ", vocaTitleList)
+            //단어장 없음 오류
+            document.getElementById("select_but").disabled=true
+        }
+
+
+    });
+</script>
 </body>
 </html>
