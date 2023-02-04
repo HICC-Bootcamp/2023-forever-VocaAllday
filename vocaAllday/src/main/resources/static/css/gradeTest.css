@@ -72,7 +72,12 @@ html, body{
 }
 
 .wrong_word_container{
-    padding-right: 50px
+    width: 100%;
+    padding-right: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .sentence_text_box{
@@ -149,7 +154,6 @@ html, body{
 }
 .wrong_word{
     color:#DA100B;
-    padding-right:30px;
 
     font-family: 'IBM Plex Sans';
     font-style: normal;
