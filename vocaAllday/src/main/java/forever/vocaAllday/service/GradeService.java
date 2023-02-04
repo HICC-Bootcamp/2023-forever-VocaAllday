@@ -85,15 +85,17 @@ public class GradeService {
     }
 
     public void gradeTest(String email, SentenceFormDto sentenceFormDto) {
-        List<String> userValues = sentenceFormDto.getUserValues();
-        List<String> meanings = sentenceFormDto.getMeaningList();
-        List<String> answers = sentenceFormDto.getAnswerList();
+        List<String> userValues = sentenceFormDto.getUserValues(); //유저값
+        List<String> meanings = sentenceFormDto.getMeaningList(); //의미
+        List<String> answers = sentenceFormDto.getAnswerList(); //답
         List<String> words = sentenceFormDto.getWordList();
         //테스트용
 
-
         List<String> wrongWords = new ArrayList<>();
         List<String> wrongMeanings = new ArrayList<>();
+
+        System.out.println(userValues);
+        System.out.println(answers);
 
         for (int i = 0; i < 8; i++) {
             if (!Objects.equals(answers.get(i), userValues.get(i))) {
@@ -119,14 +121,8 @@ public class GradeService {
 
         List<String> WrongWordList = Arrays.asList(wrongVoca.getWord().split(","));
         List<String> WrongMeaningList = Arrays.asList(wrongVoca.getMeaning().split(","));
-
-        int wrongNum = WrongWordList.size();
-
-        if(WrongWordList.equals("[]")){
-            wrongNum = 0;
-        }
         
-        ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList,wrongNum);
+        ResultDto resultDto = new ResultDto(AllWordList, AllMeaningList, WrongWordList, WrongMeaningList);
 
         return resultDto;
     }

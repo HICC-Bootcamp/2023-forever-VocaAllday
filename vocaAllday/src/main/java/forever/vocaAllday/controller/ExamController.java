@@ -6,8 +6,8 @@ import forever.vocaAllday.dto.response.ResultDto;
 import forever.vocaAllday.dto.response.SentenceInfoDto;
 import forever.vocaAllday.dto.response.UserInfoDto;
 import forever.vocaAllday.dto.response.WordInfoDto;
-import forever.vocaAllday.service.CrawlingService;
-import forever.vocaAllday.service.ExamService;
+import forever.vocaAllday.service.exam.CrawlingService;
+import forever.vocaAllday.service.exam.ExamService;
 import forever.vocaAllday.service.GradeService;
 import forever.vocaAllday.service.MyPageService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 @RequestMapping(value = "/exam")
 @Controller
@@ -76,6 +77,7 @@ public class ExamController {
         return "makeTest/solveTestSentence";
     }
 
+
     @PostMapping(value = "/example-sentence")
     public String GetUservalue(@ModelAttribute SentenceFormDto SentenceFormDto, Principal principal,
                                RedirectAttributes redirectAttributes) {
@@ -91,10 +93,13 @@ public class ExamController {
     }
     @GetMapping(value = "/sentence/grading-result")
     public String ShowGradingresult(Principal principal, Model model,
-                                    @RequestParam("title") String title) {
+                                    @RequestParam("title") String title) throws IOException {
         String email = principal.getName();
         ResultDto resultDto = gradeService.showGradingResult(email, title);
+
+        List<String> sentence = crawlingService.getSentence(email,title);
         model.addAttribute("resultDto", resultDto);
+        model.addAttribute("exSentence",sentence);
         return "makeTest/gradeTestSentence";//추후 수정
     }
 
